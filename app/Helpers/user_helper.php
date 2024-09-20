@@ -21,6 +21,7 @@ if (!function_exists('AuthUser')) {
             $obj->id = $ses->id;
             $obj->nama = $ses->nama;
             $obj->level = $ses->level;
+            $obj->type = $ses->type;
             $obj->level_nama = $ses->level_nama;
             $obj->status = $ses->user_status == 1 ? 'Aktif' : 'Tidak Aktif';
             $obj->login_at = $ses->login_at;
