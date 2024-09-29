@@ -23,6 +23,7 @@ if (!function_exists('AuthUser')) {
             $obj->level = $ses->level;
             $obj->type = $ses->type;
             $obj->level_nama = $ses->level_nama;
+            $obj->type_nama = $ses->type_nama;
             $obj->status = $ses->user_status == 1 ? 'Aktif' : 'Tidak Aktif';
             $obj->login_at = $ses->login_at;
             return $obj;
