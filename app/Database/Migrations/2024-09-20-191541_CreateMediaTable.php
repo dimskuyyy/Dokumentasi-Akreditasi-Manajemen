@@ -23,6 +23,10 @@ class CreateMediaTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'media_type' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'media_slug' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',

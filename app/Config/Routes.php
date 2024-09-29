@@ -4,7 +4,8 @@
 
 $routes->get('/', 'Home::index');
 
-$routes->group('apppanel', ['namespace' => 'App\Controllers\Back'], static function ($routes) {
+$routes->get('media/(:segment)', '\App\Controllers\Back\MediaAccess::viewMedia/$1', ['filter' => ['isLoggedIn']]);
+$routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static function ($routes) {
 
     $routes->get('logout', 'Auth::logout');
     $routes->get('login', 'Auth::login');
@@ -12,5 +13,16 @@ $routes->group('apppanel', ['namespace' => 'App\Controllers\Back'], static funct
 
     $routes->group('/', ['filter' => ['isLoggedIn'], 'namespace'=> 'App\Controllers\Back'], static function ($routes){
         $routes->get('/','Dashboard::index');
+
+        $routes->group('media', static function ($routes) {
+            $routes->get('/', 'Media::index');
+            $routes->post('list', 'Media::list');
+            $routes->post('form', 'Media::form');
+            $routes->post('save', 'Media::save');
+            $routes->post('delete', 'Media::delete');
+        });
+        /* $routes->group('kerjasama', ['filter'=> ['isDekan', 'isKajur', 'isKoor'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+
+        }); */
     });
 });
