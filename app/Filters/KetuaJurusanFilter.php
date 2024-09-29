@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class WriterFilter implements FilterInterface
+class KetuaJurusanFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
@@ -18,7 +18,7 @@ class WriterFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (AuthUser()->level != 2) {
+        if (AuthUser()->type == 2) {
             return redirect()->to('/wbpanel');
         }
     }

@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AdminFilter implements FilterInterface
+class TaskforceFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
@@ -18,7 +18,7 @@ class AdminFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (AuthUser()->level != 1) {
+        if (AuthUser()->type == 4) {
             return redirect()->to('/wbpanel');
         }
     }
