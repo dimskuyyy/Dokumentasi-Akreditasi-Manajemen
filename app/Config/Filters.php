@@ -2,6 +2,14 @@
 
 namespace Config;
 
+use App\Filters\AlumniFilter;
+use App\Filters\DekanFilter;
+use App\Filters\DosenFilter;
+use App\Filters\KetuaJurusanFilter;
+use App\Filters\KoorFilter;
+use App\Filters\LoginFilter;
+use App\Filters\MahasiswaFilter;
+use App\Filters\TaskforceFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -20,6 +28,14 @@ class Filters extends BaseConfig
      * @phpstan-var array<string, class-string|list<class-string>>
      */
     public array $aliases = [
+        'isLoggedIn'    => LoginFilter::class,
+        'isDekan'       => DekanFilter::class,
+        'isKajur'       => KetuaJurusanFilter::class,
+        'isKoor'        => KoorFilter::class,
+        'isTaskforce'   => TaskforceFilter::class,
+        'isDosen'       => DosenFilter::class,
+        'isMahasiswa'   => MahasiswaFilter::class,
+        'isAlumni'      => AlumniFilter::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
@@ -37,11 +53,11 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+            'csrf',
             // 'invalidchars',
         ],
         'after' => [
-            'toolbar',
+            // 'toolbar',
             // 'honeypot',
             // 'secureheaders',
         ],
