@@ -4,75 +4,74 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateKerjasamaTable extends Migration
+class CreateProyekAkademik extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'kerjasama_id' => [
+            'proyek_id' => [
                 'type'              => 'INT',
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'kerjasama_nama' => [
+            'proyek_judul' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'kerjasama_mitra' => [
+            'proyek_sebagai' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'kerjasama_skala' => [
-                'type'          => 'ENUM',
-                'constraint'    => ['Lokal','Nasional', 'Internasional'],
-                'default'       => 'Lokal',
+            'proyek_tahapan' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '255',
             ],
-            'kerjasama_tahun' => [
-                'type'          => 'YEAR',
-                'null'          => true
+            'proyek_artikel' => [
+                'type'          => 'TEXT',
+                'null'          => true,
             ],
-            'kerjasama_media_id' => [
-                'type'          => 'INT',
-                'unsigned'      => true,
-            ],
-            'kerjasama_user_id' => [
+            'proyek_user_id' => [
                 'type'          => 'INT',
                 'unsigned'      => true
             ],
-            'kerjasama_created_at'  => [
+            'proyek_type' => [
+                'type' => 'TINYINT',
+                'constraint' => 1,
+                'comment' => '1=penelitian,2=pengabdian'
+            ],
+            'proyek_created_at'  => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true,
             ],
-            'kerjasama_created_by'  => [
+            'proyek_created_by'  => [
                 'type'          => 'INT',
                 'null'          => true
             ],
-            'kerjasama_updated_at'  => [
+            'proyek_updated_at'  => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true
             ],
-            'kerjasama_updated_by'  => [
+            'proyek_updated_by'  => [
                 'type'          => 'INT',
                 'null'          => true
             ],
-            'kerjasama_deleted_at'   => [
+            'proyek_deleted_at'   => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true
             ],
-            'kerjasama_deleted_by'   => [
+            'proyek_deleted_by'   => [
                 'type'          => 'INT',
                 'null'          => true
             ]
         ]);
 
-        $this->forge->addKey('kerjasama_id',true);
-        $this->forge->addForeignKey('kerjasama_user_id', 'user', 'user_id', 'CASCADE', 'CASCADE', 'kerjasama_user_id');
-        $this->forge->addForeignKey('kerjasama_media_id', 'media', 'media_id', 'CASCADE', 'CASCADE', 'kerjasama_media_id');
-        $this->forge->createTable('kerjasama');
+        $this->forge->addKey('proyek_id',true);
+        $this->forge->addForeignKey('proyek_user_id', 'user', 'user_id', 'CASCADE', 'CASCADE', 'proyek_user_id');
+        $this->forge->createTable('proyek');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kerjasama');
+        $this->forge->dropTable('proyek');
     }
 }

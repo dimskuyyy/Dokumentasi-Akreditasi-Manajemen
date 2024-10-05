@@ -4,75 +4,71 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateKerjasamaTable extends Migration
+class CreateAgenda extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'kerjasama_id' => [
+            'agenda_id' => [
                 'type'              => 'INT',
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'kerjasama_nama' => [
+            'agenda_nama' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'kerjasama_mitra' => [
+            'agenda_sebagai' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'kerjasama_skala' => [
-                'type'          => 'ENUM',
-                'constraint'    => ['Lokal','Nasional', 'Internasional'],
-                'default'       => 'Lokal',
-            ],
-            'kerjasama_tahun' => [
-                'type'          => 'YEAR',
-                'null'          => true
-            ],
-            'kerjasama_media_id' => [
+            'agenda_media_id' => [
                 'type'          => 'INT',
                 'unsigned'      => true,
             ],
-            'kerjasama_user_id' => [
+            'agenda_user_id' => [
                 'type'          => 'INT',
                 'unsigned'      => true
             ],
-            'kerjasama_created_at'  => [
+            'agenda_type' => [
+                'type' => 'TINYINT',
+                'constraint' => 1,
+                'comment' => '1=kegiatan,2=kepanitiaan'
+            ],
+            'agenda_created_at'  => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true,
             ],
-            'kerjasama_created_by'  => [
+            'agenda_created_by'  => [
                 'type'          => 'INT',
                 'null'          => true
             ],
-            'kerjasama_updated_at'  => [
+            'agenda_updated_at'  => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true
             ],
-            'kerjasama_updated_by'  => [
+            'agenda_updated_by'  => [
                 'type'          => 'INT',
                 'null'          => true
             ],
-            'kerjasama_deleted_at'   => [
+            'agenda_deleted_at'   => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true
             ],
-            'kerjasama_deleted_by'   => [
+            'agenda_deleted_by'   => [
                 'type'          => 'INT',
                 'null'          => true
             ]
         ]);
 
-        $this->forge->addKey('kerjasama_id',true);
-        $this->forge->addForeignKey('kerjasama_user_id', 'user', 'user_id', 'CASCADE', 'CASCADE', 'kerjasama_user_id');
-        $this->forge->addForeignKey('kerjasama_media_id', 'media', 'media_id', 'CASCADE', 'CASCADE', 'kerjasama_media_id');
-        $this->forge->createTable('kerjasama');
+        $this->forge->addKey('agenda_id',true);
+        $this->forge->addForeignKey('agenda_user_id', 'user', 'user_id', 'CASCADE', 'CASCADE', 'agenda_user_id');
+        $this->forge->addForeignKey('agenda_media_id', 'media', 'media_id', 'CASCADE', 'CASCADE', 'agenda_media_id');
+        $this->forge->createTable('agenda');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kerjasama');
+        $this->forge->dropTable('agenda');
     }
 }
