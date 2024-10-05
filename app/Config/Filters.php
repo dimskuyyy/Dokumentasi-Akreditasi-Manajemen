@@ -6,6 +6,7 @@ use App\Filters\AlumniFilter;
 use App\Filters\DekanFilter;
 use App\Filters\DosenFilter;
 use App\Filters\KerjasamaFilter;
+use App\Filters\KegiatanFilter;
 use App\Filters\KetuaJurusanFilter;
 use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
@@ -38,6 +39,7 @@ class Filters extends BaseConfig
         'isMahasiswa'   => MahasiswaFilter::class,
         'isAlumni'      => AlumniFilter::class,
         'featKerjasama' => KerjasamaFilter::class,
+        'featKegiatan'  => KegiatanFilter::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,

@@ -36,8 +36,16 @@
                     </a>
                 </li>
             <?php } ?>
-            <?php 
-            $permkegiatan = [1,2,3,5]?>
+            <?php
+            $permkegiatan = [1,2,3,5];
+            if (in_array(AuthUser()->type, $permkegiatan)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "kegiatan" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/kegiatan'); ?>">
+                        <i class="fa fa-calendar-o"></i> <span>Kegiatan</span>
+                    </a>
+                </li>
+            <?php } ?>
             <?php if (AuthUser()->level == 1) : ?>
                 <li class="<?= $request->uri->getSegment(2) === "kategori" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/kategori'); ?>">

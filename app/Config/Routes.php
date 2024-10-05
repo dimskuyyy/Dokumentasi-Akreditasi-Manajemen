@@ -33,5 +33,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Kerjasama::save');
             $routes->post('delete', 'Kerjasama::delete');
         });
+
+        $routes->group('kegiatan', ['filter'=> ['featKegiatan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Kegiatan::index');
+            $routes->post('datatable', 'Kegiatan::getDatatable');
+            $routes->post('list', 'Kegiatan::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Kegiatan::detail');
+            $routes->post('form', 'Kegiatan::form');
+            $routes->post('save', 'Kegiatan::save');
+            $routes->post('delete', 'Kegiatan::delete');
+        });
     });
 });
