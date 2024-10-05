@@ -17,16 +17,27 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="<?= $request->uri->getSegment(2) === "media" ? 'active' : ''; ?>">
-                <a href="<?php echo base_url('wbpanel/media'); ?>">
-                    <i class="fa fa-folder-open"></i> <span>Media</span>
-                </a>
-            </li>
-            <li class="<?= $request->uri->getSegment(2) === "post" ? 'active' : ''; ?>">
-                <a href="<?php echo base_url('wbpanel/post'); ?>">
-                    <i class="fa fa-newspaper-o"></i> <span>Post</span>
-                </a>
-            </li>
+            <?php
+            $permmedia = [1, 2, 3, 5, 6];
+            if (in_array(AuthUser()->type, $permmedia)) { ?>
+                <li class="<?= $request->uri->getSegment(2) === "media" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/media'); ?>">
+                        <i class="fa fa-folder-open"></i> <span>Media</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permkerjasama = [1, 2, 3];
+            if (in_array(AuthUser()->type, $permkerjasama)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "kerjasama" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/kerjasama'); ?>">
+                        <i class="fa fa-handshake-o"></i> <span>Kerjasama</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php 
+            $permkegiatan = [1,2,3,5]?>
             <?php if (AuthUser()->level == 1) : ?>
                 <li class="<?= $request->uri->getSegment(2) === "kategori" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/kategori'); ?>">

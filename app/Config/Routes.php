@@ -21,8 +21,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Media::save');
             $routes->post('delete', 'Media::delete');
         });
-        /* $routes->group('kerjasama', ['filter'=> ['isDekan', 'isKajur', 'isKoor'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
-
-        }); */
+        
+        $routes->group('kerjasama', ['filter'=> ['featKerjasama'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Kerjasama::index');
+            $routes->post('datatable', 'Kerjasama::getDatatable');
+            $routes->post('list', 'Kerjasama::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Kerjasama::detail');
+            $routes->post('form', 'Kerjasama::form');
+            $routes->post('save', 'Kerjasama::save');
+            $routes->post('delete', 'Kerjasama::delete');
+        });
     });
 });

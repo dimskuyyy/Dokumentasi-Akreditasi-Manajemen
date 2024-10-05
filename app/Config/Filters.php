@@ -5,6 +5,7 @@ namespace Config;
 use App\Filters\AlumniFilter;
 use App\Filters\DekanFilter;
 use App\Filters\DosenFilter;
+use App\Filters\KerjasamaFilter;
 use App\Filters\KetuaJurusanFilter;
 use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
@@ -36,6 +37,7 @@ class Filters extends BaseConfig
         'isDosen'       => DosenFilter::class,
         'isMahasiswa'   => MahasiswaFilter::class,
         'isAlumni'      => AlumniFilter::class,
+        'featKerjasama' => KerjasamaFilter::class,
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
@@ -52,6 +54,7 @@ class Filters extends BaseConfig
      */
     public array $globals = [
         'before' => [
+            // 'isDekan'=>['except' => ['kerjasama  ']],
             // 'honeypot',
             'csrf',
             // 'invalidchars',

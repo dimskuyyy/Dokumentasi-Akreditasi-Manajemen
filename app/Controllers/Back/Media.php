@@ -200,4 +200,25 @@ class Media extends BaseController
             return $this->response->setJSON($result);
         }
     }
+
+    // utility
+    public function getMedia()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            return view('dashboard/media/media_form');
+        }
+    }
+
+    public function getDetailMedia()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $id = $req->getVar('id');
+            $data = $this->mediaModel->find($id);
+            $tmp = [];
+            $tmp['data'] = $data;
+            return $this->response->setJSON(['message' => 'test', 'data' => $data]);
+        }
+    }
 }
