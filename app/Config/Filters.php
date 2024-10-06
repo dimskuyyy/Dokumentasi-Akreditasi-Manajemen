@@ -7,6 +7,7 @@ use App\Filters\DekanFilter;
 use App\Filters\DosenFilter;
 use App\Filters\KerjasamaFilter;
 use App\Filters\KegiatanFilter;
+use App\Filters\KepanitiaanFilter;
 use App\Filters\KetuaJurusanFilter;
 use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
@@ -31,20 +32,21 @@ class Filters extends BaseConfig
      */
     public array $aliases = [
         'isLoggedIn'    => LoginFilter::class,
-        'isDekan'       => DekanFilter::class,
-        'isKajur'       => KetuaJurusanFilter::class,
-        'isKoor'        => KoorFilter::class,
-        'isTaskforce'   => TaskforceFilter::class,
-        'isDosen'       => DosenFilter::class,
-        'isMahasiswa'   => MahasiswaFilter::class,
-        'isAlumni'      => AlumniFilter::class,
-        'featKerjasama' => KerjasamaFilter::class,
-        'featKegiatan'  => KegiatanFilter::class,
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
-        'secureheaders' => SecureHeaders::class,
+        'isDekan'           => DekanFilter::class,
+        'isKajur'           => KetuaJurusanFilter::class,
+        'isKoor'            => KoorFilter::class,
+        'isTaskforce'       => TaskforceFilter::class,
+        'isDosen'           => DosenFilter::class,
+        'isMahasiswa'       => MahasiswaFilter::class,
+        'isAlumni'          => AlumniFilter::class,
+        'featKerjasama'     => KerjasamaFilter::class,
+        'featKegiatan'      => KegiatanFilter::class,
+        'featKepanitiaan'   => KepanitiaanFilter::class,
+        'csrf'              => CSRF::class,
+        'toolbar'           => DebugToolbar::class,
+        'honeypot'          => Honeypot::class,
+        'invalidchars'      => InvalidChars::class,
+        'secureheaders'     => SecureHeaders::class,
     ];
 
     /**

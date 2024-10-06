@@ -45,5 +45,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Kegiatan::save');
             $routes->post('delete', 'Kegiatan::delete');
         });
+
+        $routes->group('kepanitiaan', ['filter'=> ['featKepanitiaan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Kepanitiaan::index');
+            $routes->post('datatable', 'Kepanitiaan::getDatatable');
+            $routes->post('list', 'Kepanitiaan::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Kepanitiaan::detail');
+            $routes->post('form', 'Kepanitiaan::form');
+            $routes->post('save', 'Kepanitiaan::save');
+            $routes->post('delete', 'Kepanitiaan::delete');
+        });
     });
 });

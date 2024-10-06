@@ -66,11 +66,11 @@ class MAgenda extends Model
     public function multiDataKepanitiaan()
     {
         return $this->builder()
-            ->join('media', 'media_id = kerjasama_media_id')
-            ->join('user', 'user_id = kerjasama_user_id')
-            ->where('kerjasama_deleted_at', null)
+            ->join('media', 'media_id = agenda_media_id')
+            ->join('user', 'user_id = agenda_user_id')
+            ->where('agenda_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('kerjasama_user_id', AuthUser()->id)
+            ->where('agenda_user_id', AuthUser()->id)
             ->where('agenda_type',2);;
     }
 

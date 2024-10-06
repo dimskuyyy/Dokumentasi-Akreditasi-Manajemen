@@ -30,7 +30,7 @@
             </section>
         </div>
         <footer class="main-footer">
-            <strong>JURUSAN TEKNIK INFORMATIKA, <a href="https://umri.ac.id/" target='_blank'>UNIVERSITAS MUHAMMADIYAH RIAU</a>.</strong>
+            <strong>DOKUMENTASI AKREDITASI PROGRAM STUDI MANAJEMEN, <a href="https://umri.ac.id/" target='_blank'>UNIVERSITAS MUHAMMADIYAH RIAU</a>.</strong>
         </footer>
     </div>
     <div class="modal fade mymodal" tabindex="-1" role="dialog" data-backdrop="static"></div>
