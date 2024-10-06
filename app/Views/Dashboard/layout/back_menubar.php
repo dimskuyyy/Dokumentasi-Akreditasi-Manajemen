@@ -47,6 +47,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permpengabdian = [5,6];
+            if (in_array(AuthUser()->type, $permpengabdian)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "pengabdian" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/pengabdian'); ?>">
+                        <i class="fa fa-briefcase"></i> <span>Pengabdian</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkerjasama = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkerjasama)) {
             ?>

@@ -14,6 +14,7 @@ use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
 use App\Filters\MahasiswaFilter;
 use App\Filters\PenelitianFilter;
+use App\Filters\PengabdianFilter;
 use App\Filters\TaskforceFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
@@ -40,6 +41,7 @@ class Filters extends BaseConfig
         'isTaskforce'       => TaskforceFilter::class,
         'featPengajaran'    => PengajaranFilter::class,
         'featPenelitian'    => PenelitianFilter::class,
+        'featPengabdian'    => PengabdianFilter::class,
         'isMahasiswa'       => MahasiswaFilter::class,
         'isAlumni'          => AlumniFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,

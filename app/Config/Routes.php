@@ -79,5 +79,15 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Penelitian::save');
             $routes->post('delete', 'Penelitian::delete');
         });
+
+        $routes->group('pengabdian', ['filter'=> ['featPengabdian'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Pengabdian::index');
+            $routes->post('datatable', 'Pengabdian::getDatatable');
+            $routes->post('list', 'Pengabdian::list');
+            $routes->post('info', 'Pengabdian::detail');
+            $routes->post('form', 'Pengabdian::form');
+            $routes->post('save', 'Pengabdian::save');
+            $routes->post('delete', 'Pengabdian::delete');
+        });
     });
 });

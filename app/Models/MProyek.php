@@ -78,6 +78,28 @@ class MProyek extends Model
             ->getRowArray();
     }
 
+    public function multiDataPengabdian()
+    {
+        return $this->builder()
+            ->join('user', 'user_id = proyek_user_id')
+            ->where('proyek_deleted_at', null)
+            ->where('user.user_deleted_at', null)
+            ->where('proyek_user_id', AuthUser()->id)
+            ->where('proyek_type',2);
+    }
+
+    public function lookDetailPengabdian($id)
+    {
+        return $this->builder()
+            ->join('user', 'user_id = proyek_user_id')
+            ->where('proyek_deleted_at', null)
+            ->where('user.user_deleted_at', null)
+            ->where('proyek_id',$id)
+            ->where('proyek_type',2)
+            ->get()  // Eksekusi query
+            ->getRowArray();
+    }
+
     public function beforeInsert($data){
         $data['data']['proyek_user_id'] = AuthUser()->id;
         $data['data']['proyek_created_at'] = date('Y-m-d H:i:s');
