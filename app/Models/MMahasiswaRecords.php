@@ -79,7 +79,7 @@ class MMahasiswaRecords extends Model
             ->join('user', 'user_id = mahasiswa_user_id')
             ->where('mahasiswa_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('mahasiswa_record_type',2)
+            ->where('mahasiswa_records_type',2)
             ->where('mahasiswa_user_id', AuthUser()->id);
     }
 
@@ -91,7 +91,7 @@ class MMahasiswaRecords extends Model
             ->where('mahasiswa_deleted_at', null)
             ->where('user.user_deleted_at', null)
             ->where('mahasiswa_id',$id)
-            ->where('mahasiswa_record_type',2)
+            ->where('mahasiswa_records_type',2)
             ->get()  // Eksekusi query
             ->getRowArray();
     }

@@ -67,6 +67,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permprestasi = [6];
+            if (in_array(AuthUser()->type, $permprestasi)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "prestasi" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/prestasi'); ?>">
+                        <i class="fa fa-trophy"></i> <span>Prestasi</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkerjasama = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkerjasama)) {
             ?>
