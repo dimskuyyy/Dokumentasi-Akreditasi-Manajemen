@@ -11,7 +11,7 @@ class MAgenda extends Model
     protected $primaryKey       = 'agenda_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = ['agenda_nama', 'agenda_sebagai', 'agenda_media_id', 'agenda_user_id', 'agenda_type', 'agenda_created_at', 'agenda_created_by', 'agenda_published_at', 'agenda_published_by', 'agenda_updated_at', 'agenda_updated_by', 'agenda_deleted_at', 'agenda_deleted_by'];
 

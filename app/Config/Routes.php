@@ -57,5 +57,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Kepanitiaan::save');
             $routes->post('delete', 'Kepanitiaan::delete');
         });
+
+        $routes->group('pengajaran-dosen', ['filter'=> ['featPengajaran'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Pengajaran::index');
+            $routes->post('datatable', 'Pengajaran::getDatatable');
+            $routes->post('list', 'Pengajaran::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Pengajaran::detail');
+            $routes->post('form', 'Pengajaran::form');
+            $routes->post('save', 'Pengajaran::save');
+            $routes->post('delete', 'Pengajaran::delete');
+        });
     });
 });

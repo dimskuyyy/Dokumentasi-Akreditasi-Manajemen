@@ -27,6 +27,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permpengajaran = [5];
+            if (in_array(AuthUser()->type, $permpengajaran)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "pengajaran-dosen" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/pengajaran-dosen'); ?>">
+                        <i class="fa fa-book"></i> <span>SK Pengajaran</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkerjasama = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkerjasama)) {
             ?>

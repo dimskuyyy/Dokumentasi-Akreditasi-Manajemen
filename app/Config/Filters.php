@@ -2,9 +2,10 @@
 
 namespace Config;
 
+use App\Controllers\Back\Pengajaran;
 use App\Filters\AlumniFilter;
 use App\Filters\DekanFilter;
-use App\Filters\DosenFilter;
+use App\Filters\PengajaranFilter;
 use App\Filters\KerjasamaFilter;
 use App\Filters\KegiatanFilter;
 use App\Filters\KepanitiaanFilter;
@@ -36,7 +37,7 @@ class Filters extends BaseConfig
         'isKajur'           => KetuaJurusanFilter::class,
         'isKoor'            => KoorFilter::class,
         'isTaskforce'       => TaskforceFilter::class,
-        'isDosen'           => DosenFilter::class,
+        'featPengajaran'      => PengajaranFilter::class,
         'isMahasiswa'       => MahasiswaFilter::class,
         'isAlumni'          => AlumniFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,
