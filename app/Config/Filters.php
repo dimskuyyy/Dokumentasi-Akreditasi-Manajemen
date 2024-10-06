@@ -13,6 +13,7 @@ use App\Filters\KetuaJurusanFilter;
 use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
 use App\Filters\MahasiswaFilter;
+use App\Filters\PenelitianFilter;
 use App\Filters\TaskforceFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
@@ -37,7 +38,8 @@ class Filters extends BaseConfig
         'isKajur'           => KetuaJurusanFilter::class,
         'isKoor'            => KoorFilter::class,
         'isTaskforce'       => TaskforceFilter::class,
-        'featPengajaran'      => PengajaranFilter::class,
+        'featPengajaran'    => PengajaranFilter::class,
+        'featPenelitian'    => PenelitianFilter::class,
         'isMahasiswa'       => MahasiswaFilter::class,
         'isAlumni'          => AlumniFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,

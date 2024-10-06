@@ -37,6 +37,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permpenelitian = [5,6];
+            if (in_array(AuthUser()->type, $permpenelitian)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "penelitian" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/penelitian'); ?>">
+                        <i class="fa fa-file-text-o"></i> <span>Penelitian</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkerjasama = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkerjasama)) {
             ?>
