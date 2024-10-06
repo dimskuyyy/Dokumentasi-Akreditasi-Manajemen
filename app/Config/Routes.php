@@ -70,6 +70,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Pengajaran::delete');
         });
 
+        $routes->group('aktivitas', ['filter'=> ['featMahasiswa'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Aktivitas::index');
+            $routes->post('datatable', 'Aktivitas::getDatatable');
+            $routes->post('list', 'Aktivitas::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Aktivitas::detail');
+            $routes->post('form', 'Aktivitas::form');
+            $routes->post('save', 'Aktivitas::save');
+            $routes->post('delete', 'Aktivitas::delete');
+        });
+
         $routes->group('penelitian', ['filter'=> ['featPenelitian'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Penelitian::index');
             $routes->post('datatable', 'Penelitian::getDatatable');

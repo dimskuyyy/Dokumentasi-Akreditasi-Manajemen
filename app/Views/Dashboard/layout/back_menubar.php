@@ -37,6 +37,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permaktivitas = [6];
+            if (in_array(AuthUser()->type, $permaktivitas)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "aktivitas" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/aktivitas'); ?>">
+                        <i class="fa fa-hand-rock-o"></i> <span>Aktivitas Mahasiswa</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permpenelitian = [5,6];
             if (in_array(AuthUser()->type, $permpenelitian)) {
             ?>

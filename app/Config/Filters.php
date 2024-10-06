@@ -2,20 +2,14 @@
 
 namespace Config;
 
-use App\Controllers\Back\Pengajaran;
-use App\Filters\AlumniFilter;
-use App\Filters\DekanFilter;
 use App\Filters\PengajaranFilter;
 use App\Filters\KerjasamaFilter;
 use App\Filters\KegiatanFilter;
 use App\Filters\KepanitiaanFilter;
-use App\Filters\KetuaJurusanFilter;
-use App\Filters\KoorFilter;
 use App\Filters\LoginFilter;
-use App\Filters\MahasiswaFilter;
+use App\Filters\MahasiswaRecordFilter;
 use App\Filters\PenelitianFilter;
 use App\Filters\PengabdianFilter;
-use App\Filters\TaskforceFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -35,15 +29,10 @@ class Filters extends BaseConfig
      */
     public array $aliases = [
         'isLoggedIn'    => LoginFilter::class,
-        'isDekan'           => DekanFilter::class,
-        'isKajur'           => KetuaJurusanFilter::class,
-        'isKoor'            => KoorFilter::class,
-        'isTaskforce'       => TaskforceFilter::class,
         'featPengajaran'    => PengajaranFilter::class,
         'featPenelitian'    => PenelitianFilter::class,
         'featPengabdian'    => PengabdianFilter::class,
-        'isMahasiswa'       => MahasiswaFilter::class,
-        'isAlumni'          => AlumniFilter::class,
+        'featMahasiswa'     => MahasiswaRecordFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,
         'featKegiatan'      => KegiatanFilter::class,
         'featKepanitiaan'   => KepanitiaanFilter::class,
