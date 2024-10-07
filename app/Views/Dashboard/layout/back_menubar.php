@@ -107,6 +107,16 @@
                 </li>
             <?php } ?>
             <?php
+            $perSurvey = [7];
+            if (in_array(AuthUser()->type, $perSurvey)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "survey" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/survey'); ?>">
+                        <i class="fa fa-address-book-o"></i> <span>Survey</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             if (AuthUser()->level == 1) {
             ?>
                 <br>

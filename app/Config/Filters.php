@@ -10,6 +10,7 @@ use App\Filters\LoginFilter;
 use App\Filters\MahasiswaRecordFilter;
 use App\Filters\PenelitianFilter;
 use App\Filters\PengabdianFilter;
+use App\Filters\SurveyFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -36,6 +37,7 @@ class Filters extends BaseConfig
         'featKerjasama'     => KerjasamaFilter::class,
         'featKegiatan'      => KegiatanFilter::class,
         'featKepanitiaan'   => KepanitiaanFilter::class,
+        'featSurvey'        => SurveyFilter::class,
         'csrf'              => CSRF::class,
         'toolbar'           => DebugToolbar::class,
         'honeypot'          => Honeypot::class,

@@ -113,5 +113,10 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('save', 'Pengabdian::save');
             $routes->post('delete', 'Pengabdian::delete');
         });
+
+        $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Survey::index');
+            $routes->post('save', 'Survey::save');
+        });
     });
 });
