@@ -47,7 +47,7 @@
                 </li>
             <?php } ?>
             <?php
-            $permpenelitian = [5,6];
+            $permpenelitian = [5, 6];
             if (in_array(AuthUser()->type, $permpenelitian)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "penelitian" ? 'active' : ''; ?>">
@@ -57,7 +57,7 @@
                 </li>
             <?php } ?>
             <?php
-            $permpengabdian = [5,6];
+            $permpengabdian = [5, 6];
             if (in_array(AuthUser()->type, $permpengabdian)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "pengabdian" ? 'active' : ''; ?>">
@@ -121,6 +121,26 @@
             ?>
                 <br>
                 <li class="header">Daftar User</li>
+            <?php } ?>
+            <?php
+            $perUserControl = [1,2,3,4];
+            if (in_array(AuthUser()->type, $perUserControl)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "user" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/user'); ?>">
+                        <i class="fa fa-user"></i> <span>User</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $perProfile = [1,2,3,4,5,6,7];
+            if (in_array(AuthUser()->type, $perProfile)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "profile" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/profile'); ?>">
+                        <i class="fa fa-male"></i> <span>Profile</span>
+                    </a>
+                </li>
             <?php } ?>
 
 

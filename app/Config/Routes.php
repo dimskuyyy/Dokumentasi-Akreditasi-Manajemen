@@ -14,7 +14,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
     $routes->group('/', ['filter' => ['isLoggedIn'], 'namespace'=> 'App\Controllers\Back'], static function ($routes){
         $routes->get('/','Dashboard::index');
 
-        $routes->group('media', static function ($routes) {
+        $routes->group('media', ['filter'=> ['featMedia'], 'namespace'=> 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Media::index');
             $routes->post('list', 'Media::list');
             $routes->post('form', 'Media::form');
@@ -117,6 +117,16 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
         $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');
+        });
+
+        $routes->get('profile', 'UserController::profile');
+
+        $routes->group('user', static function ($routes) {
+            $routes->get('/', 'UserController::index', ['filter' => 'featUserControl']);
+            $routes->post('list', 'UserController::list', ['filter' => 'featUserControl']);
+            $routes->post('form', 'UserController::form', ['filter' => 'featUserControl']);
+            $routes->post('save', 'UserController::save', ['filter' => 'featUserControl']);
+            $routes->post('delete', 'UserController::delete', ['filter' => 'featUserControl']);
         });
     });
 });

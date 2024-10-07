@@ -3,7 +3,7 @@
 <?= $this->section('header') ?>
 <section class="content-header">
     <h1>
-        Dashboard
+    Selamat Datang di Aplikasi Dokumentasi Akreditasi <a href="https://manajemen.feb.umri.ac.id">Program Studi Manajemen</a> ✨
     </h1>
 </section>
 <?= $this->endSection() ?>
@@ -13,5 +13,5 @@ Website - Dashboard
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-www <?php echo csrf_header(); ?>
+<!-- <h3></h3> -->
 <?= $this->endSection() ?>

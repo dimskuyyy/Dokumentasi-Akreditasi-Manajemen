@@ -11,6 +11,8 @@ use App\Filters\MahasiswaRecordFilter;
 use App\Filters\PenelitianFilter;
 use App\Filters\PengabdianFilter;
 use App\Filters\SurveyFilter;
+use App\Filters\UserControlFilter;
+use App\Filters\MediaFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -38,6 +40,8 @@ class Filters extends BaseConfig
         'featKegiatan'      => KegiatanFilter::class,
         'featKepanitiaan'   => KepanitiaanFilter::class,
         'featSurvey'        => SurveyFilter::class,
+        'featUserControl'   => UserControlFilter::class,
+        'featMedia'         => MediaFilter::class,
         'csrf'              => CSRF::class,
         'toolbar'           => DebugToolbar::class,
         'honeypot'          => Honeypot::class,
