@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class KepanitiaanFilter implements FilterInterface
+class SertifikatFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
@@ -16,7 +16,7 @@ class KepanitiaanFilter implements FilterInterface
         }
 
         
-        if (!in_array(AuthUser()->type, [5,6])) {
+        if (!in_array(AuthUser()->type, [5])) {
             return redirect()->to('/wbpanel');
         }
     }

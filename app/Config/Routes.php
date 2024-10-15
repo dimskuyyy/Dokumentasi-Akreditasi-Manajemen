@@ -34,6 +34,30 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Kerjasama::delete');
         });
 
+        $routes->group('surat-keputusan', ['filter'=> ['featSK'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'SuratKeputusan::index');
+            $routes->post('datatable', 'SuratKeputusan::getDatatable');
+            $routes->post('list', 'SuratKeputusan::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'SuratKeputusan::detail');
+            $routes->post('form', 'SuratKeputusan::form');
+            $routes->post('save', 'SuratKeputusan::save');
+            $routes->post('delete', 'SuratKeputusan::delete');
+        });
+
+        $routes->group('surat-tugas', ['filter'=> ['featST'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'SuratTugas::index');
+            $routes->post('datatable', 'SuratTugas::getDatatable');
+            $routes->post('list', 'SuratTugas::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'SuratTugas::detail');
+            $routes->post('form', 'SuratTugas::form');
+            $routes->post('save', 'SuratTugas::save');
+            $routes->post('delete', 'SuratTugas::delete');
+        });
+
         $routes->group('kegiatan', ['filter'=> ['featKegiatan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Kegiatan::index');
             $routes->post('datatable', 'Kegiatan::getDatatable');
@@ -68,6 +92,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('form', 'Pengajaran::form');
             $routes->post('save', 'Pengajaran::save');
             $routes->post('delete', 'Pengajaran::delete');
+        });
+
+        $routes->group('sertifikat-dosen', ['filter'=> ['featSertifikat'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Sertifikat::index');
+            $routes->post('datatable', 'Sertifikat::getDatatable');
+            $routes->post('list', 'Sertifikat::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Sertifikat::detail');
+            $routes->post('form', 'Sertifikat::form');
+            $routes->post('save', 'Sertifikat::save');
+            $routes->post('delete', 'Sertifikat::delete');
         });
 
         $routes->group('aktivitas', ['filter'=> ['featMahasiswa'], 'namespace'=> 'App\Controllers\Back'], static function($routes){

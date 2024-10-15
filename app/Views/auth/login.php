@@ -8,12 +8,13 @@ Website - Login
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>WEB PANEL</a>
+<div class="login-box" style="width: 100%;display:flex;flex-direction: column; align-items: center;">
+    <img src="<?=base_url('img/LOGO-UNRI.png')?>" alt="Logo Unri" style="height: 120px;margin-bottom: 12px;">
+    <div class="login-logo" style="font-size: 28px;">
+        <a href="#"><b>Jurusan Ilmu Ekonomi<br>Fakultas Ekonomi dan Bisnis Universitas Riau</b></a>
         <!-- <div style="font-size:15px; font-weight:bolder;">JURUSAN TEKNIK INFORMATIKA<br>UNIVERSITAS MUHAMMADIYAH RIAU</div> -->
     </div>
-    <div class="login-box-body">
+    <div class="login-box-body" style="width: 90%; max-width:500px">
         <p class="login-box-msg">Sign in to start your session</p>
         <?php echo form_open('login-do', ['class' => 'form-login']); ?>
         <div class="form-group has-feedback">

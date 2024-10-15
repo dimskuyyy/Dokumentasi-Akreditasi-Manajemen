@@ -77,7 +77,7 @@
                 </li>
             <?php } ?>
             <?php
-            $permkerjasama = [1, 2, 3];
+            $permkerjasama = [1, 3];
             if (in_array(AuthUser()->type, $permkerjasama)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "kerjasama" ? 'active' : ''; ?>">
@@ -87,17 +87,51 @@
                 </li>
             <?php } ?>
             <?php
+            $permsk = [1];
+            if (in_array(AuthUser()->type, $permsk)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "surat-keputusan" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/surat-keputusan'); ?>">
+                        <i class="fa fa-envelope-o"></i> <span>Surat Keputusan</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permsurattugas = [1, 2];
+            if (in_array(AuthUser()->type, $permsurattugas)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "surat-tugas" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/surat-tugas'); ?>">
+                        <i class="fa fa-file-text-o"></i> <span>Surat Tugas</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permsertifikat = [5];
+            if (in_array(AuthUser()->type, $permsertifikat)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "sertifikat-dosen" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/sertifikat-dosen'); ?>">
+                        <i class="fa fa-id-card-o"></i> <span>Sertifkat Kompetensi/Profesi</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkegiatan = [1, 2, 3, 5];
             if (in_array(AuthUser()->type, $permkegiatan)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "kegiatan" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/kegiatan'); ?>">
-                        <i class="fa fa-calendar-o"></i> <span>Kegiatan</span>
+                        <?php if (AuthUser()->type == 1) { ?>
+                            <i class="fa fa-calendar-o"></i> <span>Kegiatan Fakultas</span>
+                        <?php } else { ?>
+                            <i class="fa fa-calendar-o"></i> <span>Kegiatan <?= AuthUser()->type_nama?></span>
+                        <?php } ?>
                     </a>
                 </li>
             <?php } ?>
             <?php
-            $perkepanitiaan = [1, 2, 3, 5, 6];
+            $perkepanitiaan = [5, 6];
             if (in_array(AuthUser()->type, $perkepanitiaan)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "kepanitiaan" ? 'active' : ''; ?>">
@@ -123,7 +157,7 @@
                 <li class="header">Daftar User</li>
             <?php } ?>
             <?php
-            $perUserControl = [1,2,3,4];
+            $perUserControl = [1, 2, 3, 4];
             if (in_array(AuthUser()->type, $perUserControl)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "user" ? 'active' : ''; ?>">
@@ -133,7 +167,7 @@
                 </li>
             <?php } ?>
             <?php
-            $perProfile = [1,2,3,4,5,6,7];
+            $perProfile = [1, 2, 3, 4, 5, 6, 7];
             if (in_array(AuthUser()->type, $perProfile)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "profile" ? 'active' : ''; ?>">

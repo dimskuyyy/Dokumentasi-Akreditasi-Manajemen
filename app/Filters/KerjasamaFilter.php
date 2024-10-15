@@ -16,7 +16,7 @@ class KerjasamaFilter implements FilterInterface
         }
 
         
-        if (!in_array(AuthUser()->type, [1,2,3])) {
+        if (!in_array(AuthUser()->type, [1,3])) {
             return redirect()->to('/wbpanel');
         }
     }

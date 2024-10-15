@@ -4,12 +4,15 @@ namespace Config;
 
 use App\Filters\PengajaranFilter;
 use App\Filters\KerjasamaFilter;
+use App\Filters\SuratKeputusanFilter;
+use App\Filters\SuratTugasFilter;
 use App\Filters\KegiatanFilter;
 use App\Filters\KepanitiaanFilter;
 use App\Filters\LoginFilter;
 use App\Filters\MahasiswaRecordFilter;
 use App\Filters\PenelitianFilter;
 use App\Filters\PengabdianFilter;
+use App\Filters\SertifikatFilter;
 use App\Filters\SurveyFilter;
 use App\Filters\UserControlFilter;
 use App\Filters\MediaFilter;
@@ -35,8 +38,11 @@ class Filters extends BaseConfig
         'featPengajaran'    => PengajaranFilter::class,
         'featPenelitian'    => PenelitianFilter::class,
         'featPengabdian'    => PengabdianFilter::class,
+        'featSertifikat'    => SertifikatFilter::class,
         'featMahasiswa'     => MahasiswaRecordFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,
+        'featSK'            => SuratKeputusanFilter::class,
+        'featST'            => SuratTugasFilter::class,
         'featKegiatan'      => KegiatanFilter::class,
         'featKepanitiaan'   => KepanitiaanFilter::class,
         'featSurvey'        => SurveyFilter::class,
