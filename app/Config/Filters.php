@@ -6,6 +6,7 @@ use App\Filters\PengajaranFilter;
 use App\Filters\KerjasamaFilter;
 use App\Filters\SuratKeputusanFilter;
 use App\Filters\SuratTugasFilter;
+use App\Filters\HakiFilter;
 use App\Filters\KegiatanFilter;
 use App\Filters\KepanitiaanFilter;
 use App\Filters\LoginFilter;
@@ -39,6 +40,7 @@ class Filters extends BaseConfig
         'featPenelitian'    => PenelitianFilter::class,
         'featPengabdian'    => PengabdianFilter::class,
         'featSertifikat'    => SertifikatFilter::class,
+        'featHaki'          => HakiFilter::class,
         'featMahasiswa'     => MahasiswaRecordFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,
         'featSK'            => SuratKeputusanFilter::class,

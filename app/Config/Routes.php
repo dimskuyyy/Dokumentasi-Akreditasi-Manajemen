@@ -70,6 +70,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Kegiatan::delete');
         });
 
+        $routes->group('kegiatan-dosen', ['filter'=> ['featPengajaran'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('(:segment)', 'Kegiatan::index/$1');
+            $routes->post('datatable/(:segment)', 'Kegiatan::getDatatable/$1');
+            $routes->post('list/(:segment)', 'Kegiatan::list/$1');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info/(:segment)', 'Kegiatan::detail/$1');
+            $routes->post('form/(:segment)', 'Kegiatan::form/$1');
+            $routes->post('save/(:segment)', 'Kegiatan::save/$1');
+            $routes->post('delete/(:segment)', 'Kegiatan::delete/$1');
+        });
+
         $routes->group('kepanitiaan', ['filter'=> ['featKepanitiaan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Kepanitiaan::index');
             $routes->post('datatable', 'Kepanitiaan::getDatatable');
@@ -104,6 +116,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('form', 'Sertifikat::form');
             $routes->post('save', 'Sertifikat::save');
             $routes->post('delete', 'Sertifikat::delete');
+        });
+
+        $routes->group('haki', ['filter'=> ['featHaki'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Haki::index');
+            $routes->post('datatable', 'Haki::getDatatable');
+            $routes->post('list', 'Haki::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Haki::detail');
+            $routes->post('form', 'Haki::form');
+            $routes->post('save', 'Haki::save');
+            $routes->post('delete', 'Haki::delete');
         });
 
         $routes->group('aktivitas', ['filter'=> ['featMahasiswa'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
