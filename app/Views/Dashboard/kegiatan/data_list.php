@@ -12,6 +12,15 @@
         </tr>
     </thead>
 </table>
+<?php 
+    if(AuthUser()->type==5 && isset($page)){
+        $agenda_list = 'kegiatan-dosen';
+        $path_list = '/'.$page;
+    }else{
+        $agenda_list = 'kegiatan';
+        $path_list = '';
+    }
+?>
 <script>
     $('#table-kegiatan').on('click', 'tbody tr td .btn-edit', function(e) {
         e.preventDefault();
@@ -21,7 +30,7 @@
         if (id) {
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/kegiatan/form',
+                url: base_url + '/<?=$agenda_list?>/form<?=$path_list?>',
                 type: 'post',
                 data: {
                     id: id
@@ -51,7 +60,7 @@
             if (confirm('Yakin hapus post ?')) {
                 setLoadingBtn(btn);
                 $.ajax({
-                    url: base_url + '/kegiatan/delete',
+                    url: base_url + '/<?=$agenda_list?>/delete<?=$path_list?>',
                     type: 'post',
                     data: {
                         id: id
@@ -116,17 +125,21 @@
         ],
         'ajax': function(data, callback, setting) {
             $.ajax({
-                url: base_url + '/kegiatan/list',
+                url: base_url + '/<?=$agenda_list?>/list<?=$path_list?>',
                 type: 'post',
                 data: {
                     datatables: data
                 },
                 success: function(r) {
-                    callback({
-                        recordsTotal: r.recordsTotal,
-                        recordsFiltered: r.recordsFiltered,
-                        data: r.data
-                    });
+                    if(r.status == false){
+                        errorMsg(r.msg);
+                    }else{
+                        callback({
+                            recordsTotal: r.recordsTotal,
+                            recordsFiltered: r.recordsFiltered,
+                            data: r.data
+                        });
+                    }
                 },
                 error: function(xhr, status, error) {
                     errorMsg(error);
@@ -140,7 +153,7 @@
         let id = $(this).attr('data-id');
         if (id) {
             $.ajax({
-                url: base_url + '/kegiatan/info',
+                url: base_url + '/<?=$agenda_list?>/info<?=$path_list?>',
                 type: 'post',
                 data: {
                     id: id
@@ -169,7 +182,7 @@
         var htm = btn.html();
         setLoadingBtn(btn);
         $.ajax({
-            url: base_url + '/kegiatan/form',
+            url: base_url + '/<?=$agenda_list?>/form<?=$path_list?>',
             type: 'post',
             success: function(res) {
                 resetLoadingBtn(btn, htm);

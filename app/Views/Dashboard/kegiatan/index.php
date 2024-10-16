@@ -7,7 +7,14 @@ Kegiatan <?= AuthUser()->type_nama ?>
 <?= $this->section('header') ?>
 <section class="content-header">
     <h1>
-        Kegiatan <?= AuthUser()->type_nama ?> <?= AuthUser()->type_nama=="Dosen" ? 'Di Luar Kampus (Rekognisi)' : '' ?>
+        Kegiatan <?= AuthUser()->type_nama ?> 
+        <?php if(AuthUser()->type==5 && isset($page)){
+            if($page == 'luar-kampus'){
+                echo ' Di Luar Kampus (Rekognisi)';
+            }else if($page == 'dalam-kampus'){
+                echo ' Di Dalam Kampus';
+            }
+        }?>
     </h1>
 </section>
 <?= $this->endsection() ?>
@@ -21,7 +28,15 @@ Kegiatan <?= AuthUser()->type_nama ?>
 <?= $this->endsection() ?>
 
 <?= $this->section('js') ?>
-
+<?php 
+    if(AuthUser()->type==5 && isset($page)){
+        $agenda_index = 'kegiatan-dosen';
+        $path_index = '/'.$page;
+    }else{
+        $agenda_index = 'kegiatan';
+        $path_index = '';
+    }
+?>
 <script>
     const content = $('.box-body');
     const media = $('.mymodal #media-list');
@@ -32,10 +47,13 @@ Kegiatan <?= AuthUser()->type_nama ?>
 
     function loadData() {
         $.ajax({
-            url: base_url + '/kegiatan/datatable',
+            url: base_url + '/<?=$agenda_index?>/datatable<?=$path_index?>',
             type: 'post',
             cache: true,
             success: function(data) {
+                if (typeof data == "object") {
+                    errorMsg(data.msg)
+                }
                 resetLoadingBtn(content);
                 content.html(data);
             },
@@ -99,7 +117,7 @@ Kegiatan <?= AuthUser()->type_nama ?>
                 }
             });
             $.ajax({
-                url: base_url + '/kegiatan/detail',
+                url: base_url + '/<?=$agenda_index?>/detail',
                 type: 'post',
                 data: {
                     id: id

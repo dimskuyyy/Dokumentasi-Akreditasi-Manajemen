@@ -29,7 +29,7 @@ class MDokumen extends Model
             'rules' => 'required|string',
         ],
         'dokumen_nomor'    => [
-            'label' => 'Sebagai',
+            'label' => 'Nomor',
             'rules' => 'required|string',
         ],
         'dokumen_type'   => [

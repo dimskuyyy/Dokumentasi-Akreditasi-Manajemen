@@ -57,7 +57,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="<?= base_url('wbpanel/user/profile'); ?>" class="btn btn-default btn-flat">Profile</a>
+                                <a href="<?= base_url('wbpanel/profile'); ?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="#" class="btn btn-default btn-logout btn-flat">Sign out</a>

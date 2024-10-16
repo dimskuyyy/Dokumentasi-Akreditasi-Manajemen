@@ -35,6 +35,12 @@ class CreateAgenda extends Migration
                 'constraint' => 1,
                 'comment' => '1=kegiatan,2=kepanitiaan'
             ],
+            'agenda_kegiatan_dosen' => [
+                'type' => 'TINYINT',
+                'constraint' => 1,
+                'comment' => '1=luar kampus,2=dalam kampus',
+                'null'  => true
+            ],
             'agenda_created_at'  => [
                 'type'          => 'TIMESTAMP',
                 'null'          => true,

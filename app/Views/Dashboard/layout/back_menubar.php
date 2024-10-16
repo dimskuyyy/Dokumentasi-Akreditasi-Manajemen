@@ -112,12 +112,22 @@
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "sertifikat-dosen" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/sertifikat-dosen'); ?>">
-                        <i class="fa fa-id-card-o"></i> <span>Sertifkat Kompetensi/Profesi</span>
+                        <i class="fa fa-id-card-o"></i> <span>Sertifikat Kompetensi/Profesi</span>
                     </a>
                 </li>
             <?php } ?>
             <?php
-            $permkegiatan = [1, 2, 3, 5];
+            $permhaki = [5];
+            if (in_array(AuthUser()->type, $permhaki)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "haki" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/haki'); ?>">
+                        <i class="fa fa-certificate"></i> <span>HaKi</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permkegiatan = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkegiatan)) {
             ?>
                 <li class="<?= $request->uri->getSegment(2) === "kegiatan" ? 'active' : ''; ?>">
@@ -125,8 +135,28 @@
                         <?php if (AuthUser()->type == 1) { ?>
                             <i class="fa fa-calendar-o"></i> <span>Kegiatan Fakultas</span>
                         <?php } else { ?>
-                            <i class="fa fa-calendar-o"></i> <span>Kegiatan <?= AuthUser()->type_nama?></span>
+                            <i class="fa fa-calendar-o"></i> <span>Kegiatan <?= AuthUser()->type_nama ?></span>
                         <?php } ?>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permkegiatanluar = [5];
+            if (in_array(AuthUser()->type, $permkegiatanluar)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "kegiatan-dosen" ? ($request->uri->getSegment(3) === "luar-kampus" ? 'active' : '') : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/kegiatan-dosen/luar-kampus'); ?>">
+                        <i class="fa fa-building-o"></i> <span>Kegiatan Luar Kampus</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permkegiatandalam = [5];
+            if (in_array(AuthUser()->type, $permkegiatandalam)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "kegiatan-dosen" ? ($request->uri->getSegment(3) === "dalam-kampus" ? 'active' : '') : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/kegiatan-dosen/dalam-kampus'); ?>">
+                        <i class="fa fa-calendar-o"></i> <span>Kegiatan Dalam Kampus</span>
                     </a>
                 </li>
             <?php } ?>

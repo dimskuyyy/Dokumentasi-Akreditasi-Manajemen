@@ -64,6 +64,15 @@ $encrypter = Services::encrypter();
         </div>
     </div>
 </div>
+<?php 
+    if(AuthUser()->type==5 && isset($page)){
+        $agenda_form = 'kegiatan-dosen';
+        $path_form = '/'.$page;
+    }else{
+        $agenda_form = 'kegiatan';
+        $path_form = '';
+    }
+?>
 <script src="<?php echo base_url() ?>js/wbpanel.js"></script>
 <script>
     let placeholder = "<?= base_url('img/front/placeholder/180x180.png') ?>";
@@ -91,7 +100,7 @@ $encrypter = Services::encrypter();
             setLoadingBtn(btn);
             var formData = new FormData(form[0]);
             $.ajax({
-                url: base_url + '/kegiatan/save',
+                url: base_url + '/<?=$agenda_form?>/save<?=$path_form?>',
                 type: 'post',
                 dataType: 'json',
                 data: formData,
@@ -131,7 +140,7 @@ $encrypter = Services::encrypter();
             var htm = btn.html();
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/kegiatan/media',
+                url: base_url + '/<?=$agenda_form?>/media',
                 data: {
                     key: 'cover'
                 },
