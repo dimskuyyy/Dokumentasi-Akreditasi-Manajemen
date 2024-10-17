@@ -189,6 +189,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
+        $routes->group('check-kajur', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Taskforce::kajur');
+            $routes->post('datatable', 'Taskforce::getDataTableKajur');
+            $routes->post('kajur-list', 'Taskforce::kajurList');
+            $routes->post('datatable/(:segment)', 'Taskforce::getDataTableFiturKajur/$1');
+            $routes->post('surat-tugas/list', 'SuratTugas::list');
+            $routes->post('surat-tugas/info', 'SuratTugas::detail');
+            $routes->post('kegiatan/list', 'Kegiatan::list');
+            $routes->post('kegiatan/info', 'Kegiatan::detail');
+        });
+
         $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');

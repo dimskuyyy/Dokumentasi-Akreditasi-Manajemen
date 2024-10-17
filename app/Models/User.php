@@ -166,7 +166,32 @@ class User extends Model
         $builder->select("($kegiatan) as jumlah_kegiatan",false);
 
         return $builder;
+    }
 
+    public function checkKajur(){
+        $builder = $this->builder()->select('*')
+        // $builder->select('*')
+                ->where('user_type',2)
+                ->where('user_deleted_at',null);
+        
+        // Grab Feature Total
+        $suratTugas = $this->db->table('dokumen')
+                    ->select('COUNT(*)')
+                    ->where('dokumen_user_id = user.user_id')
+                    ->where('dokumen_type',2)
+                    ->where('dokumen_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($suratTugas) as jumlah_surat_tugas",false);
+
+        $kegiatan = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',1)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kegiatan) as jumlah_kegiatan",false);
+
+        return $builder;
     }
 
     public function beforeInsert($data)
