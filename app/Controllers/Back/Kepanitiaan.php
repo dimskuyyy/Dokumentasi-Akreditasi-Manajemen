@@ -34,6 +34,7 @@ class Kepanitiaan extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'agenda_id', 'select' => 'agenda_id'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
                 ['dt' => 'nama', 'cond' => 'agenda_nama', 'select' => 'agenda_nama'],
                 ['dt' => 'sebagai', 'cond' => 'agenda_sebagai', 'select' => 'agenda_sebagai'],
@@ -58,8 +59,13 @@ class Kepanitiaan extends BaseController
 
             $model1 = $this->kepanitiaanModel;
             $model2 = new MAgenda();
-            $model1 = $model1->multiDataKepanitiaan();
-            $model2 = $model2->multiDataKepanitiaan();
+            if ($req->getVar("id") == null) {
+                $model1 = $model1->multiDataKepanitiaan()->where('agenda_user_id', AuthUser()->id);
+                $model2 = $model2->multiDataKepanitiaan()->where('agenda_user_id', AuthUser()->id);
+            } else {
+                $model1 = $model1->multiDataKepanitiaan()->where('agenda_user_id', $req->getVar("id"));
+                $model2 = $model2->multiDataKepanitiaan()->where('agenda_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -75,7 +81,7 @@ class Kepanitiaan extends BaseController
                 if (empty($data['agenda_id'])) {
                     $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($data['agenda_user_id'] != AuthUser()->id && $data['agenda_type'] != 2){
+                } else if ($data['agenda_user_id'] != AuthUser()->id && $data['agenda_type'] != 2) {
                     $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -99,12 +105,12 @@ class Kepanitiaan extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->kepanitiaanModel->lookDetailKepanitiaan($id);
-                if (!empty($data['agenda_id'])) {
-                     if($data['agenda_user_id'] != AuthUser()->id && $data['agenda_type'] != 2){
+                if (!empty($data['agenda_id']) && $data['agenda_type'] == 2) {
+                    if ($data['agenda_user_id'] != AuthUser()->id && AuthUser()->type != 4) {
                         $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
-                }else{
+                } else {
                     $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -132,7 +138,7 @@ class Kepanitiaan extends BaseController
                     // Data tidak ditemukan, kirim respons error
                     $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 2){
+                } else if ($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 2) {
                     $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -176,7 +182,7 @@ class Kepanitiaan extends BaseController
                 // Data tidak ditemukan, kirim respons error
                 $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                 return $this->response->setJSON($result);
-            }else if($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 2){
+            } else if ($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 2) {
                 $result = jsonFormat(false, 'Kepanitiaan tidak ditemukan');
                 return $this->response->setJSON($result);
             }

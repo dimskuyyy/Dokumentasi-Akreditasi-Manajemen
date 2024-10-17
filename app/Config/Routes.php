@@ -211,6 +211,27 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
+        $routes->group('check-dosen', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Taskforce::dosen');
+            $routes->post('datatable', 'Taskforce::getDataTableDosen');
+            $routes->post('dosen-list', 'Taskforce::dosenList');
+            $routes->post('datatable/(:segment)', 'Taskforce::getDataTableFiturDosen/$1');
+            $routes->post('pengajaran-dosen/list', 'Pengajaran::list');
+            $routes->post('pengajaran-dosen/info', 'Pengajaran::detail');
+            $routes->post('penelitian/list', 'Penelitian::list');
+            $routes->post('penelitian/info', 'Penelitian::detail');
+            $routes->post('pengabdian/list', 'Pengabdian::list');
+            $routes->post('pengabdian/info', 'Pengabdian::detail');
+            $routes->post('sertifikat/list', 'Sertifikat::list');
+            $routes->post('sertifikat/info', 'Sertifikat::detail');
+            $routes->post('haki/list', 'Haki::list');
+            $routes->post('haki/info', 'Haki::detail');
+            $routes->post('kepanitiaan/list', 'Kepanitiaan::list');
+            $routes->post('kepanitiaan/info', 'Kepanitiaan::detail');
+            $routes->post('kegiatan/list/(:segment)', 'Kegiatan::list/$1');
+            $routes->post('kegiatan/info/(:segment)', 'Kegiatan::detail/$1');
+        });
+
         $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');

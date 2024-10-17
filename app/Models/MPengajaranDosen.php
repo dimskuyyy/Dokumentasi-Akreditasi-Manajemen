@@ -50,8 +50,7 @@ class MPengajaranDosen extends Model
             ->join('media', 'media_id = pengajaran_media_id')
             ->join('user', 'user_id = pengajaran_user_id')
             ->where('pengajaran_deleted_at', null)
-            ->where('user.user_deleted_at', null)
-            ->where('pengajaran_user_id', AuthUser()->id);
+            ->where('user.user_deleted_at', null);
     }
 
     public function lookDetail($id)

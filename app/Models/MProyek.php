@@ -62,7 +62,6 @@ class MProyek extends Model
             ->join('user', 'user_id = proyek_user_id')
             ->where('proyek_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('proyek_user_id', AuthUser()->id)
             ->where('proyek_type',1);
     }
 
@@ -84,7 +83,6 @@ class MProyek extends Model
             ->join('user', 'user_id = proyek_user_id')
             ->where('proyek_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('proyek_user_id', AuthUser()->id)
             ->where('proyek_type',2);
     }
 

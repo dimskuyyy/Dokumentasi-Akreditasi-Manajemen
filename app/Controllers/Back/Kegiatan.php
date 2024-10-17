@@ -90,11 +90,21 @@ class Kegiatan extends BaseController
             if ($page != null || AuthUser()->type == 5) {
                 if ($page == "luar-kampus" || $page == "dalam-kampus") {
                     if ($page == "luar-kampus") {
-                        $model1 = $model1->multiDataKegiatanDosen(1);
-                        $model2 = $model2->multiDataKegiatanDosen(1);
+                        if($req->getVar("id") == null){
+                            $model1 = $model1->multiDataKegiatanDosen(1)->where('agenda_user_id', AuthUser()->id);
+                            $model2 = $model2->multiDataKegiatanDosen(1)->where('agenda_user_id', AuthUser()->id);
+                        }else{
+                            $model1 = $model1->multiDataKegiatanDosen(1)->where('agenda_user_id', $req->getVar("id"));
+                            $model2 = $model2->multiDataKegiatanDosen(1)->where('agenda_user_id', $req->getVar("id"));
+                        }
                     } else if ($page == "dalam-kampus") {
-                        $model1 = $model1->multiDataKegiatanDosen(2);
-                        $model2 = $model2->multiDataKegiatanDosen(2);
+                        if($req->getVar("id") == null){
+                            $model1 = $model1->multiDataKegiatanDosen(2)->where('agenda_user_id', AuthUser()->id);
+                            $model2 = $model2->multiDataKegiatanDosen(2)->where('agenda_user_id', AuthUser()->id);
+                        }else{
+                            $model1 = $model1->multiDataKegiatanDosen(2)->where('agenda_user_id', $req->getVar("id"));
+                            $model2 = $model2->multiDataKegiatanDosen(2)->where('agenda_user_id', $req->getVar("id"));
+                        }
                     }
                 } else {
                     $result = jsonFormat(false, 'Kegiatan Dosen Harus Spesifik');

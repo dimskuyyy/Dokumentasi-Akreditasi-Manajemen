@@ -34,6 +34,7 @@ class Haki extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'haki_id', 'select' => 'haki_id'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
                 ['dt' => 'nama', 'cond' => 'haki_nama', 'select' => 'haki_nama'],
                 ['dt' => 'klasifikasi', 'cond' => 'haki_klasifikasi', 'select' => 'haki_klasifikasi'],
@@ -59,8 +60,13 @@ class Haki extends BaseController
 
             $model1 = $this->hakiModel;
             $model2 = new MHaki();
-            $model1 = $model1->multiData();
-            $model2 = $model2->multiData();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiData()->where('haki_user_id', AuthUser()->id);
+                $model2 = $model2->multiData()->where('haki_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiData()->where('haki_user_id', $req->getVar("id"));
+                $model2 = $model2->multiData()->where('haki_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -101,7 +107,7 @@ class Haki extends BaseController
             if ($id != null) {
                 $data = $this->hakiModel->lookDetail($id);
                 if (!empty($data['haki_id'])) {
-                     if($data['haki_user_id'] != AuthUser()->id ){
+                     if($data['haki_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'HaKi tidak ditemukan');
                         return $this->response->setJSON($result);
                     }

@@ -34,6 +34,7 @@ class Sertifikat extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'dokumen_id', 'select' => 'dokumen_id'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
                 ['dt' => 'nama', 'cond' => 'dokumen_nama', 'select' => 'dokumen_nama'],
                 ['dt' => 'nomor', 'cond' => 'dokumen_nomor', 'select' => 'dokumen_nomor'],
@@ -58,8 +59,13 @@ class Sertifikat extends BaseController
 
             $model1 = $this->SertifikatModel;
             $model2 = new MDokumen();
-            $model1 = $model1->multiDataSertifikat();
-            $model2 = $model2->multiDataSertifikat();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiDataSertifikat()->where('dokumen_user_id', AuthUser()->id);
+                $model2 = $model2->multiDataSertifikat()->where('dokumen_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiDataSertifikat()->where('dokumen_user_id', $req->getVar("id"));
+                $model2 = $model2->multiDataSertifikat()->where('dokumen_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -75,7 +81,7 @@ class Sertifikat extends BaseController
                 if (empty($data['dokumen_id'])) {
                     $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($data['dokumen_user_id'] != AuthUser()->id && $data['dokumen_type'] != 1){
+                }else if($data['dokumen_user_id'] != AuthUser()->id && $data['dokumen_type'] != 3){
                     $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -99,8 +105,8 @@ class Sertifikat extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->SertifikatModel->lookDetailSertifikat($id);
-                if (!empty($data['dokumen_id'])) {
-                     if($data['dokumen_user_id'] != AuthUser()->id && $data['dokumen_type'] != 1){
+                if (!empty($data['dokumen_id']) && $data['dokumen_type'] == 3) {
+                     if($data['dokumen_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
@@ -132,7 +138,7 @@ class Sertifikat extends BaseController
                     // Data tidak ditemukan, kirim respons error
                     $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($find['dokumen_user_id'] != AuthUser()->id && $find['dokumen_type'] != 1){
+                }else if($find['dokumen_user_id'] != AuthUser()->id && $find['dokumen_type'] != 3){
                     $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -176,7 +182,7 @@ class Sertifikat extends BaseController
                 // Data tidak ditemukan, kirim respons error
                 $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                 return $this->response->setJSON($result);
-            }else if($find['dokumen_user_id'] != AuthUser()->id && $find['dokumen_type'] != 1){
+            }else if($find['dokumen_user_id'] != AuthUser()->id && $find['dokumen_type'] != 3){
                 $result = jsonFormat(false, 'Sertifikat tidak ditemukan');
                 return $this->response->setJSON($result);
             }

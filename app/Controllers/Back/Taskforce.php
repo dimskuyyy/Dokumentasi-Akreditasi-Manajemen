@@ -31,6 +31,11 @@ class Taskforce extends BaseController
         return view('dashboard/taskforce/koor/index');
     }
 
+    public function dosen()
+    {
+        return view('dashboard/taskforce/dosen/index');
+    }
+
     public function getDataTableDekan()
     {
         return view('dashboard/taskforce/dekan/dekan_list');
@@ -44,6 +49,11 @@ class Taskforce extends BaseController
     public function getDataTableKoor()
     {
         return view('dashboard/taskforce/koor/koor_list');
+    }
+
+    public function getDataTableDosen()
+    {
+        return view('dashboard/taskforce/dosen/dosen_list');
     }
 
     // Dekan Feature
@@ -75,6 +85,16 @@ class Taskforce extends BaseController
             'uid' => $req->getVar("id")
         ];
         return view('dashboard/taskforce/koor/' . $page . '_list', $tmp);
+    }
+
+    // Dosen Feature
+    public function getDataTableFiturDosen($page)
+    {
+        $req = $this->request;
+        $tmp = [
+            'uid' => $req->getVar("id")
+        ];
+        return view('dashboard/taskforce/dosen/' . $page . '_list', $tmp);
     }
 
     public function dekanList()
@@ -134,6 +154,32 @@ class Taskforce extends BaseController
             $model2 = new User();
             $model1 = $model1->checkKoor();
             $model2 = $model2->checkKoor();
+            $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
+            return $this->response->setJSON($result);
+        }
+    }
+
+    public function dosenList()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $columns = [
+                ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
+                ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
+                ['dt' => 'pengajaran', 'cond' => 'jumlah_pengajaran', 'select' => 'jumlah_pengajaran'],
+                ['dt' => 'penelitian', 'cond' => 'jumlah_penelitian', 'select' => 'jumlah_penelitian'],
+                ['dt' => 'pengabdian', 'cond' => 'jumlah_pengabdian', 'select' => 'jumlah_pengabdian'],
+                ['dt' => 'sertifikat', 'cond' => 'jumlah_sertifikat', 'select' => 'jumlah_sertifikat'],
+                ['dt' => 'haki', 'cond' => 'jumlah_haki', 'select' => 'jumlah_haki'],
+                ['dt' => 'kegiatan_luar', 'cond' => 'jumlah_kegiatan_luar', 'select' => 'jumlah_kegiatan_luar'],
+                ['dt' => 'kegiatan_dalam', 'cond' => 'jumlah_kegiatan_dalam', 'select' => 'jumlah_kegiatan_dalam'],
+                ['dt' => 'kepanitiaan', 'cond' => 'jumlah_kepanitiaan', 'select' => 'jumlah_kepanitiaan'],
+            ];
+
+            $model1 = $this->userModel;
+            $model2 = new User();
+            $model1 = $model1->checkDosen();
+            $model2 = $model2->checkDosen();
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }

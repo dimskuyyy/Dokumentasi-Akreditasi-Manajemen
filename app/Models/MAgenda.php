@@ -69,7 +69,6 @@ class MAgenda extends Model
             ->join('user', 'user_id = agenda_user_id')
             ->where('agenda_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('agenda_user_id', AuthUser()->id)
             ->where('agenda_type',1)
             ->where('agenda_kegiatan_dosen', $kegiatan);
     }
@@ -81,7 +80,6 @@ class MAgenda extends Model
             ->join('user', 'user_id = agenda_user_id')
             ->where('agenda_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('agenda_user_id', AuthUser()->id)
             ->where('agenda_type',2);;
     }
 

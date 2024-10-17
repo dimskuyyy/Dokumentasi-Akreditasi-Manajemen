@@ -219,6 +219,80 @@ class User extends Model
         return $builder;
     }
 
+    public function checkDosen(){
+        $builder = $this->builder()->select('*')
+        // $builder->select('*')
+                ->where('user_type',5)
+                ->where('user_deleted_at',null);
+        
+        // Grab Feature Total
+        $pengajaran = $this->db->table('pengajaran')
+                    ->select('COUNT(*)')
+                    ->where('pengajaran_user_id = user.user_id')
+                    ->where('pengajaran_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($pengajaran) as jumlah_pengajaran",false);
+
+        $penelitian = $this->db->table('proyek')
+                    ->select('COUNT(*)')
+                    ->where('proyek_user_id = user.user_id')
+                    ->where('proyek_type',1)
+                    ->where('proyek_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($penelitian) as jumlah_penelitian",false);
+
+        $pengabdian = $this->db->table('proyek')
+                    ->select('COUNT(*)')
+                    ->where('proyek_user_id = user.user_id')
+                    ->where('proyek_type',2)
+                    ->where('proyek_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($pengabdian) as jumlah_pengabdian",false);
+
+        $sertifikat = $this->db->table('dokumen')
+                    ->select('COUNT(*)')
+                    ->where('dokumen_user_id = user.user_id')
+                    ->where('dokumen_type',3)
+                    ->where('dokumen_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($sertifikat) as jumlah_sertifikat",false);
+
+        $haki = $this->db->table('haki')
+                    ->select('COUNT(*)')
+                    ->where('haki_user_id = user.user_id')
+                    ->where('haki_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($haki) as jumlah_haki",false);
+
+        $kegiatan_luar = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',1)
+                    ->where('agenda_kegiatan_dosen',1)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kegiatan_luar) as jumlah_kegiatan_luar",false);
+
+        $kegiatan_dalam = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',1)
+                    ->where('agenda_kegiatan_dosen',2)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kegiatan_dalam) as jumlah_kegiatan_dalam",false);
+
+        $kepanitiaan = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',2)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kepanitiaan) as jumlah_kepanitiaan",false);
+
+        return $builder;
+    }
+
     public function beforeInsert($data)
     {
         $data['data']['user_password'] = password_hash($data['data']['user_password'], PASSWORD_BCRYPT);

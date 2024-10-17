@@ -31,6 +31,7 @@ class Pengabdian extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'proyek_id', 'select' => 'proyek_id'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'judul', 'cond' => 'proyek_judul', 'select' => 'proyek_judul'],
                 ['dt' => 'sebagai', 'cond' => 'proyek_sebagai', 'select' => 'proyek_sebagai'],
                 ['dt' => 'tahapan', 'cond' => 'proyek_tahapan', 'select' => 'proyek_tahapan'],
@@ -56,8 +57,13 @@ class Pengabdian extends BaseController
 
             $model1 = $this->pengabdianModel;
             $model2 = new MProyek();
-            $model1 = $model1->multiDataPengabdian();
-            $model2 = $model2->multiDataPengabdian();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiDataPengabdian()->where('proyek_user_id', AuthUser()->id);
+                $model2 = $model2->multiDataPengabdian()->where('proyek_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiDataPengabdian()->where('proyek_user_id', $req->getVar("id"));
+                $model2 = $model2->multiDataPengabdian()->where('proyek_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -96,8 +102,8 @@ class Pengabdian extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->pengabdianModel->lookDetailPengabdian($id);
-                if (!empty($data['proyek_id'])) {
-                     if($data['proyek_user_id'] != AuthUser()->id && $data['proyek_type'] != 2){
+                if (!empty($data['proyek_id']) && $data['proyek_type'] == 2) {
+                     if($data['proyek_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'Pengabdian tidak ditemukan');
                         return $this->response->setJSON($result);
                     }

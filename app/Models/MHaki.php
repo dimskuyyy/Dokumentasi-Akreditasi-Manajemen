@@ -58,8 +58,7 @@ class MHaki extends Model
             ->join('media', 'media_id = haki_media_id')
             ->join('user', 'user_id = haki_user_id')
             ->where('haki_deleted_at', null)
-            ->where('user.user_deleted_at', null)
-            ->where('haki_user_id', AuthUser()->id);
+            ->where('user.user_deleted_at', null);
     }
 
     public function lookDetail($id)

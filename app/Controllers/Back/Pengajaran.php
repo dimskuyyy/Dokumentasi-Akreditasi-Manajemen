@@ -58,8 +58,13 @@ class Pengajaran extends BaseController
 
             $model1 = $this->pengajaranModel;
             $model2 = new MPengajaranDosen();
-            $model1 = $model1->multiData();
-            $model2 = $model2->multiData();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiData()->where('pengajaran_user_id', AuthUser()->id);
+                $model2 = $model2->multiData()->where('pengajaran_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiData()->where('pengajaran_user_id', $req->getVar("id"));
+                $model2 = $model2->multiData()->where('pengajaran_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -100,7 +105,7 @@ class Pengajaran extends BaseController
             if ($id != null) {
                 $data = $this->pengajaranModel->lookDetail($id);
                 if (!empty($data['pengajaran_id'])) {
-                     if($data['pengajaran_user_id'] != AuthUser()->id ){
+                     if($data['pengajaran_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'SK Pengajaran tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
