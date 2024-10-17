@@ -11,18 +11,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
     $routes->get('login', 'Auth::login');
     $routes->post('login-do', 'Auth::doLogin');
 
-    $routes->group('/', ['filter' => ['isLoggedIn'], 'namespace'=> 'App\Controllers\Back'], static function ($routes){
-        $routes->get('/','Dashboard::index');
+    $routes->group('/', ['filter' => ['isLoggedIn'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+        $routes->get('/', 'Dashboard::index');
 
-        $routes->group('media', ['filter'=> ['featMedia'], 'namespace'=> 'App\Controllers\Back'], static function ($routes) {
+        $routes->group('media', ['filter' => ['featMedia'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Media::index');
             $routes->post('list', 'Media::list');
             $routes->post('form', 'Media::form');
             $routes->post('save', 'Media::save');
             $routes->post('delete', 'Media::delete');
         });
-        
-        $routes->group('kerjasama', ['filter'=> ['featKerjasama'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+
+        $routes->group('kerjasama', ['filter' => ['featKerjasama'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Kerjasama::index');
             $routes->post('datatable', 'Kerjasama::getDatatable');
             $routes->post('list', 'Kerjasama::list');
@@ -34,7 +34,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Kerjasama::delete');
         });
 
-        $routes->group('surat-keputusan', ['filter'=> ['featSK'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('surat-keputusan', ['filter' => ['featSK'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'SuratKeputusan::index');
             $routes->post('datatable', 'SuratKeputusan::getDatatable');
             $routes->post('list', 'SuratKeputusan::list');
@@ -46,7 +46,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'SuratKeputusan::delete');
         });
 
-        $routes->group('surat-tugas', ['filter'=> ['featST'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('surat-tugas', ['filter' => ['featST'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'SuratTugas::index');
             $routes->post('datatable', 'SuratTugas::getDatatable');
             $routes->post('list', 'SuratTugas::list');
@@ -58,7 +58,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'SuratTugas::delete');
         });
 
-        $routes->group('kegiatan', ['filter'=> ['featKegiatan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('kegiatan', ['filter' => ['featKegiatan'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Kegiatan::index');
             $routes->post('datatable', 'Kegiatan::getDatatable');
             $routes->post('list', 'Kegiatan::list');
@@ -70,7 +70,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Kegiatan::delete');
         });
 
-        $routes->group('kegiatan-dosen', ['filter'=> ['featPengajaran'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('kegiatan-dosen', ['filter' => ['featPengajaran'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('(:segment)', 'Kegiatan::index/$1');
             $routes->post('datatable/(:segment)', 'Kegiatan::getDatatable/$1');
             $routes->post('list/(:segment)', 'Kegiatan::list/$1');
@@ -82,7 +82,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete/(:segment)', 'Kegiatan::delete/$1');
         });
 
-        $routes->group('kepanitiaan', ['filter'=> ['featKepanitiaan'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('kepanitiaan', ['filter' => ['featKepanitiaan'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Kepanitiaan::index');
             $routes->post('datatable', 'Kepanitiaan::getDatatable');
             $routes->post('list', 'Kepanitiaan::list');
@@ -94,7 +94,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Kepanitiaan::delete');
         });
 
-        $routes->group('pengajaran-dosen', ['filter'=> ['featPengajaran'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('pengajaran-dosen', ['filter' => ['featPengajaran'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Pengajaran::index');
             $routes->post('datatable', 'Pengajaran::getDatatable');
             $routes->post('list', 'Pengajaran::list');
@@ -106,7 +106,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Pengajaran::delete');
         });
 
-        $routes->group('sertifikat-dosen', ['filter'=> ['featSertifikat'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('sertifikat-dosen', ['filter' => ['featSertifikat'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Sertifikat::index');
             $routes->post('datatable', 'Sertifikat::getDatatable');
             $routes->post('list', 'Sertifikat::list');
@@ -118,7 +118,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Sertifikat::delete');
         });
 
-        $routes->group('haki', ['filter'=> ['featHaki'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('haki', ['filter' => ['featHaki'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Haki::index');
             $routes->post('datatable', 'Haki::getDatatable');
             $routes->post('list', 'Haki::list');
@@ -130,7 +130,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Haki::delete');
         });
 
-        $routes->group('aktivitas', ['filter'=> ['featMahasiswa'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('aktivitas', ['filter' => ['featMahasiswa'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Aktivitas::index');
             $routes->post('datatable', 'Aktivitas::getDatatable');
             $routes->post('list', 'Aktivitas::list');
@@ -142,7 +142,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Aktivitas::delete');
         });
 
-        $routes->group('prestasi', ['filter'=> ['featMahasiswa'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('prestasi', ['filter' => ['featMahasiswa'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Prestasi::index');
             $routes->post('datatable', 'Prestasi::getDatatable');
             $routes->post('list', 'Prestasi::list');
@@ -154,7 +154,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Prestasi::delete');
         });
 
-        $routes->group('penelitian', ['filter'=> ['featPenelitian'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('penelitian', ['filter' => ['featPenelitian'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Penelitian::index');
             $routes->post('datatable', 'Penelitian::getDatatable');
             $routes->post('list', 'Penelitian::list');
@@ -164,7 +164,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Penelitian::delete');
         });
 
-        $routes->group('pengabdian', ['filter'=> ['featPengabdian'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('pengabdian', ['filter' => ['featPengabdian'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Pengabdian::index');
             $routes->post('datatable', 'Pengabdian::getDatatable');
             $routes->post('list', 'Pengabdian::list');
@@ -174,7 +174,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Pengabdian::delete');
         });
 
-        $routes->group('check-dekan', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-dekan', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::dekan');
             $routes->post('datatable', 'Taskforce::getDataTableDekan');
             $routes->post('dekan-list', 'Taskforce::dekanList');
@@ -189,7 +189,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
-        $routes->group('check-kajur', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-kajur', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::kajur');
             $routes->post('datatable', 'Taskforce::getDataTableKajur');
             $routes->post('kajur-list', 'Taskforce::kajurList');
@@ -200,7 +200,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
-        $routes->group('check-koor', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-koor', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::koor');
             $routes->post('datatable', 'Taskforce::getDataTableKoor');
             $routes->post('koor-list', 'Taskforce::koorList');
@@ -211,7 +211,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
-        $routes->group('check-dosen', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-dosen', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::dosen');
             $routes->post('datatable', 'Taskforce::getDataTableDosen');
             $routes->post('dosen-list', 'Taskforce::dosenList');
@@ -232,7 +232,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info/(:segment)', 'Kegiatan::detail/$1');
         });
 
-        $routes->group('check-mahasiswa', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-mahasiswa', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::mahasiswa');
             $routes->post('datatable', 'Taskforce::getDataTableMahasiswa');
             $routes->post('mahasiswa-list', 'Taskforce::mahasiswaList');
@@ -249,7 +249,14 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kepanitiaan/info', 'Kepanitiaan::detail');
         });
 
-        $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+        $routes->group('check-alumni', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'Taskforce::alumni');
+            $routes->post('datatable', 'Taskforce::getDataTableAlumni');
+            $routes->post('alumni-list', 'Taskforce::alumniList');
+            $routes->post('form', 'Taskforce::surveyFormAlumni');
+        });
+
+        $routes->group('survey', ['filter' => ['featSurvey'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');
         });

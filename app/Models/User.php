@@ -127,218 +127,248 @@ class User extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = ['afterDelete'];
 
-    public function checkDekan(){
+    public function checkDekan()
+    {
         $builder = $this->builder()->select('*')
-        // $builder->select('*')
-                ->where('user_type',1)
-                ->where('user_deleted_at',null);
-        
+            // $builder->select('*')
+            ->where('user_type', 1)
+            ->where('user_deleted_at', null);
+
         // Grab Feature Total
         $kerjaSama = $this->db->table('kerjasama')
-                    ->select('COUNT(*)')
-                    ->where('kerjasama_user_id = user.user_id')
-                    ->where('kerjasama_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kerjaSama) as jumlah_kerjasama",false);
-        
+            ->select('COUNT(*)')
+            ->where('kerjasama_user_id = user.user_id')
+            ->where('kerjasama_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kerjaSama) as jumlah_kerjasama", false);
+
         $suratKeputusan = $this->db->table('dokumen')
-                    ->select('COUNT(*)')
-                    ->where('dokumen_user_id = user.user_id')
-                    ->where('dokumen_type',1)
-                    ->where('dokumen_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($suratKeputusan) as jumlah_sk",false);
+            ->select('COUNT(*)')
+            ->where('dokumen_user_id = user.user_id')
+            ->where('dokumen_type', 1)
+            ->where('dokumen_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($suratKeputusan) as jumlah_sk", false);
 
         $suratTugas = $this->db->table('dokumen')
-                    ->select('COUNT(*)')
-                    ->where('dokumen_user_id = user.user_id')
-                    ->where('dokumen_type',2)
-                    ->where('dokumen_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($suratTugas) as jumlah_surat_tugas",false);
+            ->select('COUNT(*)')
+            ->where('dokumen_user_id = user.user_id')
+            ->where('dokumen_type', 2)
+            ->where('dokumen_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($suratTugas) as jumlah_surat_tugas", false);
 
         $kegiatan = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',1)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kegiatan) as jumlah_kegiatan",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 1)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
         return $builder;
     }
 
-    public function checkKajur(){
+    public function checkKajur()
+    {
         $builder = $this->builder()->select('*')
-        // $builder->select('*')
-                ->where('user_type',2)
-                ->where('user_deleted_at',null);
-        
+            // $builder->select('*')
+            ->where('user_type', 2)
+            ->where('user_deleted_at', null);
+
         // Grab Feature Total
         $suratTugas = $this->db->table('dokumen')
-                    ->select('COUNT(*)')
-                    ->where('dokumen_user_id = user.user_id')
-                    ->where('dokumen_type',2)
-                    ->where('dokumen_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($suratTugas) as jumlah_surat_tugas",false);
+            ->select('COUNT(*)')
+            ->where('dokumen_user_id = user.user_id')
+            ->where('dokumen_type', 2)
+            ->where('dokumen_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($suratTugas) as jumlah_surat_tugas", false);
 
         $kegiatan = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',1)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kegiatan) as jumlah_kegiatan",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 1)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
         return $builder;
     }
 
-    public function checkKoor(){
+    public function checkKoor()
+    {
         $builder = $this->builder()->select('*')
-        // $builder->select('*')
-                ->where('user_type',3)
-                ->where('user_deleted_at',null);
-        
+            // $builder->select('*')
+            ->where('user_type', 3)
+            ->where('user_deleted_at', null);
+
         // Grab Feature Total
         $kerjaSama = $this->db->table('kerjasama')
-                    ->select('COUNT(*)')
-                    ->where('kerjasama_user_id = user.user_id')
-                    ->where('kerjasama_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kerjaSama) as jumlah_kerjasama",false);
+            ->select('COUNT(*)')
+            ->where('kerjasama_user_id = user.user_id')
+            ->where('kerjasama_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kerjaSama) as jumlah_kerjasama", false);
 
         $kegiatan = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',1)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kegiatan) as jumlah_kegiatan",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 1)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
         return $builder;
     }
 
-    public function checkDosen(){
+    public function checkDosen()
+    {
         $builder = $this->builder()->select('*')
-        // $builder->select('*')
-                ->where('user_type',5)
-                ->where('user_deleted_at',null);
-        
+            // $builder->select('*')
+            ->where('user_type', 5)
+            ->where('user_deleted_at', null);
+
         // Grab Feature Total
         $pengajaran = $this->db->table('pengajaran')
-                    ->select('COUNT(*)')
-                    ->where('pengajaran_user_id = user.user_id')
-                    ->where('pengajaran_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($pengajaran) as jumlah_pengajaran",false);
+            ->select('COUNT(*)')
+            ->where('pengajaran_user_id = user.user_id')
+            ->where('pengajaran_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($pengajaran) as jumlah_pengajaran", false);
 
         $penelitian = $this->db->table('proyek')
-                    ->select('COUNT(*)')
-                    ->where('proyek_user_id = user.user_id')
-                    ->where('proyek_type',1)
-                    ->where('proyek_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($penelitian) as jumlah_penelitian",false);
+            ->select('COUNT(*)')
+            ->where('proyek_user_id = user.user_id')
+            ->where('proyek_type', 1)
+            ->where('proyek_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($penelitian) as jumlah_penelitian", false);
 
         $pengabdian = $this->db->table('proyek')
-                    ->select('COUNT(*)')
-                    ->where('proyek_user_id = user.user_id')
-                    ->where('proyek_type',2)
-                    ->where('proyek_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($pengabdian) as jumlah_pengabdian",false);
+            ->select('COUNT(*)')
+            ->where('proyek_user_id = user.user_id')
+            ->where('proyek_type', 2)
+            ->where('proyek_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($pengabdian) as jumlah_pengabdian", false);
 
         $sertifikat = $this->db->table('dokumen')
-                    ->select('COUNT(*)')
-                    ->where('dokumen_user_id = user.user_id')
-                    ->where('dokumen_type',3)
-                    ->where('dokumen_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($sertifikat) as jumlah_sertifikat",false);
+            ->select('COUNT(*)')
+            ->where('dokumen_user_id = user.user_id')
+            ->where('dokumen_type', 3)
+            ->where('dokumen_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($sertifikat) as jumlah_sertifikat", false);
 
         $haki = $this->db->table('haki')
-                    ->select('COUNT(*)')
-                    ->where('haki_user_id = user.user_id')
-                    ->where('haki_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($haki) as jumlah_haki",false);
+            ->select('COUNT(*)')
+            ->where('haki_user_id = user.user_id')
+            ->where('haki_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($haki) as jumlah_haki", false);
 
         $kegiatan_luar = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',1)
-                    ->where('agenda_kegiatan_dosen',1)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kegiatan_luar) as jumlah_kegiatan_luar",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 1)
+            ->where('agenda_kegiatan_dosen', 1)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kegiatan_luar) as jumlah_kegiatan_luar", false);
 
         $kegiatan_dalam = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',1)
-                    ->where('agenda_kegiatan_dosen',2)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kegiatan_dalam) as jumlah_kegiatan_dalam",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 1)
+            ->where('agenda_kegiatan_dosen', 2)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kegiatan_dalam) as jumlah_kegiatan_dalam", false);
 
         $kepanitiaan = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',2)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kepanitiaan) as jumlah_kepanitiaan",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 2)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kepanitiaan) as jumlah_kepanitiaan", false);
 
         return $builder;
     }
 
-    public function checkMahasiswa(){
+    public function checkMahasiswa()
+    {
         $builder = $this->builder()->select('*')
-        // $builder->select('*')
-                ->where('user_type',6)
-                ->where('user_deleted_at',null);
-        
+            // $builder->select('*')
+            ->where('user_type', 6)
+            ->where('user_deleted_at', null);
+
         // Grab Feature Total
         $aktivitas = $this->db->table('mahasiswa')
-                    ->select('COUNT(*)')
-                    ->where('mahasiswa_user_id = user.user_id')
-                    ->where('mahasiswa_deleted_at',null)
-                    ->where('mahasiswa_records_type',1)
-                    ->getCompiledSelect();
-        $builder->select("($aktivitas) as jumlah_aktivitas",false);
+            ->select('COUNT(*)')
+            ->where('mahasiswa_user_id = user.user_id')
+            ->where('mahasiswa_deleted_at', null)
+            ->where('mahasiswa_records_type', 1)
+            ->getCompiledSelect();
+        $builder->select("($aktivitas) as jumlah_aktivitas", false);
 
         $penelitian = $this->db->table('proyek')
-                    ->select('COUNT(*)')
-                    ->where('proyek_user_id = user.user_id')
-                    ->where('proyek_type',1)
-                    ->where('proyek_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($penelitian) as jumlah_penelitian",false);
+            ->select('COUNT(*)')
+            ->where('proyek_user_id = user.user_id')
+            ->where('proyek_type', 1)
+            ->where('proyek_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($penelitian) as jumlah_penelitian", false);
 
         $pengabdian = $this->db->table('proyek')
-                    ->select('COUNT(*)')
-                    ->where('proyek_user_id = user.user_id')
-                    ->where('proyek_type',2)
-                    ->where('proyek_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($pengabdian) as jumlah_pengabdian",false);
+            ->select('COUNT(*)')
+            ->where('proyek_user_id = user.user_id')
+            ->where('proyek_type', 2)
+            ->where('proyek_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($pengabdian) as jumlah_pengabdian", false);
 
         $prestasi = $this->db->table('mahasiswa')
-                    ->select('COUNT(*)')
-                    ->where('mahasiswa_user_id = user.user_id')
-                    ->where('mahasiswa_records_type',2)
-                    ->where('mahasiswa_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($prestasi) as jumlah_prestasi",false);
+            ->select('COUNT(*)')
+            ->where('mahasiswa_user_id = user.user_id')
+            ->where('mahasiswa_records_type', 2)
+            ->where('mahasiswa_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($prestasi) as jumlah_prestasi", false);
 
         $kepanitiaan = $this->db->table('agenda')
-                    ->select('COUNT(*)')
-                    ->where('agenda_user_id = user.user_id')
-                    ->where('agenda_type',2)
-                    ->where('agenda_deleted_at',null)
-                    ->getCompiledSelect();
-        $builder->select("($kepanitiaan) as jumlah_kepanitiaan",false);
+            ->select('COUNT(*)')
+            ->where('agenda_user_id = user.user_id')
+            ->where('agenda_type', 2)
+            ->where('agenda_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kepanitiaan) as jumlah_kepanitiaan", false);
+
+        return $builder;
+    }
+
+    public function checkAlumni()
+    {
+        $builder = $this->builder()->select('*')
+            // $builder->select('*')
+            ->where('user_type', 7)
+            ->where('user_deleted_at', null);
+
+        //get Survey progress
+        $survey = $this->db->table('survey')
+            ->select('COUNT(*)')
+            ->where('survey_user_id = user.user_id')
+            ->where('survey_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($survey) as filled_survey", false);
+
+        $kuisioner = $this->db->table('kuisioner')
+            ->select('COUNT(*)')
+            ->where('kuisioner_user_id = user.user_id')
+            ->where('kuisioner_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($kuisioner) as filled_kuisioner", false);
 
         return $builder;
     }

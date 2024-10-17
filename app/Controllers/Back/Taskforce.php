@@ -5,14 +5,17 @@ namespace App\Controllers\Back;
 use App\Controllers\BaseController;
 use App\Libraries\Datatable;
 use App\Models\User;
+use App\Models\MSurvey;
 
 class Taskforce extends BaseController
 {
     protected $userModel;
+    protected $surveyModel;
 
     public function __construct()
     {
         $this->userModel = new User();
+        $this->surveyModel = new MSurvey();
     }
 
     // Divide index by user type -> fast development purpose
@@ -41,6 +44,11 @@ class Taskforce extends BaseController
         return view('dashboard/taskforce/mahasiswa/index');
     }
 
+    public function alumni()
+    {
+        return view('dashboard/taskforce/alumni/index');
+    }
+
     public function getDataTableDekan()
     {
         return view('dashboard/taskforce/dekan/dekan_list');
@@ -64,6 +72,11 @@ class Taskforce extends BaseController
     public function getDataTableMahasiswa()
     {
         return view('dashboard/taskforce/mahasiswa/mahasiswa_list');
+    }
+
+    public function getDataTableAlumni()
+    {
+        return view('dashboard/taskforce/alumni/alumni_list');
     }
 
     // Dekan Feature
@@ -225,6 +238,38 @@ class Taskforce extends BaseController
             $model2 = $model2->checkMahasiswa();
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
+        }
+    }
+
+    public function alumniList()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $columns = [
+                ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
+                ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
+                ['dt' => 'survey', 'cond' => 'filled_survey', 'select' => 'filled_survey'],
+                ['dt' => 'kuisioner', 'cond' => 'filled_kuisioner', 'select' => 'filled_kuisioner'],
+            ];
+
+            $model1 = $this->userModel;
+            $model2 = new User();
+            $model1 = $model1->checkAlumni();
+            $model2 = $model2->checkAlumni();
+            $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
+            return $this->response->setJSON($result);
+        }
+    }
+
+    public function surveyFormAlumni()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $find = $this->surveyModel->getData($req->getVar("id"));
+            $tmp = [
+                'data'  => $find ? $find : null
+            ];
+            return view('dashboard/taskforce/alumni/form', $tmp);
         }
     }
 }

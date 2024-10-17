@@ -78,7 +78,7 @@ if (isset($data)) {
             <div role="tabpanel" class="tab-pane active" id="judul">
                 <div class="row">
                     <div class="col-md-6" style="padding-right: 2rem; padding-left: 2rem;">
-                        <h4 style="font-weight: bold;margin-bottom:2rem">KUISIONER "TRACER STUDY" PROGRAM STUDI MANAJEMEN UNIVERSITAS MUHAMMADIYAH RIAU</h4>
+                        <h4 style="font-weight: bold;margin-bottom:2rem">KUISIONER "TRACER STUDY" PROGRAM STUDI ILMU EKONOMI UNIVERSITAS RIAU</h4>
                         <div class="form-group" style="margin-bottom: 2rem;">
                             <label for='nama_lengkap'>Nama Lengkap <span style="color:red">*</span></label><br>
                             <input type="text" name="nama_lengkap" class="form-control" value="<?= isset($data) ? $data['nama_lengkap'] : '' ?>" required placeholder="Your Answer">
@@ -115,7 +115,7 @@ if (isset($data)) {
                             <input type="text" name="alamat_sosmed" class="form-control" value="<?= isset($data) ? $data['alamat_sosmed'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group option-check" style="margin-bottom: 2rem;">
-                            <label>Program yang diikuti di Prodi Manajemen <span style="color:red">*</span></label><br>
+                            <label>Program yang diikuti di Prodi Ilmu Ekonomi <span style="color:red">*</span></label><br>
                             <label>
                                 <input type="radio" name="program_kuliah" class="flat-red" value="Reguler" <?= isset($data) ? ($data['program_kuliah'] == "Reguler" ? 'checked' : '') : '' ?> required>
                                 Reguler
@@ -165,7 +165,7 @@ if (isset($data)) {
                             <input type="text" name="nilai_toefl_kerja" class="form-control" value="<?= isset($data) ? $data['nilai_toefl_kerja'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group option-check">
-                            <label>Kapan anda menyelesaikan studi S1 di Prodi Manajemen? (Tahun) <span style="color:red">*</span></label><br>
+                            <label>Kapan anda menyelesaikan studi S1 di Prodi Ilmu Ekonomi? (Tahun) <span style="color:red">*</span></label><br>
                             <label>
                                 <input type="radio" name="tahun_selesai" class="flat-red" value="2020" <?= isset($data) ? ($data['tahun_selesai'] == "2020" ? 'checked' : '') : '' ?> required>
                                 2020
@@ -184,7 +184,7 @@ if (isset($data)) {
                             </label>
                         </div>
                         <div class="form-group option-check">
-                            <label>Kapan anda menyelesaikan studi S1 di Prodi Manajemen? (Bulan) <span style="color:red">*</span></label><br>
+                            <label>Kapan anda menyelesaikan studi S1 di Prodi Ilmu Ekonomi? (Bulan) <span style="color:red">*</span></label><br>
                             <label>
                                 <input type="radio" name="bulan_selesai" class="flat-red" value="Januari" <?= isset($data) && $data['bulan_selesai'] == "Januari" ? 'checked' : '' ?>>
                                 Januari
@@ -399,7 +399,7 @@ if (isset($data)) {
                             <label>
                                 <input type="radio" name="skala_kerja" class="flat-red" value="Berizin" <?= isset($data) ? ($data['skala_kerja'] == "Berizin" ? 'checked' : '') : '' ?> required>
                                 Berizin
-                            </label><br> 
+                            </label><br>
                             <label>
                                 <input type="radio" name="skala_kerja" class="flat-red" value="Tidak Berizin" <?= isset($data) ? ($data['skala_kerja'] == "Tidak Berizin" ? 'checked' : '') : '' ?> required>
                                 Tidak Berizin
@@ -489,7 +489,7 @@ if (isset($data)) {
             <div class="row">
                 <div class="col-md-6" style="padding-right: 2rem; padding-left: 2rem;">
                     <div style="width: 100%;">
-                        <h4 style="font-weight: bold;margin-bottom:2rem">KUISIONER "TRACER STUDY" ALUMNI PRODI MANAJEMEN UNIVERSITAS MUHAMMADIYAH RIAU</h4>
+                        <h4 style="font-weight: bold;margin-bottom:2rem">KUISIONER "TRACER STUDY" ALUMNI PRODI ILMU EKONOMI UNIVERSITAS RIAU</h4>
                         <div class="labeling-radio">
                             <p>Sangat Tidak Penting</p>
                             <p>Tidak Penting</p>
@@ -573,7 +573,7 @@ if (isset($data)) {
             <div class="row">
                 <div class="col-md-6" style="padding-right: 2rem; padding-left: 2rem;">
                     <div style="width: 100%;">
-                        <h4 style="font-weight: bold;margin-bottom:2rem">Jawablah pertanyaan berikut sesuai persepsi anda selama pernah kuliah di Prodi Manajemen FEB UMRI</h4>
+                        <h4 style="font-weight: bold;margin-bottom:2rem">Jawablah pertanyaan berikut sesuai persepsi anda selama pernah kuliah di Prodi Ilmu Ekonomi FEB UNRI</h4>
                         <div class="labeling-radio">
                             <p>Sangat Kurang</p>
                             <p>Kurang</p>
@@ -582,7 +582,7 @@ if (isset($data)) {
                             <p>Sangat Baik</p>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang Bimbingan PA di Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang Bimbingan PA di Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_bimbingan_pa" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_bimbingan_pa'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_bimbingan_pa" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_bimbingan_pa'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_bimbingan_pa" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_bimbingan_pa'] == "3" ? 'checked' : '') : '' ?> required>
@@ -590,7 +590,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_bimbingan_pa" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_bimbingan_pa'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang konten mata kuliah di Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang konten mata kuliah di Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_konten_matkul" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_konten_matkul'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_konten_matkul" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_konten_matkul'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_konten_matkul" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_konten_matkul'] == "3" ? 'checked' : '') : '' ?> required>
@@ -598,7 +598,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_konten_matkul" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_konten_matkul'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang variasi mata kuliah yang ditawarkan pada Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang variasi mata kuliah yang ditawarkan pada Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_variasi_matkul" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_variasi_matkul'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_variasi_matkul" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_variasi_matkul'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_variasi_matkul" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_variasi_matkul'] == "3" ? 'checked' : '') : '' ?> required>
@@ -606,7 +606,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_variasi_matkul" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_variasi_matkul'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang sistem penilaian dosen pada Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang sistem penilaian dosen pada Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_dari_dosen" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_dari_dosen'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_dari_dosen" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_dari_dosen'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_dari_dosen" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_dari_dosen'] == "3" ? 'checked' : '') : '' ?> required>
@@ -614,7 +614,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_dari_dosen" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_dari_dosen'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang rancangan kurikulum di Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang rancangan kurikulum di Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_rancangan_kurikulum" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_rancangan_kurikulum'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_rancangan_kurikulum" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_rancangan_kurikulum'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_rancangan_kurikulum" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_rancangan_kurikulum'] == "3" ? 'checked' : '') : '' ?> required>
@@ -622,7 +622,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_rancangan_kurikulum" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_rancangan_kurikulum'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang kesempatan memilih mata kuliah/konsentrasi di Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang kesempatan memilih mata kuliah/konsentrasi di Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_milih_matkul" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_milih_matkul'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_milih_matkul" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_milih_matkul'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_milih_matkul" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_milih_matkul'] == "3" ? 'checked' : '') : '' ?> required>
@@ -630,7 +630,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_milih_matkul" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_milih_matkul'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang kualitas dosen kualitas dosen di Program Studi Manajemen pada saat anda kuliah?</label>
+                            <label>Bagaimana penilaian anda tentang kualitas dosen kualitas dosen di Program Studi Ilmu Ekonomi pada saat anda kuliah?</label>
                             <input type="radio" name="penilaian_kualitas_dosen" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_kualitas_dosen'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_kualitas_dosen" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_kualitas_dosen'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_kualitas_dosen" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_kualitas_dosen'] == "3" ? 'checked' : '') : '' ?> required>
@@ -638,7 +638,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_kualitas_dosen" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_kualitas_dosen'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian tentang metode pengajaran di Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian tentang metode pengajaran di Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_metode_ajar" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_metode_ajar'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_metode_ajar" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_metode_ajar'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_metode_ajar" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_metode_ajar'] == "3" ? 'checked' : '') : '' ?> required>
@@ -646,7 +646,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_metode_ajar" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_metode_ajar'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang kesempatan berpartisipasi pada penelitian di Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang kesempatan berpartisipasi pada penelitian di Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_ikut_penelitian" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_ikut_penelitian'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_ikut_penelitian" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_ikut_penelitian'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_ikut_penelitian" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_ikut_penelitian'] == "3" ? 'checked' : '') : '' ?> required>
@@ -654,7 +654,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_ikut_penelitian" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_ikut_penelitian'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang kesempatan berkomunikasi dengan dosen diluar kelas di Program Studi Manajemen pada Saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang kesempatan berkomunikasi dengan dosen diluar kelas di Program Studi Ilmu Ekonomi pada Saat anda kuliah? </label>
                             <input type="radio" name="penilaian_komunikasi_dosen" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_komunikasi_dosen'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_komunikasi_dosen" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_komunikasi_dosen'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_komunikasi_dosen" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_komunikasi_dosen'] == "3" ? 'checked' : '') : '' ?> required>
@@ -662,7 +662,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_komunikasi_dosen" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_komunikasi_dosen'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang kuliah praktek lapangan/pengajar praktisi Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang kuliah praktek lapangan/pengajar praktisi Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_kerja_praktik" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_kerja_praktik'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_kerja_praktik" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_kerja_praktik'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_kerja_praktik" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_kerja_praktik'] == "3" ? 'checked' : '') : '' ?> required>
@@ -670,7 +670,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_kerja_praktik" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_kerja_praktik'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang studi banding Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang studi banding Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_studi_banding" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_studi_banding'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_studi_banding" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_studi_banding'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_studi_banding" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_studi_banding'] == "3" ? 'checked' : '') : '' ?> required>
@@ -678,7 +678,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_studi_banding" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_studi_banding'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang labor komputer pada Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang labor komputer pada Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_lab_komputer" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_lab_komputer'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_lab_komputer" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_lab_komputer'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_lab_komputer" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_lab_komputer'] == "3" ? 'checked' : '') : '' ?> required>
@@ -686,7 +686,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_lab_komputer" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_lab_komputer'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang fasilitas/internet pada Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang fasilitas/internet pada Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_internet" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_internet'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_internet" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_internet'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_internet" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_internet'] == "3" ? 'checked' : '') : '' ?> required>
@@ -694,7 +694,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_internet" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_internet'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang ruang baca dan pustaka pada Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang ruang baca dan pustaka pada Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_pustaka" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_pustaka'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_pustaka" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_pustaka'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_pustaka" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_pustaka'] == "3" ? 'checked' : '') : '' ?> required>
@@ -702,7 +702,7 @@ if (isset($data)) {
                             <input type="radio" name="penilaian_pustaka" class="flat-red" value="5" <?= isset($data) ? ($data['penilaian_pustaka'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Bagaimana penilaian anda tentang layanan petugas administrasi akademik Program Studi Manajemen pada saat anda kuliah? </label>
+                            <label>Bagaimana penilaian anda tentang layanan petugas administrasi akademik Program Studi Ilmu Ekonomi pada saat anda kuliah? </label>
                             <input type="radio" name="penilaian_administrasi" class="flat-red" value="1" <?= isset($data) ? ($data['penilaian_administrasi'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_administrasi" class="flat-red" value="2" <?= isset($data) ? ($data['penilaian_administrasi'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="penilaian_administrasi" class="flat-red" value="3" <?= isset($data) ? ($data['penilaian_administrasi'] == "3" ? 'checked' : '') : '' ?> required>
@@ -721,7 +721,7 @@ if (isset($data)) {
             <div class="row">
                 <div class="col-md-6" style="padding-right: 2rem; padding-left: 2rem;">
                     <div style="width: 100%;">
-                        <h4 style="font-weight: bold;margin-bottom:2rem">Jawablah pertanyaan berikut sesuai dengan persepsi anda mengenai keahlian dan keterampilan yang anda peroleh selama kuliah di Prodi Manajemen FEB UMRI</h4>
+                        <h4 style="font-weight: bold;margin-bottom:2rem">Jawablah pertanyaan berikut sesuai dengan persepsi anda mengenai keahlian dan keterampilan yang anda peroleh selama kuliah di Prodi Ilmu Ekonomi FEB UNRI</h4>
                         <div class="labeling-radio">
                             <p>Sangat Kurang</p>
                             <p>Kurang/p>
