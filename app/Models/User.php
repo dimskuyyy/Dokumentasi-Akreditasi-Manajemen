@@ -127,6 +127,48 @@ class User extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = ['afterDelete'];
 
+    public function checkDekan(){
+        $builder = $this->builder()->select('*')
+        // $builder->select('*')
+                ->where('user_type',1)
+                ->where('user_deleted_at',null);
+        
+        // Grab Feature Total
+        $kerjaSama = $this->db->table('kerjasama')
+                    ->select('COUNT(*)')
+                    ->where('kerjasama_user_id = user.user_id')
+                    ->where('kerjasama_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kerjaSama) as jumlah_kerjasama",false);
+        
+        $suratKeputusan = $this->db->table('dokumen')
+                    ->select('COUNT(*)')
+                    ->where('dokumen_user_id = user.user_id')
+                    ->where('dokumen_type',1)
+                    ->where('dokumen_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($suratKeputusan) as jumlah_sk",false);
+
+        $suratTugas = $this->db->table('dokumen')
+                    ->select('COUNT(*)')
+                    ->where('dokumen_user_id = user.user_id')
+                    ->where('dokumen_type',2)
+                    ->where('dokumen_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($suratTugas) as jumlah_surat_tugas",false);
+
+        $kegiatan = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',1)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kegiatan) as jumlah_kegiatan",false);
+
+        return $builder;
+
+    }
+
     public function beforeInsert($data)
     {
         $data['data']['user_password'] = password_hash($data['data']['user_password'], PASSWORD_BCRYPT);

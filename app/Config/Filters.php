@@ -17,6 +17,7 @@ use App\Filters\SertifikatFilter;
 use App\Filters\SurveyFilter;
 use App\Filters\UserControlFilter;
 use App\Filters\MediaFilter;
+use App\Filters\TaskforceFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -50,6 +51,7 @@ class Filters extends BaseConfig
         'featSurvey'        => SurveyFilter::class,
         'featUserControl'   => UserControlFilter::class,
         'featMedia'         => MediaFilter::class,
+        'taskforceOnly'     => TaskforceFilter::class,
         'csrf'              => CSRF::class,
         'toolbar'           => DebugToolbar::class,
         'honeypot'          => Honeypot::class,

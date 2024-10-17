@@ -59,7 +59,6 @@ class MDokumen extends Model
             ->join('user', 'user_id = dokumen_user_id')
             ->where('dokumen_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('dokumen_user_id', AuthUser()->id)
             ->where('dokumen_type',1);
     }
 
@@ -70,7 +69,6 @@ class MDokumen extends Model
             ->join('user', 'user_id = dokumen_user_id')
             ->where('dokumen_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('dokumen_user_id', AuthUser()->id)
             ->where('dokumen_type',2);;
     }
 

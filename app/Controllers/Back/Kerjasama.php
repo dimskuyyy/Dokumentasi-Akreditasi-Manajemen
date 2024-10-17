@@ -39,6 +39,7 @@ class Kerjasama extends BaseController
                 ['dt' => 'mitra', 'cond' => 'kerjasama_mitra', 'select' => 'kerjasama_mitra'],
                 ['dt' => 'skala', 'cond' => 'kerjasama_skala', 'select' => 'kerjasama_skala'],
                 ['dt' => 'tahun', 'cond' => 'kerjasama_tahun', 'select' => 'kerjasama_tahun'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'penulis', 'cond' => 'kerjasama_user_id', 'select' => 'kerjasama_user_id'],
                 [
                     'dt' => 'tgl_simpan',
@@ -60,8 +61,13 @@ class Kerjasama extends BaseController
 
             $model1 = $this->kerjasamaModel;
             $model2 = new MKerjasama();
-            $model1 = $model1->multiData();
-            $model2 = $model2->multiData();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiData()->where('kerjasama_user_id', AuthUser()->id);
+                $model2 = $model2->multiData()->where('kerjasama_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiData()->where('kerjasama_user_id', $req->getVar("id"));
+                $model2 = $model2->multiData()->where('kerjasama_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -77,7 +83,7 @@ class Kerjasama extends BaseController
                 if (empty($data['kerjasama_id'])) {
                     $result = jsonFormat(false, 'Kerjasama tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($data['kerjasama_user_id'] != AuthUser()->id){
+                }else if($data['kerjasama_user_id'] != AuthUser()->id ){
                     $result = jsonFormat(false, 'Kerjasama tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -102,7 +108,7 @@ class Kerjasama extends BaseController
             if ($id != null) {
                 $data = $this->kerjasamaModel->lookDetail($id);
                 if (!empty($data['kerjasama_id'])) {
-                     if($data['kerjasama_user_id'] != AuthUser()->id){
+                     if($data['kerjasama_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'Kerjasama tidak ditemukan');
                         return $this->response->setJSON($result);
                     }

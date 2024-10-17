@@ -181,11 +181,41 @@
                 </li>
             <?php } ?>
             <?php
-            if (AuthUser()->level == 1) {
+            $permTaskforceOnly = [4];
+            if (in_array(AuthUser()->type, $permTaskforceOnly)) {
             ?>
-                <br>
-                <li class="header">Daftar User</li>
+                <li class="<?= $request->uri->getSegment(2) === "check-dekan" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-dekan'); ?>">
+                        <i class="fa fa-university"></i> <span>Dekan</span>
+                    </a>
+                </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-kajur" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-kajur'); ?>">
+                        <i class="fa fa-university"></i> <span>Ketua Jurusan</span>
+                    </a>
+                </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-koor" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-koor'); ?>">
+                        <i class="fa fa-university"></i> <span>Koordinator Program Studi</span>
+                    </a>
+                </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-dosen" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-dosen'); ?>">
+                        <i class="fa fa-university"></i> <span>Dosen</span>
+                    </a>
+                </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-mahasiswa" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-mahasiswa'); ?>">
+                        <i class="fa fa-graduation-cap"></i> <span>Mahasiswa</span>
+                    </a>
+                </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-alumni" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-alumni'); ?>">
+                        <i class="fa fa-graduation-cap"></i> <span>Alumni</span>
+                    </a>
+                </li>
             <?php } ?>
+            
             <?php
             $perUserControl = [1, 2, 3, 4];
             if (in_array(AuthUser()->type, $perUserControl)) {

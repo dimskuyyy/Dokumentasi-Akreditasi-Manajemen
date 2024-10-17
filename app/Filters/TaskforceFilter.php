@@ -14,12 +14,12 @@ class TaskforceFilter implements FilterInterface
         if (!$ses->has('id')) {
             return redirect()->to('wbpanel/login');
         }
+        if (AuthUser()->type != 4) {
+            return redirect()->to('/wbpanel');
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (AuthUser()->type == 4) {
-            return redirect()->to('/wbpanel');
-        }
     }
 }

@@ -101,6 +101,7 @@ class Datatable
     {
         
         $dt_columns = self::pluck($columns, 'dt');
+        // var_dump($model1);die;
         $query = clone $model1;
         $filter = clone $model2;
         if (isset($req['start']) && $req['length'] != -1) {

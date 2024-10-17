@@ -62,8 +62,7 @@ class MKerjasama extends Model
             ->join('media', 'media_id = kerjasama_media_id')
             ->join('user', 'user_id = kerjasama_user_id')
             ->where('kerjasama_deleted_at', null)
-            ->where('user.user_deleted_at', null)
-            ->where('kerjasama_user_id', AuthUser()->id);
+            ->where('user.user_deleted_at', null);
     }
 
     public function lookDetail($id)

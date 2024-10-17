@@ -174,6 +174,21 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Pengabdian::delete');
         });
 
+        $routes->group('check-dekan', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Taskforce::dekan');
+            $routes->post('datatable', 'Taskforce::getDataTableDekan');
+            $routes->post('dekan-list', 'Taskforce::dekanList');
+            $routes->post('datatable/(:segment)', 'Taskforce::getDataTableFiturDekan/$1');
+            $routes->post('kerjasama/list', 'Kerjasama::list');
+            $routes->post('kerjasama/info', 'Kerjasama::detail');
+            $routes->post('surat-keputusan/list', 'SuratKeputusan::list');
+            $routes->post('surat-keputusan/info', 'SuratKeputusan::detail');
+            $routes->post('surat-tugas/list', 'SuratTugas::list');
+            $routes->post('surat-tugas/info', 'SuratTugas::detail');
+            $routes->post('kegiatan/list', 'Kegiatan::list');
+            $routes->post('kegiatan/info', 'Kegiatan::detail');
+        });
+
         $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');

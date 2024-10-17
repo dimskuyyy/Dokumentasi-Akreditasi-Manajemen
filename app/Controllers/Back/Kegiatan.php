@@ -62,6 +62,7 @@ class Kegiatan extends BaseController
             $columns = [
                 ['dt' => 'id', 'cond' => 'agenda_id', 'select' => 'agenda_id'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'nama', 'cond' => 'agenda_nama', 'select' => 'agenda_nama'],
                 ['dt' => 'sebagai', 'cond' => 'agenda_sebagai', 'select' => 'agenda_sebagai'],
                 ['dt' => 'penulis', 'cond' => 'agenda_user_id', 'select' => 'agenda_user_id'],
@@ -100,8 +101,13 @@ class Kegiatan extends BaseController
                     return $this->response->setJSON($result);
                 }
             } else {
-                $model1 = $model1->multiDataKegiatan();
-                $model2 = $model2->multiDataKegiatan();
+                if($req->getVar("id") == null){
+                    $model1 = $model1->multiDataKegiatan()->where('agenda_user_id', AuthUser()->id);
+                    $model2 = $model2->multiDataKegiatan()->where('agenda_user_id', AuthUser()->id);
+                }else{
+                    $model1 = $model1->multiDataKegiatan()->where('agenda_user_id', $req->getVar("id"));
+                    $model2 = $model2->multiDataKegiatan()->where('agenda_user_id', $req->getVar("id"));
+                }
             }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
@@ -167,8 +173,8 @@ class Kegiatan extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->kegiatanModel->lookDetailKegiatan($id);
-                if (!empty($data['agenda_id'])) {
-                    if ($data['agenda_user_id'] != AuthUser()->id && $data['agenda_type'] != 1) {
+                if (!empty($data['agenda_id']) &&  $data['agenda_type'] == 1) {
+                    if ($data['agenda_user_id'] != AuthUser()->id && AuthUser()->type != 4) {
                         $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
