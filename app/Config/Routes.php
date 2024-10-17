@@ -200,6 +200,17 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info', 'Kegiatan::detail');
         });
 
+        $routes->group('check-koor', ['filter'=> ['taskforceOnly'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
+            $routes->get('/', 'Taskforce::koor');
+            $routes->post('datatable', 'Taskforce::getDataTableKoor');
+            $routes->post('koor-list', 'Taskforce::koorList');
+            $routes->post('datatable/(:segment)', 'Taskforce::getDataTableFiturKoor/$1');
+            $routes->post('kerjasama/list', 'Kerjasama::list');
+            $routes->post('kerjasama/info', 'Kerjasama::detail');
+            $routes->post('kegiatan/list', 'Kegiatan::list');
+            $routes->post('kegiatan/info', 'Kegiatan::detail');
+        });
+
         $routes->group('survey', ['filter'=> ['featSurvey'], 'namespace'=> 'App\Controllers\Back'], static function($routes){
             $routes->get('/', 'Survey::index');
             $routes->post('save', 'Survey::save');

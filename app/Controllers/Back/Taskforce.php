@@ -15,6 +15,7 @@ class Taskforce extends BaseController
         $this->userModel = new User();
     }
 
+    // Divide index by user type -> fast development purpose
     public function dekan()
     {
         return view('dashboard/taskforce/dekan/index');
@@ -23,6 +24,11 @@ class Taskforce extends BaseController
     public function kajur()
     {
         return view('dashboard/taskforce/kajur/index');
+    }
+
+    public function koor()
+    {
+        return view('dashboard/taskforce/koor/index');
     }
 
     public function getDataTableDekan()
@@ -35,25 +41,44 @@ class Taskforce extends BaseController
         return view('dashboard/taskforce/kajur/kajur_list');
     }
 
+    public function getDataTableKoor()
+    {
+        return view('dashboard/taskforce/koor/koor_list');
+    }
+
     // Dekan Feature
-    public function getDataTableFiturDekan($page){
+    public function getDataTableFiturDekan($page)
+    {
         $req = $this->request;
         $tmp = [
             'uid' => $req->getVar("id")
         ];
-        return view('dashboard/taskforce/dekan/'.$page.'_list', $tmp);
+        return view('dashboard/taskforce/dekan/' . $page . '_list', $tmp);
     }
 
     // Kajur Feature
-    public function getDataTableFiturKajur($page){
+    public function getDataTableFiturKajur($page)
+    {
         $req = $this->request;
         $tmp = [
             'uid' => $req->getVar("id")
         ];
-        return view('dashboard/taskforce/kajur/'.$page.'_list', $tmp);
+        return view('dashboard/taskforce/kajur/' . $page . '_list', $tmp);
     }
-    
-    public function dekanList(){
+
+
+    // Koor Feature
+    public function getDataTableFiturKoor($page)
+    {
+        $req = $this->request;
+        $tmp = [
+            'uid' => $req->getVar("id")
+        ];
+        return view('dashboard/taskforce/koor/' . $page . '_list', $tmp);
+    }
+
+    public function dekanList()
+    {
         $req = $this->request;
         if ($req->isAJAX()) {
             $columns = [
@@ -74,7 +99,8 @@ class Taskforce extends BaseController
         }
     }
 
-    public function kajurList(){
+    public function kajurList()
+    {
         $req = $this->request;
         if ($req->isAJAX()) {
             $columns = [
@@ -88,6 +114,26 @@ class Taskforce extends BaseController
             $model2 = new User();
             $model1 = $model1->checkKajur();
             $model2 = $model2->checkKajur();
+            $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
+            return $this->response->setJSON($result);
+        }
+    }
+
+    public function koorList()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $columns = [
+                ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
+                ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
+                ['dt' => 'kerjasama', 'cond' => 'jumlah_kerjasama', 'select' => 'jumlah_kerjasama'],
+                ['dt' => 'kegiatan', 'cond' => 'jumlah_kegiatan', 'select' => 'jumlah_kegiatan'],
+            ];
+
+            $model1 = $this->userModel;
+            $model2 = new User();
+            $model1 = $model1->checkKoor();
+            $model2 = $model2->checkKoor();
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
