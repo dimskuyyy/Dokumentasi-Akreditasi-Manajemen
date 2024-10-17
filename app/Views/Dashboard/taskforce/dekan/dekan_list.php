@@ -2,7 +2,7 @@
 <table id="table-dekan-list" class="table table-bordered table-hover table-striped" style="width:100%">
     <thead>
         <tr>
-            <th data-priority='1'>Nama SK</th>
+            <th data-priority='1'>Nama User</th>
             <th data-priority='1'>Kerjasama</th>
             <th data-priority='1'>Surat Keputusan</th>
             <th data-priority='1'>Surat Tugas</th>
