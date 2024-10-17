@@ -34,6 +34,7 @@ class Prestasi extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'mahasiswa_id', 'select' => 'mahasiswa_id'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
                 ['dt' => 'nama', 'cond' => 'mahasiswa_record', 'select' => 'mahasiswa_record'],
                 ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
@@ -58,8 +59,13 @@ class Prestasi extends BaseController
 
             $model1 = $this->prestasiModel;
             $model2 = new MMahasiswaRecords();
-            $model1 = $model1->multiDataPrestasi();
-            $model2 = $model2->multiDataPrestasi();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiDataPrestasi()->where('mahasiswa_user_id', AuthUser()->id);
+                $model2 = $model2->multiDataPrestasi()->where('mahasiswa_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiDataPrestasi()->where('mahasiswa_user_id', $req->getVar("id"));
+                $model2 = $model2->multiDataPrestasi()->where('mahasiswa_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -72,10 +78,10 @@ class Prestasi extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->prestasiModel->find($id);
-                if (empty($data['mahasiswa_id'])) {
+                if (empty($data['mahasiswa_id']) && $data['mahasiswa_records_type'] == 2) {
                     $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($data['mahasiswa_user_id'] != AuthUser()->id && $data['mahasiswa_records_type'] != 1){
+                }else if($data['mahasiswa_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                     $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -100,7 +106,7 @@ class Prestasi extends BaseController
             if ($id != null) {
                 $data = $this->prestasiModel->lookDetailPrestasi($id);
                 if (!empty($data['mahasiswa_id'])) {
-                     if($data['mahasiswa_user_id'] != AuthUser()->id && $data['mahasiswa_records_type'] != 1){
+                     if($data['mahasiswa_user_id'] != AuthUser()->id && $data['mahasiswa_records_type'] != 2){
                         $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
@@ -132,7 +138,7 @@ class Prestasi extends BaseController
                     // Data tidak ditemukan, kirim respons error
                     $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                     return $this->response->setJSON($result);
-                }else if($find['mahasiswa_user_id'] != AuthUser()->id && $find['mahasiswa_records_type'] != 1){
+                }else if($find['mahasiswa_user_id'] != AuthUser()->id && $find['mahasiswa_records_type'] != 2){
                     $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -175,7 +181,7 @@ class Prestasi extends BaseController
                 // Data tidak ditemukan, kirim respons error
                 $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                 return $this->response->setJSON($result);
-            }else if($find['mahasiswa_user_id'] != AuthUser()->id && $find['mahasiswa_records_type'] != 1){
+            }else if($find['mahasiswa_user_id'] != AuthUser()->id && $find['mahasiswa_records_type'] != 2){
                 $result = jsonFormat(false, 'Prestasi Mahasiswa tidak ditemukan');
                 return $this->response->setJSON($result);
             }

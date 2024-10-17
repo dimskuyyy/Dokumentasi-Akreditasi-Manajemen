@@ -293,6 +293,56 @@ class User extends Model
         return $builder;
     }
 
+    public function checkMahasiswa(){
+        $builder = $this->builder()->select('*')
+        // $builder->select('*')
+                ->where('user_type',6)
+                ->where('user_deleted_at',null);
+        
+        // Grab Feature Total
+        $aktivitas = $this->db->table('mahasiswa')
+                    ->select('COUNT(*)')
+                    ->where('mahasiswa_user_id = user.user_id')
+                    ->where('mahasiswa_deleted_at',null)
+                    ->where('mahasiswa_records_type',1)
+                    ->getCompiledSelect();
+        $builder->select("($aktivitas) as jumlah_aktivitas",false);
+
+        $penelitian = $this->db->table('proyek')
+                    ->select('COUNT(*)')
+                    ->where('proyek_user_id = user.user_id')
+                    ->where('proyek_type',1)
+                    ->where('proyek_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($penelitian) as jumlah_penelitian",false);
+
+        $pengabdian = $this->db->table('proyek')
+                    ->select('COUNT(*)')
+                    ->where('proyek_user_id = user.user_id')
+                    ->where('proyek_type',2)
+                    ->where('proyek_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($pengabdian) as jumlah_pengabdian",false);
+
+        $prestasi = $this->db->table('mahasiswa')
+                    ->select('COUNT(*)')
+                    ->where('mahasiswa_user_id = user.user_id')
+                    ->where('mahasiswa_records_type',2)
+                    ->where('mahasiswa_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($prestasi) as jumlah_prestasi",false);
+
+        $kepanitiaan = $this->db->table('agenda')
+                    ->select('COUNT(*)')
+                    ->where('agenda_user_id = user.user_id')
+                    ->where('agenda_type',2)
+                    ->where('agenda_deleted_at',null)
+                    ->getCompiledSelect();
+        $builder->select("($kepanitiaan) as jumlah_kepanitiaan",false);
+
+        return $builder;
+    }
+
     public function beforeInsert($data)
     {
         $data['data']['user_password'] = password_hash($data['data']['user_password'], PASSWORD_BCRYPT);

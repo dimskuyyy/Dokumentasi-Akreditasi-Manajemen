@@ -35,6 +35,7 @@ class Aktivitas extends BaseController
             $columns = [
                 ['dt' => 'id', 'cond' => 'mahasiswa_id', 'select' => 'mahasiswa_id'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
+                ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'nama', 'cond' => 'mahasiswa_record', 'select' => 'mahasiswa_record'],
                 ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'penulis', 'cond' => 'mahasiswa_user_id', 'select' => 'mahasiswa_user_id'],
@@ -58,8 +59,13 @@ class Aktivitas extends BaseController
 
             $model1 = $this->aktivitasModel;
             $model2 = new MMahasiswaRecords();
-            $model1 = $model1->multiDataAktivitas();
-            $model2 = $model2->multiDataAktivitas();
+            if($req->getVar("id") == null){
+                $model1 = $model1->multiDataAktivitas()->where('mahasiswa_user_id', AuthUser()->id);
+                $model2 = $model2->multiDataAktivitas()->where('mahasiswa_user_id', AuthUser()->id);
+            }else{
+                $model1 = $model1->multiDataAktivitas()->where('mahasiswa_user_id', $req->getVar("id"));
+                $model2 = $model2->multiDataAktivitas()->where('mahasiswa_user_id', $req->getVar("id"));
+            }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
@@ -99,8 +105,8 @@ class Aktivitas extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->aktivitasModel->lookDetailAktivitas($id);
-                if (!empty($data['mahasiswa_id'])) {
-                     if($data['mahasiswa_user_id'] != AuthUser()->id && $data['mahasiswa_records_type'] != 1){
+                if (!empty($data['mahasiswa_id']) && $data['mahasiswa_records_type'] == 1) {
+                     if($data['mahasiswa_user_id'] != AuthUser()->id && AuthUser()->type != 4){
                         $result = jsonFormat(false, 'Aktivitas Mahasiswa tidak ditemukan');
                         return $this->response->setJSON($result);
                     }

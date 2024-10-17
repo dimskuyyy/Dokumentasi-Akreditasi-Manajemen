@@ -55,8 +55,7 @@ class MMahasiswaRecords extends Model
             ->join('user', 'user_id = mahasiswa_user_id')
             ->where('mahasiswa_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('mahasiswa_records_type',1)
-            ->where('mahasiswa_user_id', AuthUser()->id);
+            ->where('mahasiswa_records_type',1);
     }
 
     public function lookDetailAktivitas($id)
@@ -79,8 +78,7 @@ class MMahasiswaRecords extends Model
             ->join('user', 'user_id = mahasiswa_user_id')
             ->where('mahasiswa_deleted_at', null)
             ->where('user.user_deleted_at', null)
-            ->where('mahasiswa_records_type',2)
-            ->where('mahasiswa_user_id', AuthUser()->id);
+            ->where('mahasiswa_records_type',2);
     }
 
     public function lookDetailPrestasi($id)
