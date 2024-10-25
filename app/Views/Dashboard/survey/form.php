@@ -134,7 +134,7 @@ if (isset($data)) {
                             <input type="text" name="ipk" class="form-control" value="<?= isset($data) ? $data['ipk'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group" style="margin-bottom: 2rem;">
-                            <label for='lama_studi'>Lama menyelesaikan Studi S1 (dalam bulan) <i>Contoh: 49 Bulan</i> <span style="color:red">*</span></label><br>
+                            <label for='lama_studi'>Lama menyelesaikan Studi perkuliahan (dalam bulan) <i>Contoh: 49 Bulan</i> <span style="color:red">*</span></label><br>
                             <input type="text" name="lama_studi" class="form-control" value="<?= isset($data) ? $data['lama_studi'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group" style="margin-bottom: 2rem;">
@@ -150,7 +150,7 @@ if (isset($data)) {
                             <input type="text" name="nilai_toefl_kerja" class="form-control" value="<?= isset($data) ? $data['nilai_toefl_kerja'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group option-check">
-                            <label>Kapan anda menyelesaikan studi S1 di Prodi Ilmu Ekonomi? (Tahun) <span style="color:red">*</span></label><br>
+                            <label>Kapan anda menyelesaikan studi perkuliahan di Prodi Ilmu Ekonomi? (Tahun) <span style="color:red">*</span></label><br>
                             <label>
                                 <input type="radio" name="tahun_selesai" class="flat-red" value="2020" <?= isset($data) ? ($data['tahun_selesai'] == "2020" ? 'checked' : '') : '' ?> required>
                                 2020
@@ -169,7 +169,7 @@ if (isset($data)) {
                             </label>
                         </div>
                         <div class="form-group option-check">
-                            <label>Kapan anda menyelesaikan studi S1 di Prodi Ilmu Ekonomi? (Bulan) <span style="color:red">*</span></label><br>
+                            <label>Kapan anda menyelesaikan studi perkuliahan di Prodi Ilmu Ekonomi? (Bulan) <span style="color:red">*</span></label><br>
                             <label>
                                 <input type="radio" name="bulan_selesai" class="flat-red" value="Januari" <?= isset($data) && $data['bulan_selesai'] == "Januari" ? 'checked' : '' ?>>
                                 Januari
@@ -483,7 +483,7 @@ if (isset($data)) {
                             <p>Sangat Penting</p>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Seberapa penting spesialisasi/ konsentrasi S1 mendukung anda memperoleh pekerjaan?</label>
+                            <label>Seberapa penting spesialisasi/ konsentrasi perkuliahan mendukung anda memperoleh pekerjaan?</label>
                             <input type="radio" name="college_sarjana" class="flat-red" value="1" <?= isset($data) ? ($data['college_sarjana'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_sarjana" class="flat-red" value="2" <?= isset($data) ? ($data['college_sarjana'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_sarjana" class="flat-red" value="3" <?= isset($data) ? ($data['college_sarjana'] == "3" ? 'checked' : '') : '' ?> required>
@@ -523,7 +523,7 @@ if (isset($data)) {
                             <input type="radio" name="college_personality" class="flat-red" value="5" <?= isset($data) ? ($data['college_personality'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Seberapa penting manfaat pembelajaran di S1 untuk menemukan pekerjaan yang sesuai dengan harapan setelah tamat?</label>
+                            <label>Seberapa penting manfaat pembelajaran di perkuliahan untuk menemukan pekerjaan yang sesuai dengan harapan setelah tamat?</label>
                             <input type="radio" name="college_manfaat" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat'] == "3" ? 'checked' : '') : '' ?> required>
@@ -531,7 +531,7 @@ if (isset($data)) {
                             <input type="radio" name="college_manfaat" class="flat-red" value="5" <?= isset($data) ? ($data['college_manfaat'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Seberapa penting manfaat pembelajaran di S1 untuk mendukung profesionalisme tugas dipekerjaan anda saat ini?</label>
+                            <label>Seberapa penting manfaat pembelajaran di perkuliahan untuk mendukung profesionalisme tugas dipekerjaan anda saat ini?</label>
                             <input type="radio" name="college_manfaat_kerja" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat_kerja'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat_kerja" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat_kerja'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat_kerja" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat_kerja'] == "3" ? 'checked' : '') : '' ?> required>
@@ -539,7 +539,7 @@ if (isset($data)) {
                             <input type="radio" name="college_manfaat_kerja" class="flat-red" value="5" <?= isset($data) ? ($data['college_manfaat_kerja'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
-                            <label>Seberapa penting manfaat pembelajaran di S1 untuk mendukung pengembangan karir anda ke depan? </label>
+                            <label>Seberapa penting manfaat pembelajaran di perkuliahan untuk mendukung pengembangan karir anda ke depan? </label>
                             <input type="radio" name="college_manfaat_karir" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat_karir'] == "1" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat_karir" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat_karir'] == "2" ? 'checked' : '') : '' ?> required>
                             <input type="radio" name="college_manfaat_karir" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat_karir'] == "3" ? 'checked' : '') : '' ?> required>
