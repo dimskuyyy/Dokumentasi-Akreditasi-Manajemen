@@ -20,7 +20,6 @@ class MSurvey extends Model
         'nomor_hp',
         'alamat',
         'alamat_sosmed',
-        'program_kuliah',
         'konsentrasi',
         'ipk',
         'lama_studi',
@@ -88,13 +87,9 @@ class MSurvey extends Model
             'label' => 'Socmed Address',
             'rules' => 'required|string'
         ],
-        'program_kuliah' => [
-            'label' => 'Program Kuliah',
-            'rules' => 'required|in_list[Reguler,Non Reguler]'
-        ],
         'konsentrasi' => [
             'label' => 'Konsentrasi',
-            'rules' => 'required|in_list[Manajemen Keuangan,Manajemen Pemasaran,Manajemen Sumber Daya Manusia,Manajemen Operasional]'
+            'rules' => 'required|in_list[Ekonomi Sumber Daya Manusia,Ekonomi Keuangan Daerah,Ekonomi Pedesaan]'
         ],
         'ipk' => [
             'label' => 'IPK',

@@ -14,47 +14,42 @@ class CreateKuisionerTable extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'umri_sarjana'=> [
+            'college_sarjana'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_peringkat'=> [
+            'college_peringkat'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_akreditasi_prodi'=> [
+            'college_akreditasi_prodi'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_pengalaman_kerja'=> [
+            'college_pengalaman_kerja'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_personality'=> [
+            'college_personality'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_manfaat'=> [
+            'college_manfaat'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_manfaat_kerja'=> [
+            'college_manfaat_kerja'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
             ],
-            'umri_manfaat_karir'=> [
-                'type'          => 'TINYINT',
-                'constraint'    => 1,
-                'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'
-            ],
-            'umri_manfaat_karir'=> [
+            'college_manfaat_karir'=> [
                 'type'          => 'TINYINT',
                 'constraint'    => 1,
                 'comment'       => '1=Sangat Kurang, 2=Kurang, 3=Cukup, 4=Baik, 5=Sangat Baik'

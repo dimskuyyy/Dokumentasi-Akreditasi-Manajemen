@@ -35,10 +35,6 @@ class CreateSurveyAlumni extends Migration
             'alamat_sosmed' => [
                 'type'          => 'TEXT'
             ],
-            'program_kuliah'    => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 100
-            ],
             'konsentrasi'   => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 100

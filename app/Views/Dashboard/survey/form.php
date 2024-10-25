@@ -115,33 +115,18 @@ if (isset($data)) {
                             <input type="text" name="alamat_sosmed" class="form-control" value="<?= isset($data) ? $data['alamat_sosmed'] : '' ?>" required placeholder="Your Answer">
                         </div>
                         <div class="form-group option-check" style="margin-bottom: 2rem;">
-                            <label>Program yang diikuti di Prodi Ilmu Ekonomi <span style="color:red">*</span></label><br>
-                            <label>
-                                <input type="radio" name="program_kuliah" class="flat-red" value="Reguler" <?= isset($data) ? ($data['program_kuliah'] == "Reguler" ? 'checked' : '') : '' ?> required>
-                                Reguler
-                            </label><br>
-                            <label>
-                                <input type="radio" name="program_kuliah" class="flat-red" value="Non Reguler" <?= isset($data) ? ($data['program_kuliah'] == "Non Reguler" ? 'checked' : '') : '' ?> required>
-                                Non Reguler (Kelas Malam)
-                            </label>
-                        </div>
-                        <div class="form-group option-check" style="margin-bottom: 2rem;">
                             <label>Konsentrasi pada saat perkuliahan? <span style="color:red">*</span></label><br>
                             <label>
-                                <input type="radio" name="konsentrasi" class="flat-red" value="Manajemen Keuangan" <?= isset($data) ? ($data['konsentrasi'] == "Manajemen Keuangan" ? 'checked' : '') : '' ?> required>
-                                Manajemen Keuangan
+                                <input type="radio" name="konsentrasi" class="flat-red" value="Ekonomi Sumber Daya Manusia" <?= isset($data) ? ($data['konsentrasi'] == "Ekonomi Sumber Daya Manusia" ? 'checked' : '') : '' ?> required>
+                                Ekonomi Sumber Daya Manusia
                             </label><br>
                             <label>
-                                <input type="radio" name="konsentrasi" class="flat-red" value="Manajemen Pemasaran" <?= isset($data) ? ($data['konsentrasi'] == "Manajemen Pemasaran" ? 'checked' : '') : '' ?> required>
-                                Manajemen Pemasaran
+                                <input type="radio" name="konsentrasi" class="flat-red" value="Ekonomi Keuangan Daerah" <?= isset($data) ? ($data['konsentrasi'] == "Ekonomi Keuangan Daerah" ? 'checked' : '') : '' ?> required>
+                                Ekonomi Keuangan Daerah
                             </label><br>
                             <label>
-                                <input type="radio" name="konsentrasi" class="flat-red" value="Manajemen Sumber Daya Manusia" <?= isset($data) ? ($data['konsentrasi'] == "Manajemen Sumber Daya Manusia" ? 'checked' : '') : '' ?> required>
-                                Manajemen Sumber Daya Manusia
-                            </label><br>
-                            <label>
-                                <input type="radio" name="konsentrasi" class="flat-red" value="Manajemen Operasional" <?= isset($data) ? ($data['konsentrasi'] == "Manajemen Operasional" ? 'checked' : '') : '' ?> required>
-                                Manajemen Operasional
+                                <input type="radio" name="konsentrasi" class="flat-red" value="Ekonomi Pedesaan" <?= isset($data) ? ($data['konsentrasi'] == "Ekonomi Pedesaan" ? 'checked' : '') : '' ?> required>
+                                Ekonomi Pedesaan
                             </label><br>
                         </div>
                         <div class="form-group" style="margin-bottom: 2rem;">
@@ -499,67 +484,67 @@ if (isset($data)) {
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting spesialisasi/ konsentrasi S1 mendukung anda memperoleh pekerjaan?</label>
-                            <input type="radio" name="umri_sarjana" class="flat-red" value="1" <?= isset($data) ? ($data['umri_sarjana'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_sarjana" class="flat-red" value="2" <?= isset($data) ? ($data['umri_sarjana'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_sarjana" class="flat-red" value="3" <?= isset($data) ? ($data['umri_sarjana'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_sarjana" class="flat-red" value="4" <?= isset($data) ? ($data['umri_sarjana'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_sarjana" class="flat-red" value="5" <?= isset($data) ? ($data['umri_sarjana'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_sarjana" class="flat-red" value="1" <?= isset($data) ? ($data['college_sarjana'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_sarjana" class="flat-red" value="2" <?= isset($data) ? ($data['college_sarjana'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_sarjana" class="flat-red" value="3" <?= isset($data) ? ($data['college_sarjana'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_sarjana" class="flat-red" value="4" <?= isset($data) ? ($data['college_sarjana'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_sarjana" class="flat-red" value="5" <?= isset($data) ? ($data['college_sarjana'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting peringkat Universitas mendukung anda memperoleh pekerjaan?</label>
-                            <input type="radio" name="umri_peringkat" class="flat-red" value="1" <?= isset($data) ? ($data['umri_peringkat'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_peringkat" class="flat-red" value="2" <?= isset($data) ? ($data['umri_peringkat'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_peringkat" class="flat-red" value="3" <?= isset($data) ? ($data['umri_peringkat'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_peringkat" class="flat-red" value="4" <?= isset($data) ? ($data['umri_peringkat'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_peringkat" class="flat-red" value="5" <?= isset($data) ? ($data['umri_peringkat'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_peringkat" class="flat-red" value="1" <?= isset($data) ? ($data['college_peringkat'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_peringkat" class="flat-red" value="2" <?= isset($data) ? ($data['college_peringkat'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_peringkat" class="flat-red" value="3" <?= isset($data) ? ($data['college_peringkat'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_peringkat" class="flat-red" value="4" <?= isset($data) ? ($data['college_peringkat'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_peringkat" class="flat-red" value="5" <?= isset($data) ? ($data['college_peringkat'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting peringkat Program Studi/ Akreditasi mendukung anda memperoleh pekerjaan?</label>
-                            <input type="radio" name="umri_akreditasi_prodi" class="flat-red" value="1" <?= isset($data) ? ($data['umri_akreditasi_prodi'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_akreditasi_prodi" class="flat-red" value="2" <?= isset($data) ? ($data['umri_akreditasi_prodi'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_akreditasi_prodi" class="flat-red" value="3" <?= isset($data) ? ($data['umri_akreditasi_prodi'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_akreditasi_prodi" class="flat-red" value="4" <?= isset($data) ? ($data['umri_akreditasi_prodi'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_akreditasi_prodi" class="flat-red" value="5" <?= isset($data) ? ($data['umri_akreditasi_prodi'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_akreditasi_prodi" class="flat-red" value="1" <?= isset($data) ? ($data['college_akreditasi_prodi'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_akreditasi_prodi" class="flat-red" value="2" <?= isset($data) ? ($data['college_akreditasi_prodi'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_akreditasi_prodi" class="flat-red" value="3" <?= isset($data) ? ($data['college_akreditasi_prodi'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_akreditasi_prodi" class="flat-red" value="4" <?= isset($data) ? ($data['college_akreditasi_prodi'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_akreditasi_prodi" class="flat-red" value="5" <?= isset($data) ? ($data['college_akreditasi_prodi'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting pengalaman bekerja sebelumnya mendukung anda memperoleh pekerjaan?</label>
-                            <input type="radio" name="umri_pengalaman_kerja" class="flat-red" value="1" <?= isset($data) ? ($data['umri_pengalaman_kerja'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_pengalaman_kerja" class="flat-red" value="2" <?= isset($data) ? ($data['umri_pengalaman_kerja'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_pengalaman_kerja" class="flat-red" value="3" <?= isset($data) ? ($data['umri_pengalaman_kerja'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_pengalaman_kerja" class="flat-red" value="4" <?= isset($data) ? ($data['umri_pengalaman_kerja'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_pengalaman_kerja" class="flat-red" value="5" <?= isset($data) ? ($data['umri_pengalaman_kerja'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_pengalaman_kerja" class="flat-red" value="1" <?= isset($data) ? ($data['college_pengalaman_kerja'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_pengalaman_kerja" class="flat-red" value="2" <?= isset($data) ? ($data['college_pengalaman_kerja'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_pengalaman_kerja" class="flat-red" value="3" <?= isset($data) ? ($data['college_pengalaman_kerja'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_pengalaman_kerja" class="flat-red" value="4" <?= isset($data) ? ($data['college_pengalaman_kerja'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_pengalaman_kerja" class="flat-red" value="5" <?= isset($data) ? ($data['college_pengalaman_kerja'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting kepribadian/ personality mendukung anda memperoleh pekerjaan?</label>
-                            <input type="radio" name="umri_personality" class="flat-red" value="1" <?= isset($data) ? ($data['umri_personality'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_personality" class="flat-red" value="2" <?= isset($data) ? ($data['umri_personality'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_personality" class="flat-red" value="3" <?= isset($data) ? ($data['umri_personality'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_personality" class="flat-red" value="4" <?= isset($data) ? ($data['umri_personality'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_personality" class="flat-red" value="5" <?= isset($data) ? ($data['umri_personality'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_personality" class="flat-red" value="1" <?= isset($data) ? ($data['college_personality'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_personality" class="flat-red" value="2" <?= isset($data) ? ($data['college_personality'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_personality" class="flat-red" value="3" <?= isset($data) ? ($data['college_personality'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_personality" class="flat-red" value="4" <?= isset($data) ? ($data['college_personality'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_personality" class="flat-red" value="5" <?= isset($data) ? ($data['college_personality'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting manfaat pembelajaran di S1 untuk menemukan pekerjaan yang sesuai dengan harapan setelah tamat?</label>
-                            <input type="radio" name="umri_manfaat" class="flat-red" value="1" <?= isset($data) ? ($data['umri_manfaat'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat" class="flat-red" value="2" <?= isset($data) ? ($data['umri_manfaat'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat" class="flat-red" value="3" <?= isset($data) ? ($data['umri_manfaat'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat" class="flat-red" value="4" <?= isset($data) ? ($data['umri_manfaat'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat" class="flat-red" value="5" <?= isset($data) ? ($data['umri_manfaat'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat" class="flat-red" value="4" <?= isset($data) ? ($data['college_manfaat'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat" class="flat-red" value="5" <?= isset($data) ? ($data['college_manfaat'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting manfaat pembelajaran di S1 untuk mendukung profesionalisme tugas dipekerjaan anda saat ini?</label>
-                            <input type="radio" name="umri_manfaat_kerja" class="flat-red" value="1" <?= isset($data) ? ($data['umri_manfaat_kerja'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_kerja" class="flat-red" value="2" <?= isset($data) ? ($data['umri_manfaat_kerja'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_kerja" class="flat-red" value="3" <?= isset($data) ? ($data['umri_manfaat_kerja'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_kerja" class="flat-red" value="4" <?= isset($data) ? ($data['umri_manfaat_kerja'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_kerja" class="flat-red" value="5" <?= isset($data) ? ($data['umri_manfaat_kerja'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_kerja" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat_kerja'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_kerja" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat_kerja'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_kerja" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat_kerja'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_kerja" class="flat-red" value="4" <?= isset($data) ? ($data['college_manfaat_kerja'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_kerja" class="flat-red" value="5" <?= isset($data) ? ($data['college_manfaat_kerja'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                         <div class="kuisioner-quest">
                             <label>Seberapa penting manfaat pembelajaran di S1 untuk mendukung pengembangan karir anda ke depan? </label>
-                            <input type="radio" name="umri_manfaat_karir" class="flat-red" value="1" <?= isset($data) ? ($data['umri_manfaat_karir'] == "1" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_karir" class="flat-red" value="2" <?= isset($data) ? ($data['umri_manfaat_karir'] == "2" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_karir" class="flat-red" value="3" <?= isset($data) ? ($data['umri_manfaat_karir'] == "3" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_karir" class="flat-red" value="4" <?= isset($data) ? ($data['umri_manfaat_karir'] == "4" ? 'checked' : '') : '' ?> required>
-                            <input type="radio" name="umri_manfaat_karir" class="flat-red" value="5" <?= isset($data) ? ($data['umri_manfaat_karir'] == "5" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_karir" class="flat-red" value="1" <?= isset($data) ? ($data['college_manfaat_karir'] == "1" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_karir" class="flat-red" value="2" <?= isset($data) ? ($data['college_manfaat_karir'] == "2" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_karir" class="flat-red" value="3" <?= isset($data) ? ($data['college_manfaat_karir'] == "3" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_karir" class="flat-red" value="4" <?= isset($data) ? ($data['college_manfaat_karir'] == "4" ? 'checked' : '') : '' ?> required>
+                            <input type="radio" name="college_manfaat_karir" class="flat-red" value="5" <?= isset($data) ? ($data['college_manfaat_karir'] == "5" ? 'checked' : '') : '' ?> required>
                         </div>
                     </div>
                 </div>

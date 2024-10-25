@@ -14,15 +14,14 @@ class MKuisioner extends Model
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'umri_sarjana',
-        'umri_peringkat',
-        'umri_akreditasi_prodi',
-        'umri_pengalaman_kerja',
-        'umri_personality',
-        'umri_manfaat',
-        'umri_manfaat_kerja',
-        'umri_manfaat_karir',
-        'umri_manfaat_karir',
+        'college_sarjana',
+        'college_peringkat',
+        'college_akreditasi_prodi',
+        'college_pengalaman_kerja',
+        'college_personality',
+        'college_manfaat',
+        'college_manfaat_kerja',
+        'college_manfaat_karir',
         'penilaian_bimbingan_pa',
         'penilaian_konten_matkul',
         'penilaian_variasi_matkul',
@@ -65,31 +64,28 @@ class MKuisioner extends Model
 
     // Validation
     protected $validationRules      = [
-        'umri_sarjana' => [
+        'college_sarjana' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_peringkat' => [
+        'college_peringkat' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_akreditasi_prodi' => [
+        'college_akreditasi_prodi' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_pengalaman_kerja' => [
+        'college_pengalaman_kerja' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_personality' => [
+        'college_personality' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_manfaat' => [
+        'college_manfaat' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_manfaat_kerja' => [
+        'college_manfaat_kerja' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
-        'umri_manfaat_karir' => [
-            'rules' => 'required|in_list[1,2,3,4,5]'
-        ],
-        'umri_manfaat_karir' => [
+        'college_manfaat_karir' => [
             'rules' => 'required|in_list[1,2,3,4,5]'
         ],
         'penilaian_bimbingan_pa' => [
