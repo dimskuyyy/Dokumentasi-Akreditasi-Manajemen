@@ -138,8 +138,13 @@ class Taskforce extends BaseController
                 ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
                 ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'kerjasama', 'cond' => 'jumlah_kerjasama', 'select' => 'jumlah_kerjasama'],
+                ['dt' => 'sop', 'cond' => 'jumlah_sop', 'select' => 'jumlah_sop'],
+                ['dt' => 'renstra', 'cond' => 'jumlah_renstra', 'select' => 'jumlah_renstra'],
+                ['dt' => 'anggaran', 'cond' => 'jumlah_anggaran', 'select' => 'jumlah_anggaran'],
                 ['dt' => 'surat_keputusan', 'cond' => 'jumlah_sk', 'select' => 'jumlah_sk'],
                 ['dt' => 'surat_tugas', 'cond' => 'jumlah_surat_tugas', 'select' => 'jumlah_surat_tugas'],
+                ['dt' => 'panduan', 'cond' => 'jumlah_panduan', 'select' => 'jumlah_panduan'],
+                ['dt' => 'etika', 'cond' => 'jumlah_etika', 'select' => 'jumlah_etika'],
                 ['dt' => 'kegiatan', 'cond' => 'jumlah_kegiatan', 'select' => 'jumlah_kegiatan'],
             ];
 

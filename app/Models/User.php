@@ -135,12 +135,52 @@ class User extends Model
             ->where('user_deleted_at', null);
 
         // Grab Feature Total
+        
         $kerjaSama = $this->db->table('kerjasama')
             ->select('COUNT(*)')
             ->where('kerjasama_user_id = user.user_id')
             ->where('kerjasama_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kerjaSama) as jumlah_kerjasama", false);
+
+        $sop = $this->db->table('sop')
+            ->select('COUNT(*)')
+            ->where('sop_user_id = user.user_id')
+            ->where('sop_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($sop) as jumlah_sop", false);
+
+        $renstra = $this->db->table('renstra_anggaran')
+            ->select('COUNT(*)')
+            ->where('ra_user_id = user.user_id')
+            ->where('ra_type', 1)
+            ->where('ra_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($renstra) as jumlah_renstra", false);
+
+        $anggaran = $this->db->table('renstra_anggaran')
+            ->select('COUNT(*)')
+            ->where('ra_user_id = user.user_id')
+            ->where('ra_type', 2)
+            ->where('ra_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($anggaran) as jumlah_anggaran", false);
+
+        $panduan = $this->db->table('akademik')
+            ->select('COUNT(*)')
+            ->where('akademik_user_id = user.user_id')
+            ->where('akademik_type', 1)
+            ->where('akademik_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($panduan) as jumlah_panduan", false);
+
+        $etika = $this->db->table('akademik')
+            ->select('COUNT(*)')
+            ->where('akademik_user_id = user.user_id')
+            ->where('akademik_type', 2)
+            ->where('akademik_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($etika) as jumlah_etika", false);
 
         $suratKeputusan = $this->db->table('dokumen')
             ->select('COUNT(*)')
