@@ -50,6 +50,16 @@ class UserSeeder extends Seeder
 
             ],
             [
+                'user_nama' => 'Tenaga Kependidikan',
+                'user_username' => 'Tendik001',
+                'user_password' => password_hash('12345', PASSWORD_BCRYPT),
+                'user_level' => 2,
+                'user_type' => 8,
+                'user_status' => 2,
+                'user_created_at' => date('Y-m-d H:i:s')
+
+            ],
+            [
                 'user_nama' => 'Prof. Dr. H.B. Isyandi, SE, MS',
                 'user_username' => 'D00001',
                 'user_password' => password_hash('12345', PASSWORD_BCRYPT),

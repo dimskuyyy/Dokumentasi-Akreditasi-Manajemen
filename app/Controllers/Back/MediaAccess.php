@@ -65,7 +65,7 @@ class MediaAccess extends BaseController
         }
 
         // User biasa hanya bisa mengakses dokumen milik mereka sendiri
-        $userRoles = [5,6,7];
+        $userRoles = [5,6,7,8];
         if (in_array($userRole, $userRoles) && $userId == $mediaOwnerId) {
             return true;
         }

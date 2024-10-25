@@ -91,7 +91,7 @@ $encrypter = Services::encrypter();
             setLoadingBtn(btn);
             var formData = new FormData(form[0]);
             $.ajax({
-                url: base_url + '/sertifikat-dosen/save',
+                url: base_url + '/sertifikat/save',
                 type: 'post',
                 dataType: 'json',
                 data: formData,
@@ -131,7 +131,7 @@ $encrypter = Services::encrypter();
             var htm = btn.html();
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/sertifikat-dosen/media',
+                url: base_url + '/sertifikat/media',
                 data: {
                     key: 'cover'
                 },

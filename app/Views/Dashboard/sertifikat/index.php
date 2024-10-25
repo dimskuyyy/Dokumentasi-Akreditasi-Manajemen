@@ -32,7 +32,7 @@ Sertifikat Kompetensi/Profesi <?= AuthUser()->type_nama?>
 
     function loadData() {
         $.ajax({
-            url: base_url + '/sertifikat-dosen/datatable',
+            url: base_url + '/sertifikat/datatable',
             type: 'post',
             cache: true,
             success: function(data) {
@@ -99,7 +99,7 @@ Sertifikat Kompetensi/Profesi <?= AuthUser()->type_nama?>
                 }
             });
             $.ajax({
-                url: base_url + '/sertifikat-dosen/detail',
+                url: base_url + '/sertifikat/detail',
                 type: 'post',
                 data: {
                     id: id

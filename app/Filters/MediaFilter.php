@@ -16,7 +16,7 @@ class MediaFilter implements FilterInterface
         }
 
         
-        if (!in_array(AuthUser()->type, [1,2,3,5,6])) {
+        if (!in_array(AuthUser()->type, [1,2,3,5,6,8])) {
             return redirect()->to('/wbpanel');
         }
     }

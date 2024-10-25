@@ -1,7 +1,7 @@
 <div class="pull-left">
     <button type="button" class="btn btn-sm btn-flat btn-primary btn-create"><i class="fa fa-plus"></i> Tambah Sertifikat</button>
 </div><br><br>
-<table id="table-sertifikat-dosen" class="table table-bordered table-hover table-striped" style="width:100%">
+<table id="table-sertifikat" class="table table-bordered table-hover table-striped" style="width:100%">
     <thead>
         <tr>
             <th data-priority='1'>Nama Sertifikat</th>
@@ -13,7 +13,7 @@
     </thead>
 </table>
 <script>
-    $('#table-sertifikat-dosen').on('click', 'tbody tr td .btn-edit', function(e) {
+    $('#table-sertifikat').on('click', 'tbody tr td .btn-edit', function(e) {
         e.preventDefault();
         var btn = $(this);
         var htm = btn.html();
@@ -21,7 +21,7 @@
         if (id) {
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/sertifikat-dosen/form',
+                url: base_url + '/sertifikat/form',
                 type: 'post',
                 data: {
                     id: id
@@ -42,7 +42,7 @@
             });
         }
     });
-    $('#table-sertifikat-dosen').on('click', 'tbody tr td .btn-delete', function(e) {
+    $('#table-sertifikat').on('click', 'tbody tr td .btn-delete', function(e) {
         e.preventDefault();
         var btn = $(this);
         var htm = btn.html();
@@ -51,7 +51,7 @@
             if (confirm('Yakin hapus post ?')) {
                 setLoadingBtn(btn);
                 $.ajax({
-                    url: base_url + '/sertifikat-dosen/delete',
+                    url: base_url + '/sertifikat/delete',
                     type: 'post',
                     data: {
                         id: id
@@ -59,7 +59,7 @@
                     success: function(res) {
                         if (res.status) {
                             successMsg(res.msg);
-                            $('#table-sertifikat-dosen').DataTable().ajax.reload();
+                            $('#table-sertifikat').DataTable().ajax.reload();
                         } else {
                             errorMsg(res.msg);
                         }
@@ -75,7 +75,7 @@
             }
         }
     });
-    var oTable = $('#table-sertifikat-dosen').dataTable({
+    var oTable = $('#table-sertifikat').dataTable({
         'bFilter': false,
         'autoWidth': true,
         'pagingType': 'full_numbers',
@@ -116,7 +116,7 @@
         ],
         'ajax': function(data, callback, setting) {
             $.ajax({
-                url: base_url + '/sertifikat-dosen/list',
+                url: base_url + '/sertifikat/list',
                 type: 'post',
                 data: {
                     datatables: data
@@ -135,12 +135,12 @@
         },
         'responsive': true
     });
-    $('#table-sertifikat-dosen').on('click', '.btn-look', function(e) {
+    $('#table-sertifikat').on('click', '.btn-look', function(e) {
         e.preventDefault();
         let id = $(this).attr('data-id');
         if (id) {
             $.ajax({
-                url: base_url + '/sertifikat-dosen/info',
+                url: base_url + '/sertifikat/info',
                 type: 'post',
                 data: {
                     id: id
@@ -169,7 +169,7 @@
         var htm = btn.html();
         setLoadingBtn(btn);
         $.ajax({
-            url: base_url + '/sertifikat-dosen/form',
+            url: base_url + '/sertifikat/form',
             type: 'post',
             success: function(res) {
                 resetLoadingBtn(btn, htm);

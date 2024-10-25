@@ -18,7 +18,7 @@
                 </a>
             </li>
             <?php
-            $permmedia = [1, 2, 3, 5, 6];
+            $permmedia = [1, 2, 3, 5, 6, 8];
             if (in_array(AuthUser()->type, $permmedia)) { ?>
                 <li class="<?= $request->uri->getSegment(2) === "media" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/media'); ?>">
@@ -107,6 +107,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permanggaran = [1];
+            if (in_array(AuthUser()->type, $permanggaran)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "anggaran" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/anggaran'); ?>">
+                        <i class="fa fa-money"></i> <span>Anggaran</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permsk = [1];
             if (in_array(AuthUser()->type, $permsk)) {
             ?>
@@ -127,11 +137,11 @@
                 </li>
             <?php } ?>
             <?php
-            $permsertifikat = [5];
+            $permsertifikat = [5, 8];
             if (in_array(AuthUser()->type, $permsertifikat)) {
             ?>
-                <li class="<?= $request->uri->getSegment(2) === "sertifikat-dosen" ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url('wbpanel/sertifikat-dosen'); ?>">
+                <li class="<?= $request->uri->getSegment(2) === "sertifikat" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/sertifikat'); ?>">
                         <i class="fa fa-id-card-o"></i> <span>Sertifikat Kompetensi/Profesi</span>
                     </a>
                 </li>

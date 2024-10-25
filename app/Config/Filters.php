@@ -6,6 +6,13 @@ use App\Filters\PengajaranFilter;
 use App\Filters\KerjasamaFilter;
 use App\Filters\SuratKeputusanFilter;
 use App\Filters\SuratTugasFilter;
+use App\Filters\SOPFilter;
+use App\Filters\RenstraFilter;
+use App\Filters\AnggaranFilter;
+use App\Filters\PanduanAkademikFilter;
+use App\Filters\EtikaAkademikFilter;
+use App\Filters\LamaStudiFilter;
+use App\Filters\IPKMahasiswaFilter;
 use App\Filters\HakiFilter;
 use App\Filters\KegiatanFilter;
 use App\Filters\KepanitiaanFilter;
@@ -42,6 +49,13 @@ class Filters extends BaseConfig
         'featPengabdian'    => PengabdianFilter::class,
         'featSertifikat'    => SertifikatFilter::class,
         'featHaki'          => HakiFilter::class,
+        'featSOP'           => SOPFilter::class,
+        'featRenstra'       => RenstraFilter::class,
+        'featAnggaran'      => AnggaranFilter::class,
+        'featPanduan'       => PanduanAkademikFilter::class,
+        'featEtika'         => EtikaAkademikFilter::class,
+        'featLamaStudi'     => LamaStudiFilter::class,
+        'featIPK'           => IPKMahasiswaFilter::class,
         'featMahasiswa'     => MahasiswaRecordFilter::class,
         'featKerjasama'     => KerjasamaFilter::class,
         'featSK'            => SuratKeputusanFilter::class,

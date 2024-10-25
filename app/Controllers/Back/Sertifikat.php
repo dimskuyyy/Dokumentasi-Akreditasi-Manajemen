@@ -20,12 +20,12 @@ class Sertifikat extends BaseController
 
     public function index()
     {
-        return view('dashboard/sertifikat-dosen/index');
+        return view('dashboard/sertifikat/index');
     }
 
     public function getDatatable()
     {
-        return view('dashboard/sertifikat-dosen/data_list');
+        return view('dashboard/sertifikat/data_list');
     }
 
     public function list()
@@ -94,7 +94,7 @@ class Sertifikat extends BaseController
                 $tmp['media'] = $this->mediaModel->where('media_id', $data['dokumen_media_id'])->findAll();
             }
 
-            return view('dashboard/sertifikat-dosen/form', $tmp);
+            return view('dashboard/sertifikat/form', $tmp);
         }
     }
 
@@ -123,7 +123,7 @@ class Sertifikat extends BaseController
             if ($id != null) {
                 $tmp['data'] = $data;
             }
-            return view('dashboard/sertifikat-dosen/info', $tmp);
+            return view('dashboard/sertifikat/info', $tmp);
         }
     }
 

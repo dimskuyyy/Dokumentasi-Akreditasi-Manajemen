@@ -46,6 +46,42 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'SuratKeputusan::delete');
         });
 
+        $routes->group('sop', ['filter' => ['featSOP'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'SOP::index');
+            $routes->post('datatable', 'SOP::getDatatable');
+            $routes->post('list', 'SOP::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'SOP::detail');
+            $routes->post('form', 'SOP::form');
+            $routes->post('save', 'SOP::save');
+            $routes->post('delete', 'SOP::delete');
+        });
+
+        $routes->group('renstra', ['filter' => ['featRenstra'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'Renstra::index');
+            $routes->post('datatable', 'Renstra::getDatatable');
+            $routes->post('list', 'Renstra::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Renstra::detail');
+            $routes->post('form', 'Renstra::form');
+            $routes->post('save', 'Renstra::save');
+            $routes->post('delete', 'Renstra::delete');
+        });
+
+        $routes->group('anggaran', ['filter' => ['featAnggaran'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'Anggaran::index');
+            $routes->post('datatable', 'Anggaran::getDatatable');
+            $routes->post('list', 'Anggaran::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'Anggaran::detail');
+            $routes->post('form', 'Anggaran::form');
+            $routes->post('save', 'Anggaran::save');
+            $routes->post('delete', 'Anggaran::delete');
+        });
+
         $routes->group('surat-tugas', ['filter' => ['featST'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'SuratTugas::index');
             $routes->post('datatable', 'SuratTugas::getDatatable');
@@ -106,7 +142,7 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Pengajaran::delete');
         });
 
-        $routes->group('sertifikat-dosen', ['filter' => ['featSertifikat'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+        $routes->group('sertifikat', ['filter' => ['featSertifikat'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Sertifikat::index');
             $routes->post('datatable', 'Sertifikat::getDatatable');
             $routes->post('list', 'Sertifikat::list');

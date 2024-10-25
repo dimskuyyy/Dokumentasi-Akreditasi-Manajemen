@@ -16,7 +16,7 @@ class SertifikatFilter implements FilterInterface
         }
 
         
-        if (!in_array(AuthUser()->type, [5])) {
+        if (!in_array(AuthUser()->type, [5,8])) {
             return redirect()->to('/wbpanel');
         }
     }
