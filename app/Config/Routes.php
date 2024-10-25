@@ -154,6 +154,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'Sertifikat::delete');
         });
 
+        $routes->group('lama-studi', ['filter' => ['featLamaStudi'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'LamaStudi::index');
+            $routes->post('datatable', 'LamaStudi::getDatatable');
+            $routes->post('list', 'LamaStudi::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'LamaStudi::detail');
+            $routes->post('form', 'LamaStudi::form');
+            $routes->post('save', 'LamaStudi::save');
+            $routes->post('delete', 'LamaStudi::delete');
+        });
+
         $routes->group('haki', ['filter' => ['featHaki'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Haki::index');
             $routes->post('datatable', 'Haki::getDatatable');

@@ -147,6 +147,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permstudi = [8];
+            if (in_array(AuthUser()->type, $permstudi)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "lama-studi" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/lama-studi'); ?>">
+                        <i class="fa fa-history"></i> <span>Lama Studi Mahasiswa</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permhaki = [5];
             if (in_array(AuthUser()->type, $permhaki)) {
             ?>
