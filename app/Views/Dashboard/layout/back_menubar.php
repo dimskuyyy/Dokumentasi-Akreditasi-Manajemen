@@ -87,6 +87,26 @@
                 </li>
             <?php } ?>
             <?php
+            $permsop = [1];
+            if (in_array(AuthUser()->type, $permsop)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "sop" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/sop'); ?>">
+                        <i class="fa fa-gavel"></i> <span>SOP</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
+            $permrenstra = [1];
+            if (in_array(AuthUser()->type, $permrenstra)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "renstra" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/renstra'); ?>">
+                        <i class="fa fa-podcast"></i> <span>Renstra</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permsk = [1];
             if (in_array(AuthUser()->type, $permsk)) {
             ?>
