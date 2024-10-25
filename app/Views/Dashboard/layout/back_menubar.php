@@ -273,6 +273,11 @@
                         <i class="fa fa-university"></i> <span>Koordinator Program Studi</span>
                     </a>
                 </li>
+                <li class="<?= $request->uri->getSegment(2) === "check-tendik" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/check-tendik'); ?>">
+                        <i class="fa fa-university"></i> <span>Tenaga Kependidikan</span>
+                    </a>
+                </li>
                 <li class="<?= $request->uri->getSegment(2) === "check-dosen" ? 'active' : ''; ?>">
                     <a href="<?php echo base_url('wbpanel/check-dosen'); ?>">
                         <i class="fa fa-university"></i> <span>Dosen</span>

@@ -326,6 +326,19 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('kegiatan/info/(:segment)', 'Kegiatan::detail/$1');
         });
 
+        $routes->group('check-tendik', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'Taskforce::tendik');
+            $routes->post('datatable', 'Taskforce::getDataTableTendik');
+            $routes->post('tendik-list', 'Taskforce::tendikList');
+            $routes->post('datatable/(:segment)', 'Taskforce::getDataTableFiturTendik/$1');
+            $routes->post('sertifikat/list', 'Sertifikat::list');
+            $routes->post('sertifikat/info', 'Sertifikat::detail');
+            $routes->post('lama-studi/list', 'LamaStudi::list');
+            $routes->post('lama-studi/info', 'LamaStudi::detail');
+            $routes->post('ipk-mahasiswa/list', 'IPK::list');
+            $routes->post('ipk-mahasiswa/info', 'IPK::detail');
+        });
+
         $routes->group('check-mahasiswa', ['filter' => ['taskforceOnly'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Taskforce::mahasiswa');
             $routes->post('datatable', 'Taskforce::getDataTableMahasiswa');

@@ -39,6 +39,11 @@ class Taskforce extends BaseController
         return view('dashboard/taskforce/dosen/index');
     }
 
+    public function tendik()
+    {
+        return view('dashboard/taskforce/tendik/index');
+    }
+
     public function mahasiswa()
     {
         return view('dashboard/taskforce/mahasiswa/index');
@@ -67,6 +72,11 @@ class Taskforce extends BaseController
     public function getDataTableDosen()
     {
         return view('dashboard/taskforce/dosen/dosen_list');
+    }
+
+    public function getDataTableTendik()
+    {
+        return view('dashboard/taskforce/tendik/tendik_list');
     }
 
     public function getDataTableMahasiswa()
@@ -118,6 +128,16 @@ class Taskforce extends BaseController
             'uid' => $req->getVar("id")
         ];
         return view('dashboard/taskforce/dosen/' . $page . '_list', $tmp);
+    }
+
+    // Tendik Feature
+    public function getDataTableFiturTendik($page)
+    {
+        $req = $this->request;
+        $tmp = [
+            'uid' => $req->getVar("id")
+        ];
+        return view('dashboard/taskforce/tendik/' . $page . '_list', $tmp);
     }
 
     // Mahasiswa Feature
@@ -218,6 +238,27 @@ class Taskforce extends BaseController
             $model2 = new User();
             $model1 = $model1->checkDosen();
             $model2 = $model2->checkDosen();
+            $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
+            return $this->response->setJSON($result);
+        }
+    }
+
+    public function tendikList()
+    {
+        $req = $this->request;
+        if ($req->isAJAX()) {
+            $columns = [
+                ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
+                ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
+                ['dt' => 'sertifikat', 'cond' => 'jumlah_sertifikat', 'select' => 'jumlah_sertifikat'],
+                ['dt' => 'lama_studi', 'cond' => 'jumlah_lama_studi', 'select' => 'jumlah_lama_studi'],
+                ['dt' => 'ipk_mahasiswa', 'cond' => 'jumlah_ipk_mahasiswa', 'select' => 'jumlah_ipk_mahasiswa'],
+            ];
+
+            $model1 = $this->userModel;
+            $model2 = new User();
+            $model1 = $model1->checkTenagaKependidikan();
+            $model2 = $model2->checkTenagaKependidikan();
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }

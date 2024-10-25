@@ -135,7 +135,7 @@ class User extends Model
             ->where('user_deleted_at', null);
 
         // Grab Feature Total
-        
+
         $kerjaSama = $this->db->table('kerjasama')
             ->select('COUNT(*)')
             ->where('kerjasama_user_id = user.user_id')
@@ -327,6 +327,37 @@ class User extends Model
             ->where('kepanitiaan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kepanitiaan) as jumlah_kepanitiaan", false);
+
+        return $builder;
+    }
+
+    public function checkTenagaKependidikan()
+    {
+        $builder = $this->builder()->select('*')
+            ->where('user_type', 8)
+            ->where('user_deleted_at', null);
+
+        $sertifikat = $this->db->table('dokumen')
+            ->select('COUNT(*)')
+            ->where('dokumen_user_id = user.user_id')
+            ->where('dokumen_type', 3)
+            ->where('dokumen_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($sertifikat) as jumlah_sertifikat", false);
+
+        $lamastudi = $this->db->table('studi')
+            ->select('COUNT(*)')
+            ->where('studi_user_id = user.user_id')
+            ->where('studi_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($lamastudi) as jumlah_lama_studi", false);
+
+        $ipkmahasiswa = $this->db->table('ipk')
+            ->select('COUNT(*)')
+            ->where('ipk_user_id = user.user_id')
+            ->where('ipk_deleted_at', null)
+            ->getCompiledSelect();
+        $builder->select("($ipkmahasiswa) as jumlah_ipk_mahasiswa", false);
 
         return $builder;
     }
