@@ -106,6 +106,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'PanduanAkademik::delete');
         });
 
+        $routes->group('etika-akademik', ['filter' => ['featEtika'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'EtikaAkademik::index');
+            $routes->post('datatable', 'EtikaAkademik::getDatatable');
+            $routes->post('list', 'EtikaAkademik::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'EtikaAkademik::detail');
+            $routes->post('form', 'EtikaAkademik::form');
+            $routes->post('save', 'EtikaAkademik::save');
+            $routes->post('delete', 'EtikaAkademik::delete');
+        });
+
         $routes->group('kegiatan', ['filter' => ['featKegiatan'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Kegiatan::index');
             $routes->post('datatable', 'Kegiatan::getDatatable');

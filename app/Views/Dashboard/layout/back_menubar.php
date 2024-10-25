@@ -187,6 +187,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permetika = [1];
+            if (in_array(AuthUser()->type, $permetika)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "etika-akademik" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/etika-akademik'); ?>">
+                        <i class="fa fa-pencil-square"></i> <span>Etika Akademik</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkegiatan = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkegiatan)) {
             ?>
