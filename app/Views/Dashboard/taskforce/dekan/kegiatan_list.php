@@ -6,7 +6,7 @@
         <tr>
             <th data-priority='1'>Pengunggah</th>
             <th data-priority='1'>Nama Kegiatan</th>
-            <th data-priority='1'>Sebagai</th>
+            <th data-priority='1'>Tahun</th>
             <th data-priority='1'>Tgl. Simpan</th>
             <th data-priority='1'>Tgl. Update</th>
             <th data-priority='1'></th>
@@ -38,8 +38,8 @@
                 name: 'nama'
             },
             {
-                data: 'sebagai',
-                name: 'sebagai',
+                data: 'tahun',
+                name: 'tahun',
             },
             {
                 data: 'tgl_simpan',

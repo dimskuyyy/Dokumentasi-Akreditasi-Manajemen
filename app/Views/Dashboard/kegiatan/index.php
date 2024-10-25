@@ -1,20 +1,28 @@
 <?= $this->extend('dashboard/layout/back_main') ?>
 
 <?= $this->section('title') ?>
-Kegiatan <?= AuthUser()->type_nama ?>
+Kegiatan
 <?= $this->endsection() ?>
 
 <?= $this->section('header') ?>
 <section class="content-header">
     <h1>
-        Kegiatan <?= AuthUser()->type_nama ?> 
-        <?php if(AuthUser()->type==5 && isset($page)){
-            if($page == 'luar-kampus'){
-                echo ' Di Luar Kampus (Rekognisi)';
-            }else if($page == 'dalam-kampus'){
-                echo ' Di Dalam Kampus';
+        <?php if (AuthUser()->type == 1 || AuthUser()->type == 5) { ?>
+            Kegiatan <?= AuthUser()->type_nama ?>
+            <?php if (AuthUser()->type == 5 && isset($page)) {
+                if ($page == 'luar-kampus') {
+                    echo ' Di Luar Kampus (Rekognisi)';
+                } else if ($page == 'dalam-kampus') {
+                    echo ' Di Dalam Kampus';
+                }
             }
-        }?>
+        } else {
+            if (AuthUser()->type == 2) { ?>
+                Kegiatan Di Jurusan
+            <?php } else if (AuthUser()->type == 3) { ?>
+                Kegiatan Program Studi
+        <?php }
+        } ?>
     </h1>
 </section>
 <?= $this->endsection() ?>
@@ -28,14 +36,14 @@ Kegiatan <?= AuthUser()->type_nama ?>
 <?= $this->endsection() ?>
 
 <?= $this->section('js') ?>
-<?php 
-    if(AuthUser()->type==5 && isset($page)){
-        $agenda_index = 'kegiatan-dosen';
-        $path_index = '/'.$page;
-    }else{
-        $agenda_index = 'kegiatan';
-        $path_index = '';
-    }
+<?php
+if (AuthUser()->type == 5 && isset($page)) {
+    $kegiatan_index = 'kegiatan-dosen';
+    $path_index = '/' . $page;
+} else {
+    $kegiatan_index = 'kegiatan';
+    $path_index = '';
+}
 ?>
 <script>
     const content = $('.box-body');
@@ -47,7 +55,7 @@ Kegiatan <?= AuthUser()->type_nama ?>
 
     function loadData() {
         $.ajax({
-            url: base_url + '/<?=$agenda_index?>/datatable<?=$path_index?>',
+            url: base_url + '/<?= $kegiatan_index ?>/datatable<?= $path_index ?>',
             type: 'post',
             cache: true,
             success: function(data) {
@@ -117,7 +125,7 @@ Kegiatan <?= AuthUser()->type_nama ?>
                 }
             });
             $.ajax({
-                url: base_url + '/<?=$agenda_index?>/detail',
+                url: base_url + '/<?= $kegiatan_index ?>/detail',
                 type: 'post',
                 data: {
                     id: id

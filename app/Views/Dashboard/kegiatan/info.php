@@ -1,5 +1,6 @@
 <?php
 helper(['form']);
+$adminKegiatan = [1,2,3];
 ?>
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,12 +11,19 @@ helper(['form']);
         <div class="modal-body">
             <div class="form-group">
                 <label for='nama'>Nama kegiatan</label>
-                <input type="text" class="form-control" value="<?= isset($data) ? $data['agenda_nama'] : '' ?>" id="nama" readonly>
+                <input type="text" class="form-control" value="<?= isset($data) ? $data['kegiatan_nama'] : '' ?>" id="nama" readonly>
             </div>
-            <div class="form-group">
-                <label for='sebagai'>Peran Sebagai</label>
-                <input type="text" class="form-control" value="<?= isset($data) ? $data['agenda_sebagai'] : '' ?>" id="sebagai" readonly>
-            </div>
+            <?php if ($data['user_type'] == 5) { ?>
+                <div class="form-group">
+                    <label for='sebagai'>Peran Sebagai</label>
+                    <input type="text" class="form-control" value="<?= isset($data) ? $data['kegiatan_sebagai'] : '' ?>" id="sebagai" readonly>
+                </div>
+            <?php } else if (in_array($data['user_type'], $adminKegiatan)) { ?>
+                <div class="form-group">
+                    <label for='tahun'>Tahun</label>
+                    <input type="text" class="form-control" value="<?= isset($data) ? $data['kegiatan_tahun'] : '' ?>" id="tahun" readonly>
+                </div>
+            <?php } ?>
             <div class="form-group">
                 <label for="image">File</label>
                 <div id="imagePreview">
@@ -36,10 +44,10 @@ helper(['form']);
                         <img id="preview" src="#" alt="Preview" class="img-thumbnail preview hidden">
                     <?php } ?>
                 </div>
-                <?php 
-                    $filename = explode('/',$data['media_path']);
+                <?php
+                $filename = explode('/', $data['media_path']);
                 ?>
-                <h4 style="text-align: center;"><?=$filename[1]?></h4>
+                <h4 style="text-align: center;"><?= $filename[1] ?></h4>
             </div>
 
 
@@ -93,7 +101,7 @@ helper(['form']);
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#preview').removeClass('hidden');
-                $('#preview').css('width','100%');
+                $('#preview').css('width', '100%');
                 $('#preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
@@ -102,7 +110,7 @@ helper(['form']);
 
     function alternativeView(file) {
         $('#preview').removeClass('hidden');
-        $('#preview').css('width','200px');
+        $('#preview').css('width', '200px');
         $('#preview').attr('src', `${root_url}/img/${file}`);
     }
 </script>

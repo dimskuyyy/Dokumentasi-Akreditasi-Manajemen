@@ -4,6 +4,8 @@ use Config\Services;
 
 helper(['form']);
 $encrypter = Services::encrypter();
+
+$adminKegiatan = [1, 2, 3];
 ?>
 <div class="box box-widget">
     <div class="box-body">
@@ -12,7 +14,7 @@ $encrypter = Services::encrypter();
         </div><br><br>
         <?php echo form_open('#', ['class' => 'form-post']);
         if (isset($data)) {
-            echo form_hidden('id', $data['agenda_id']);
+            echo form_hidden('id', $data['kegiatan_id']);
         }
         ?>
         <div class="modal-body">
@@ -21,32 +23,39 @@ $encrypter = Services::encrypter();
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for='nama'>Nama Kegiatan</label><br>
-                        <input type="text" name="nama" class="form-control" value="<?= isset($data) ? $data['agenda_nama'] : '' ?>" required>
+                        <input type="text" name="nama" class="form-control" value="<?= isset($data) ? $data['kegiatan_nama'] : '' ?>" required>
                     </div>
-                    <div class="form-group">
-                        <label for='sebagai'>Peran Sebagai</label><br>
-                        <input type="text" name="sebagai" class="form-control" value="<?= isset($data) ? $data['agenda_sebagai'] : '' ?>" required>
-                    </div>
+                    <?php if (AuthUser()->type == 5) { ?>
+                        <div class="form-group">
+                            <label for='sebagai'>Peran Sebagai</label><br>
+                            <input type="text" name="sebagai" class="form-control" value="<?= isset($data) ? $data['kegiatan_sebagai'] : '' ?>" required>
+                        </div>
+                    <?php } else if (in_array(AuthUser()->type, $adminKegiatan)) { ?>
+                        <div class="form-group">
+                            <label for='tahun'>Tahun </label><br>
+                            <input type="number" min="1900" max="2200" name="tahun" class="form-control" value="<?= isset($data) ? $data['kegiatan_tahun'] : '' ?>" required>
+                        </div>
+                    <?php } ?>
                     <div class="form-group">
                         <label for='media'>Media</label><br>
                         <div class="choose-media">
                             <a href="#" class="btn btn-sm btn-flat btn-primary btn-media" data-backdrop="static"><i class="fa fa-plus"></i> Pilih Media <span id="text-optional"></span></a>
                             <button type="button" class="btn btn-default btn-flat btn-sm btn-reset-media"><i class="fa fa-recycle" aria-hidden="true"></i></button>
                         </div>
-                        <input type="hidden" name="media" id="media-id" value="<?= isset($data) ? $data['agenda_media_id'] : '' ?>">
+                        <input type="hidden" name="media" id="media-id" value="<?= isset($data) ? $data['kegiatan_media_id'] : '' ?>">
                         <div class="source-media">
                             <?php if (isset($media)) {
                                 if (stripos($media[0]['media_type'], 'image') !== false) {
                             ?>
-                                    <img id="media-source" src="<?= base_url('media/' . $media[0]['media_slug']) ?>" alt="Preview" >
+                                    <img id="media-source" src="<?= base_url('media/' . $media[0]['media_slug']) ?>" alt="Preview">
                                 <?php } else if (stripos($media[0]['media_type'], 'pdf') !== false) { ?>
-                                    <iframe src="<?= base_url('media/' . $media[0]['media_slug']) ?>"  frameborder="0" style="height:350px;width:100%" id="media-source"></iframe>
+                                    <iframe src="<?= base_url('media/' . $media[0]['media_slug']) ?>" frameborder="0" style="height:350px;width:100%" id="media-source"></iframe>
                                 <?php } else if (stripos($media[0]['media_type'], 'word') !== false) { ?>
-                                    <img id="media-source" src="<?= base_url('img/docx_icon.png') ?>" alt="Preview"  style="object-fit:contain; background-color: white;">
+                                    <img id="media-source" src="<?= base_url('img/docx_icon.png') ?>" alt="Preview" style="object-fit:contain; background-color: white;">
                                 <?php } else if (stripos($media[0]['media_type'], 'spreadsheet') !== false || stripos($media[0]['media_type'], 'excel') !== false) { ?>
                                     <img id="media-source" src="<?= base_url('img/xlsx_icon.png') ?>" alt="Preview" style="object-fit:contain; background-color: white;">
                                 <?php } else if (stripos($media[0]['media_type'], 'presentation') !== false || stripos($media[0]['media_type'], 'powerpoint') !== false) { ?>
-                                    <img id="media-source" src="<?= base_url('img/xlsx_icon.png') ?>" alt="Preview"  style="object-fit:contain; background-color: white;">
+                                    <img id="media-source" src="<?= base_url('img/xlsx_icon.png') ?>" alt="Preview" style="object-fit:contain; background-color: white;">
                                 <?php }
                             } else { ?>
                                 <img id="media-source" class="no-source">
@@ -64,14 +73,14 @@ $encrypter = Services::encrypter();
         </div>
     </div>
 </div>
-<?php 
-    if(AuthUser()->type==5 && isset($page)){
-        $agenda_form = 'kegiatan-dosen';
-        $path_form = '/'.$page;
-    }else{
-        $agenda_form = 'kegiatan';
-        $path_form = '';
-    }
+<?php
+if (AuthUser()->type == 5 && isset($page)) {
+    $kegiatan_form = 'kegiatan-dosen';
+    $path_form = '/' . $page;
+} else {
+    $kegiatan_form = 'kegiatan';
+    $path_form = '';
+}
 ?>
 <script src="<?php echo base_url() ?>js/wbpanel.js"></script>
 <script>
@@ -100,7 +109,7 @@ $encrypter = Services::encrypter();
             setLoadingBtn(btn);
             var formData = new FormData(form[0]);
             $.ajax({
-                url: base_url + '/<?=$agenda_form?>/save<?=$path_form?>',
+                url: base_url + '/<?= $kegiatan_form ?>/save<?= $path_form ?>',
                 type: 'post',
                 dataType: 'json',
                 data: formData,
@@ -140,7 +149,7 @@ $encrypter = Services::encrypter();
             var htm = btn.html();
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/<?=$agenda_form?>/media',
+                url: base_url + '/<?= $kegiatan_form ?>/media',
                 data: {
                     key: 'cover'
                 },

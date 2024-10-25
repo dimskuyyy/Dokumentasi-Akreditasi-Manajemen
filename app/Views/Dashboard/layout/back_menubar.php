@@ -134,6 +134,10 @@
                     <a href="<?php echo base_url('wbpanel/kegiatan'); ?>">
                         <?php if (AuthUser()->type == 1) { ?>
                             <i class="fa fa-calendar-o"></i> <span>Kegiatan Fakultas</span>
+                        <?php } else if (AuthUser()->type == 2) { ?>
+                            <i class="fa fa-calendar-o"></i> <span>Kegiatan Di Jurusan</span>
+                        <?php } else if (AuthUser()->type == 3) { ?>
+                            <i class="fa fa-calendar-o"></i> <span>Kegiatan Prodi</span>
                         <?php } else { ?>
                             <i class="fa fa-calendar-o"></i> <span>Kegiatan <?= AuthUser()->type_nama ?></span>
                         <?php } ?>
@@ -215,7 +219,7 @@
                     </a>
                 </li>
             <?php } ?>
-            
+
             <?php
             $perUserControl = [1, 2, 3, 4];
             if (in_array(AuthUser()->type, $perUserControl)) {

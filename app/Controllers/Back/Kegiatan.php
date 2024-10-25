@@ -4,7 +4,7 @@ namespace App\Controllers\Back;
 
 use App\Controllers\BaseController;
 use App\Libraries\Datatable;
-use App\Models\MAgenda;
+use App\Models\MKegiatan;
 use App\Models\MMedia;
 
 class Kegiatan extends BaseController
@@ -14,7 +14,7 @@ class Kegiatan extends BaseController
 
     public function __construct()
     {
-        $this->kegiatanModel = new MAgenda();
+        $this->kegiatanModel = new MKegiatan();
         $this->mediaModel = new MMedia();
     }
 
@@ -60,24 +60,25 @@ class Kegiatan extends BaseController
         $req = $this->request;
         if ($req->isAJAX()) {
             $columns = [
-                ['dt' => 'id', 'cond' => 'agenda_id', 'select' => 'agenda_id'],
+                ['dt' => 'id', 'cond' => 'kegiatan_id', 'select' => 'kegiatan_id'],
                 ['dt' => 'slug', 'cond' => 'media_slug', 'select' => 'media_slug'],
                 ['dt' => 'oleh', 'cond' => 'user_nama', 'select' => 'user_nama'],
-                ['dt' => 'nama', 'cond' => 'agenda_nama', 'select' => 'agenda_nama'],
-                ['dt' => 'sebagai', 'cond' => 'agenda_sebagai', 'select' => 'agenda_sebagai'],
-                ['dt' => 'penulis', 'cond' => 'agenda_user_id', 'select' => 'agenda_user_id'],
+                ['dt' => 'nama', 'cond' => 'kegiatan_nama', 'select' => 'kegiatan_nama'],
+                ['dt' => 'sebagai', 'cond' => 'kegiatan_sebagai', 'select' => 'kegiatan_sebagai'],
+                ['dt' => 'tahun', 'cond' => 'kegiatan_tahun', 'select' => 'kegiatan_tahun'],
+                ['dt' => 'penulis', 'cond' => 'kegiatan_user_id', 'select' => 'kegiatan_user_id'],
                 [
                     'dt' => 'tgl_simpan',
-                    'cond' => 'agenda_created_at',
-                    'select' => 'agenda_created_at',
+                    'cond' => 'kegiatan_created_at',
+                    'select' => 'kegiatan_created_at',
                     'formatter' => function ($d) {
                         return $d != null ? date('d-m-Y H:i', strtotime($d)) : '';
                     }
                 ],
                 [
                     'dt' => 'tgl_update',
-                    'cond' => 'agenda_updated_at',
-                    'select' => 'agenda_updated_at',
+                    'cond' => 'kegiatan_updated_at',
+                    'select' => 'kegiatan_updated_at',
                     'formatter' => function ($d) {
                         return $d != null ? date('d-m-Y H:i', strtotime($d)) : '';
                     }
@@ -85,25 +86,25 @@ class Kegiatan extends BaseController
             ];
 
             $model1 = $this->kegiatanModel;
-            $model2 = new MAgenda();
+            $model2 = new MKegiatan();
 
             if ($page != null || AuthUser()->type == 5) {
                 if ($page == "luar-kampus" || $page == "dalam-kampus") {
                     if ($page == "luar-kampus") {
-                        if($req->getVar("id") == null){
-                            $model1 = $model1->multiDataKegiatanDosen(1)->where('agenda_user_id', AuthUser()->id);
-                            $model2 = $model2->multiDataKegiatanDosen(1)->where('agenda_user_id', AuthUser()->id);
-                        }else{
-                            $model1 = $model1->multiDataKegiatanDosen(1)->where('agenda_user_id', $req->getVar("id"));
-                            $model2 = $model2->multiDataKegiatanDosen(1)->where('agenda_user_id', $req->getVar("id"));
+                        if ($req->getVar("id") == null) {
+                            $model1 = $model1->multiDataKegiatanDosen(1)->where('kegiatan_user_id', AuthUser()->id);
+                            $model2 = $model2->multiDataKegiatanDosen(1)->where('kegiatan_user_id', AuthUser()->id);
+                        } else {
+                            $model1 = $model1->multiDataKegiatanDosen(1)->where('kegiatan_user_id', $req->getVar("id"));
+                            $model2 = $model2->multiDataKegiatanDosen(1)->where('kegiatan_user_id', $req->getVar("id"));
                         }
                     } else if ($page == "dalam-kampus") {
-                        if($req->getVar("id") == null){
-                            $model1 = $model1->multiDataKegiatanDosen(2)->where('agenda_user_id', AuthUser()->id);
-                            $model2 = $model2->multiDataKegiatanDosen(2)->where('agenda_user_id', AuthUser()->id);
-                        }else{
-                            $model1 = $model1->multiDataKegiatanDosen(2)->where('agenda_user_id', $req->getVar("id"));
-                            $model2 = $model2->multiDataKegiatanDosen(2)->where('agenda_user_id', $req->getVar("id"));
+                        if ($req->getVar("id") == null) {
+                            $model1 = $model1->multiDataKegiatanDosen(2)->where('kegiatan_user_id', AuthUser()->id);
+                            $model2 = $model2->multiDataKegiatanDosen(2)->where('kegiatan_user_id', AuthUser()->id);
+                        } else {
+                            $model1 = $model1->multiDataKegiatanDosen(2)->where('kegiatan_user_id', $req->getVar("id"));
+                            $model2 = $model2->multiDataKegiatanDosen(2)->where('kegiatan_user_id', $req->getVar("id"));
                         }
                     }
                 } else {
@@ -111,12 +112,12 @@ class Kegiatan extends BaseController
                     return $this->response->setJSON($result);
                 }
             } else {
-                if($req->getVar("id") == null){
-                    $model1 = $model1->multiDataKegiatan()->where('agenda_user_id', AuthUser()->id);
-                    $model2 = $model2->multiDataKegiatan()->where('agenda_user_id', AuthUser()->id);
-                }else{
-                    $model1 = $model1->multiDataKegiatan()->where('agenda_user_id', $req->getVar("id"));
-                    $model2 = $model2->multiDataKegiatan()->where('agenda_user_id', $req->getVar("id"));
+                if ($req->getVar("id") == null) {
+                    $model1 = $model1->multiDataKegiatan()->where('kegiatan_user_id', AuthUser()->id);
+                    $model2 = $model2->multiDataKegiatan()->where('kegiatan_user_id', AuthUser()->id);
+                } else {
+                    $model1 = $model1->multiDataKegiatan()->where('kegiatan_user_id', $req->getVar("id"));
+                    $model2 = $model2->multiDataKegiatan()->where('kegiatan_user_id', $req->getVar("id"));
                 }
             }
             $result = (new Datatable())->run($model1, $model2, $req->getVar('datatables'), $columns);
@@ -145,10 +146,10 @@ class Kegiatan extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->kegiatanModel->find($id);
-                if (empty($data['agenda_id'])) {
+                if (empty($data['kegiatan_id'])) {
                     $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                     return $this->response->setJSON($result);
-                } else if ($data['agenda_user_id'] != AuthUser()->id && $data['agenda_type'] != 1) {
+                } else if ($data['kegiatan_user_id'] != AuthUser()->id) {
                     $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
@@ -156,7 +157,7 @@ class Kegiatan extends BaseController
 
             if ($id != null) {
                 $tmp['data'] = $data;
-                $tmp['media'] = $this->mediaModel->where('media_id', $data['agenda_media_id'])->findAll();
+                $tmp['media'] = $this->mediaModel->where('media_id', $data['kegiatan_media_id'])->findAll();
             }
 
             return view('dashboard/kegiatan/form', $tmp);
@@ -183,8 +184,8 @@ class Kegiatan extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $data = $this->kegiatanModel->lookDetailKegiatan($id);
-                if (!empty($data['agenda_id']) &&  $data['agenda_type'] == 1) {
-                    if ($data['agenda_user_id'] != AuthUser()->id && AuthUser()->type != 4) {
+                if (!empty($data['kegiatan_id'])) {
+                    if ($data['kegiatan_user_id'] != AuthUser()->id && AuthUser()->type != 4) {
                         $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                         return $this->response->setJSON($result);
                     }
@@ -217,28 +218,30 @@ class Kegiatan extends BaseController
             $id = $req->getVar('id') ?? null;
             if ($id != null) {
                 $find = $this->kegiatanModel->find($id);
-                if (empty($find['agenda_id'])) {
+                if (empty($find['kegiatan_id'])) {
                     // Data tidak ditemukan, kirim respons error
                     $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                     return $this->response->setJSON($result);
-                } else if ($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 1) {
+                } else if ($find['kegiatan_user_id'] != AuthUser()->id) {
                     $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                     return $this->response->setJSON($result);
                 }
             }
             $data = [
-                'agenda_nama' => $req->getVar('nama'),
-                'agenda_sebagai' => $req->getVar('sebagai'),
-                'agenda_type' => 1,
-                'agenda_media_id' => $req->getVar('media'),
+                'kegiatan_nama' => $req->getVar('nama'),
+                'kegiatan_media_id' => $req->getVar('media'),
             ];
             // var_dump($data);die;
+            $adminKegiatan = [1,2,3];
             if ($page != null || AuthUser()->type == 5) {
-                if($page == "luar-kampus"){
-                    $data['agenda_kegiatan_dosen'] = 1;
-                }else if($page == "dalam-kampus"){
-                    $data['agenda_kegiatan_dosen'] = 2;
+                if ($page == "luar-kampus") {
+                    $data['kegiatan_dosen'] = 1;
+                } else if ($page == "dalam-kampus") {
+                    $data['kegiatan_dosen'] = 2;
                 }
+                $data['kegiatan_sebagai'] = $req->getVar('sebagai');
+            }else if ($page == null && in_array(AuthUser()->type, $adminKegiatan)){
+                $data['kegiatan_tahun'] = $req->getVar('tahun');
             }
 
             if ($req->getVar('media') === '') {
@@ -255,7 +258,7 @@ class Kegiatan extends BaseController
         }
     }
 
-    public function delete($page=null)
+    public function delete($page = null)
     {
         if ($page != null || AuthUser()->type == 5) {
             if (!($page == "luar-kampus" || $page == "dalam-kampus")) {
@@ -274,17 +277,17 @@ class Kegiatan extends BaseController
             }
 
             $find = $this->kegiatanModel->find($id);
-            if (empty($find['agenda_id'])) {
+            if (empty($find['kegiatan_id'])) {
                 // Data tidak ditemukan, kirim respons error
                 $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                 return $this->response->setJSON($result);
-            } else if ($find['agenda_user_id'] != AuthUser()->id && $find['agenda_type'] != 1) {
+            } else if ($find['kegiatan_user_id'] != AuthUser()->id) {
                 $result = jsonFormat(false, 'Kegiatan tidak ditemukan');
                 return $this->response->setJSON($result);
             }
 
             // menghapus media
-            if (($find['agenda_user_id'] == AuthUser()->id)) {
+            if (($find['kegiatan_user_id'] == AuthUser()->id)) {
                 if ($this->kegiatanModel->delete($id)) {
                     $result = jsonFormat(true, 'Kegiatan berhasil dihapus');
                 } else {

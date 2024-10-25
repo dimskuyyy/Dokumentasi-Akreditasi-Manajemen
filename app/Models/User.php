@@ -158,11 +158,10 @@ class User extends Model
             ->getCompiledSelect();
         $builder->select("($suratTugas) as jumlah_surat_tugas", false);
 
-        $kegiatan = $this->db->table('agenda')
+        $kegiatan = $this->db->table('kegiatan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 1)
-            ->where('agenda_deleted_at', null)
+            ->where('kegiatan_user_id = user.user_id')
+            ->where('kegiatan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
@@ -185,11 +184,10 @@ class User extends Model
             ->getCompiledSelect();
         $builder->select("($suratTugas) as jumlah_surat_tugas", false);
 
-        $kegiatan = $this->db->table('agenda')
+        $kegiatan = $this->db->table('kegiatan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 1)
-            ->where('agenda_deleted_at', null)
+            ->where('kegiatan_user_id = user.user_id')
+            ->where('kegiatan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
@@ -211,11 +209,10 @@ class User extends Model
             ->getCompiledSelect();
         $builder->select("($kerjaSama) as jumlah_kerjasama", false);
 
-        $kegiatan = $this->db->table('agenda')
+        $kegiatan = $this->db->table('kegiatan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 1)
-            ->where('agenda_deleted_at', null)
+            ->where('kegiatan_user_id = user.user_id')
+            ->where('kegiatan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kegiatan) as jumlah_kegiatan", false);
 
@@ -268,29 +265,26 @@ class User extends Model
             ->getCompiledSelect();
         $builder->select("($haki) as jumlah_haki", false);
 
-        $kegiatan_luar = $this->db->table('agenda')
+        $kegiatan_luar = $this->db->table('kegiatan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 1)
-            ->where('agenda_kegiatan_dosen', 1)
-            ->where('agenda_deleted_at', null)
+            ->where('kegiatan_user_id = user.user_id')
+            ->where('kegiatan_dosen', 1)
+            ->where('kegiatan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kegiatan_luar) as jumlah_kegiatan_luar", false);
 
-        $kegiatan_dalam = $this->db->table('agenda')
+        $kegiatan_dalam = $this->db->table('kegiatan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 1)
-            ->where('agenda_kegiatan_dosen', 2)
-            ->where('agenda_deleted_at', null)
+            ->where('kegiatan_user_id = user.user_id')
+            ->where('kegiatan_dosen', 2)
+            ->where('kegiatan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kegiatan_dalam) as jumlah_kegiatan_dalam", false);
 
-        $kepanitiaan = $this->db->table('agenda')
+        $kepanitiaan = $this->db->table('kepanitiaan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 2)
-            ->where('agenda_deleted_at', null)
+            ->where('kepanitiaan_user_id = user.user_id')
+            ->where('kepanitiaan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kepanitiaan) as jumlah_kepanitiaan", false);
 
@@ -337,11 +331,10 @@ class User extends Model
             ->getCompiledSelect();
         $builder->select("($prestasi) as jumlah_prestasi", false);
 
-        $kepanitiaan = $this->db->table('agenda')
+        $kepanitiaan = $this->db->table('kepanitiaan')
             ->select('COUNT(*)')
-            ->where('agenda_user_id = user.user_id')
-            ->where('agenda_type', 2)
-            ->where('agenda_deleted_at', null)
+            ->where('kepanitiaan_user_id = user.user_id')
+            ->where('kepanitiaan_deleted_at', null)
             ->getCompiledSelect();
         $builder->select("($kepanitiaan) as jumlah_kepanitiaan", false);
 

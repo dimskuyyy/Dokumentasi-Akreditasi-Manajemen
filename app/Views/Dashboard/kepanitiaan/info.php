@@ -10,11 +10,11 @@ helper(['form']);
         <div class="modal-body">
             <div class="form-group">
                 <label for='nama'>Nama Agenda</label>
-                <input type="text" class="form-control" value="<?= isset($data) ? $data['agenda_nama'] : '' ?>" id="nama" readonly>
+                <input type="text" class="form-control" value="<?= isset($data) ? $data['kepanitiaan_nama'] : '' ?>" id="nama" readonly>
             </div>
             <div class="form-group">
                 <label for='sebagai'>Peran Sebagai</label>
-                <input type="text" class="form-control" value="<?= isset($data) ? $data['agenda_sebagai'] : '' ?>" id="sebagai" readonly>
+                <input type="text" class="form-control" value="<?= isset($data) ? $data['kepanitiaan_sebagai'] : '' ?>" id="sebagai" readonly>
             </div>
             <div class="form-group">
                 <label for="image">File</label>

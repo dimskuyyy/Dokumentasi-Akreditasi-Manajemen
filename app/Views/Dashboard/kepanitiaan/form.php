@@ -12,7 +12,7 @@ $encrypter = Services::encrypter();
         </div><br><br>
         <?php echo form_open('#', ['class' => 'form-post']);
         if (isset($data)) {
-            echo form_hidden('id', $data['agenda_id']);
+            echo form_hidden('id', $data['kepanitiaan_id']);
         }
         ?>
         <div class="modal-body">
@@ -21,11 +21,11 @@ $encrypter = Services::encrypter();
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for='nama'>Nama Agenda</label><br>
-                        <input type="text" name="nama" class="form-control" value="<?= isset($data) ? $data['agenda_nama'] : '' ?>" required>
+                        <input type="text" name="nama" class="form-control" value="<?= isset($data) ? $data['kepanitiaan_nama'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label for='sebagai'>Peran Sebagai</label><br>
-                        <input type="text" name="sebagai" class="form-control" value="<?= isset($data) ? $data['agenda_sebagai'] : '' ?>" required>
+                        <input type="text" name="sebagai" class="form-control" value="<?= isset($data) ? $data['kepanitiaan_sebagai'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label for='media'>Media</label><br>
@@ -33,7 +33,7 @@ $encrypter = Services::encrypter();
                             <a href="#" class="btn btn-sm btn-flat btn-primary btn-media" data-backdrop="static"><i class="fa fa-plus"></i> Pilih Media <span id="text-optional"></span></a>
                             <button type="button" class="btn btn-default btn-flat btn-sm btn-reset-media"><i class="fa fa-recycle" aria-hidden="true"></i></button>
                         </div>
-                        <input type="hidden" name="media" id="media-id" value="<?= isset($data) ? $data['agenda_media_id'] : '' ?>">
+                        <input type="hidden" name="media" id="media-id" value="<?= isset($data) ? $data['kepanitiaan_media_id'] : '' ?>">
                         <div class="source-media">
                             <?php if (isset($media)) {
                                 if (stripos($media[0]['media_type'], 'image') !== false) {

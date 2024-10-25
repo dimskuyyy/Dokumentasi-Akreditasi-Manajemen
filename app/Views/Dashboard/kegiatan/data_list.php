@@ -1,3 +1,6 @@
+<?php 
+    $adminKegiatan = [1,2,3];
+?>
 <div class="pull-left">
     <button type="button" class="btn btn-sm btn-flat btn-primary btn-create"><i class="fa fa-plus"></i> Tambah Kegiatan</button>
 </div><br><br>
@@ -5,7 +8,7 @@
     <thead>
         <tr>
             <th data-priority='1'>Nama Kegiatan</th>
-            <th data-priority='1'>Sebagai</th>
+            <th data-priority='1'><?= in_array(AuthUser()->type,$adminKegiatan) ? 'Tahun' : 'Sebagai' ?></th>
             <th data-priority='1'>Tgl. Simpan</th>
             <th data-priority='1'>Tgl. Update</th>
             <th data-priority='1'></th>
@@ -14,10 +17,10 @@
 </table>
 <?php 
     if(AuthUser()->type==5 && isset($page)){
-        $agenda_list = 'kegiatan-dosen';
+        $kegiatan_list = 'kegiatan-dosen';
         $path_list = '/'.$page;
     }else{
-        $agenda_list = 'kegiatan';
+        $kegiatan_list = 'kegiatan';
         $path_list = '';
     }
 ?>
@@ -30,7 +33,7 @@
         if (id) {
             setLoadingBtn(btn);
             $.ajax({
-                url: base_url + '/<?=$agenda_list?>/form<?=$path_list?>',
+                url: base_url + '/<?=$kegiatan_list?>/form<?=$path_list?>',
                 type: 'post',
                 data: {
                     id: id
@@ -60,7 +63,7 @@
             if (confirm('Yakin hapus post ?')) {
                 setLoadingBtn(btn);
                 $.ajax({
-                    url: base_url + '/<?=$agenda_list?>/delete<?=$path_list?>',
+                    url: base_url + '/<?=$kegiatan_list?>/delete<?=$path_list?>',
                     type: 'post',
                     data: {
                         id: id
@@ -102,8 +105,8 @@
                 name: 'nama'
             },
             {
-                data: 'sebagai',
-                name: 'sebagai',
+                data: '<?= in_array(AuthUser()->type,$adminKegiatan) ? 'tahun' : 'sebagai' ?>',
+                name: '<?= in_array(AuthUser()->type,$adminKegiatan) ? 'tahun' : 'sebagai' ?>',
             },
             {
                 data: 'tgl_simpan',
@@ -125,7 +128,7 @@
         ],
         'ajax': function(data, callback, setting) {
             $.ajax({
-                url: base_url + '/<?=$agenda_list?>/list<?=$path_list?>',
+                url: base_url + '/<?=$kegiatan_list?>/list<?=$path_list?>',
                 type: 'post',
                 data: {
                     datatables: data
@@ -153,7 +156,7 @@
         let id = $(this).attr('data-id');
         if (id) {
             $.ajax({
-                url: base_url + '/<?=$agenda_list?>/info<?=$path_list?>',
+                url: base_url + '/<?=$kegiatan_list?>/info<?=$path_list?>',
                 type: 'post',
                 data: {
                     id: id
@@ -182,7 +185,7 @@
         var htm = btn.html();
         setLoadingBtn(btn);
         $.ajax({
-            url: base_url + '/<?=$agenda_list?>/form<?=$path_list?>',
+            url: base_url + '/<?=$kegiatan_list?>/form<?=$path_list?>',
             type: 'post',
             success: function(res) {
                 resetLoadingBtn(btn, htm);
