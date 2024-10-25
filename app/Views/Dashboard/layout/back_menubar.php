@@ -157,6 +157,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permipk = [8];
+            if (in_array(AuthUser()->type, $permipk)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "ipk-mahasiswa" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/ipk-mahasiswa'); ?>">
+                        <i class="fa fa-signal"></i> <span>IPK Mahasiswa</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permhaki = [5];
             if (in_array(AuthUser()->type, $permhaki)) {
             ?>

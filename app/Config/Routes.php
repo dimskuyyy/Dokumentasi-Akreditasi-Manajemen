@@ -166,6 +166,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'LamaStudi::delete');
         });
 
+        $routes->group('ipk-mahasiswa', ['filter' => ['featIPK'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'IPK::index');
+            $routes->post('datatable', 'IPK::getDatatable');
+            $routes->post('list', 'IPK::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'IPK::detail');
+            $routes->post('form', 'IPK::form');
+            $routes->post('save', 'IPK::save');
+            $routes->post('delete', 'IPK::delete');
+        });
+
         $routes->group('haki', ['filter' => ['featHaki'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Haki::index');
             $routes->post('datatable', 'Haki::getDatatable');
