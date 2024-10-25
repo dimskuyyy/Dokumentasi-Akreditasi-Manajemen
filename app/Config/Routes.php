@@ -94,6 +94,18 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'SuratTugas::delete');
         });
 
+        $routes->group('panduan-akademik', ['filter' => ['featPanduan'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'PanduanAkademik::index');
+            $routes->post('datatable', 'PanduanAkademik::getDatatable');
+            $routes->post('list', 'PanduanAkademik::list');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('info', 'PanduanAkademik::detail');
+            $routes->post('form', 'PanduanAkademik::form');
+            $routes->post('save', 'PanduanAkademik::save');
+            $routes->post('delete', 'PanduanAkademik::delete');
+        });
+
         $routes->group('kegiatan', ['filter' => ['featKegiatan'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
             $routes->get('/', 'Kegiatan::index');
             $routes->post('datatable', 'Kegiatan::getDatatable');

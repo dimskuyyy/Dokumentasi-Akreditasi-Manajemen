@@ -177,6 +177,16 @@
                 </li>
             <?php } ?>
             <?php
+            $permpanduan = [1];
+            if (in_array(AuthUser()->type, $permpanduan)) {
+            ?>
+                <li class="<?= $request->uri->getSegment(2) === "panduan-akademik" ? 'active' : ''; ?>">
+                    <a href="<?php echo base_url('wbpanel/panduan-akademik'); ?>">
+                        <i class="fa fa-pencil-square"></i> <span>Panduan Akademik</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php
             $permkegiatan = [1, 2, 3];
             if (in_array(AuthUser()->type, $permkegiatan)) {
             ?>
