@@ -76,6 +76,6 @@ class CreateAgenda extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('agenda');
+        $this->forge->dropTable('kegiatan');
     }
 }
