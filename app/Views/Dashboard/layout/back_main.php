@@ -7,6 +7,7 @@
     <title><?= $this->renderSection('title') ?> - WEBSITE PANEL</title>
     <?= csrf_meta(); ?>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
     <?= $this->renderSection('front_css') ?>
     <link rel="stylesheet" href="<?php echo base_url() ?>plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>plugins/fontawesome/css/font-awesome.min.css">

@@ -9,9 +9,12 @@ Website - Login
 
 <?= $this->section('content') ?>
 <div class="login-box" style="width: 100%;display:flex;flex-direction: column; align-items: center;">
-    <img src="<?=base_url('img/LOGO-UNRI.png')?>" alt="Logo Unri" style="height: 120px;margin-bottom: 12px;">
+    <div>
+        <img src="<?=base_url('img/LOGO-UNRI.png')?>" alt="Logo Unri" style="height: 120px;margin-bottom: 12px; margin-right:1rem">
+        <img src="<?=base_url('img/logo_feb.png')?>" alt="Logo FEB UNRI" style="height: 120px;margin-bottom: 12px;">
+    </div>
     <div class="login-logo" style="font-size: 28px;">
-        <a href="#"><b>Jurusan Ilmu Ekonomi<br>Fakultas Ekonomi dan Bisnis Universitas Riau</b></a>
+        <a href="#"><b>Pendataan Dokumen Bukti Akreditasi<br> Program Studi S2 Ilmu Ekonomi<br>Jurusan Ilmu Ekonomi <br>Fakultas Ekonomi dan Bisnis Universitas Riau</b></a>
         <!-- <div style="font-size:15px; font-weight:bolder;">JURUSAN TEKNIK INFORMATIKA<br>UNIVERSITAS MUHAMMADIYAH RIAU</div> -->
     </div>
     <div class="login-box-body" style="width: 90%; max-width:500px">

@@ -3,7 +3,7 @@
 <?= $this->section('header') ?>
 <section class="content-header">
     <h1>
-    Selamat Datang di Aplikasi Dokumentasi Akreditasi <a href="https://manajemen.feb.umri.ac.id">Program Studi Manajemen</a> ✨
+    Selamat Datang! Di Aplikasi Pendataan Dokumen Bukti Akreditasi Program Studi S2 Ilmu Ekonomi Jurusan Ilmu Ekonomi Fakultas Ekonomi dan Bisnis Universitas Riau ✨
     </h1>
 </section>
 <?= $this->endSection() ?>
